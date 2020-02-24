@@ -19,7 +19,9 @@ https://education.rstudio.com/blog/2020/02/applications-for-2020-intern-program-
 
 APPLICATIONS END ON MARCH 5TH BE SURE TO APPLY BEFORE THEN!!
 
+For video:
 
+Start off with overview of projects I am suited for showing work I did for this application specifically. Then go on to talk about ways I have applied the broad RMarkdown ecosystem and automation in my work. Then talk a bit more about myself. Close things with ideal tutorial overview. (outline this at a high level under 2 minutes in the video at the start here)
 
 
 ```{r include=FALSE}
