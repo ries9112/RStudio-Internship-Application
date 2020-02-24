@@ -146,7 +146,9 @@ I was completely blown away by the R Markdown file format when I first discovere
 
 I first discovered the \textbf{\emph{learnr}} \citep{R-learnr} package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: \url{https://github.com/ries9112/R-Tutorial}
 
-\textbf{Today, I use learnr to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:} \url{https://predictcrypto.org/tutorials}
+\textbf{Today, I use learnr to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:}
+
+(this takes about 45 seconds to load, give it more time if it's blank)
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -156,6 +158,8 @@ I first discovered the \textbf{\emph{learnr}} \citep{R-learnr} package in late 2
 \end{Shaded}
 
 \href{https://predictcrypto.shinyapps.io/R_Basics/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-2-1.pdf}}
+
+I post these on my website: \url{https://predictcrypto.org/tutorials}
 
 \hypertarget{bookdown}{%
 \subsection{Bookdown}\label{bookdown}}
@@ -181,7 +185,7 @@ FIGURE OUT WHAT IS WRONG WITH THE GIF
 Blogdown\citep{R-blogdown} and bookdown work very similarly, so most of what I mentioned in the \protect\hyperlink{bookdown}{bookdown section} applies here. Because my website predictcrypto.com only shows the latest data based on the current date, I leverage blogdown to create weekly snapshots of the visualizations over the last 7 day period: \url{https://predictcryptoblog.com/}. Because all these systems work so well with automation, as I keep adding new interesting content to my website I can also add archives of that content using blogdown.
 
 \hypertarget{automation}{%
-\section{I ❤️ automation}\label{automation}}
+\section{I ❤️ Automation}\label{automation}}
 
 Automation is at the center of everything I do and my one true passion. One of my big goals for RStudio::conf 2020 was to learn more about automating things through GitHub using CI since I always had a hard time figuring that out, and the things I learned about especially relating to GitHub actions and using Netlify were above my expectations in terms of the ease of use, capabilities and free tier offerings, and I am super excited to share how crazy simple automating a very complex process can be through RStudio, GitHub Actions and Netlify.
 
@@ -228,7 +232,7 @@ Here are some examples of charts, which refresh daily using GitHub actions and N
 \includegraphics{images/projects_list.png}
 
 \hypertarget{create-resources-for-people-working-with-spreadsheets-in-r}{%
-\section{1. Create resources for people working with spreadsheets in R}\label{create-resources-for-people-working-with-spreadsheets-in-r}}
+\section{Create resources for people working with spreadsheets in R}\label{create-resources-for-people-working-with-spreadsheets-in-r}}
 
 Here make a guide using github environments making a repo. Maybe a learnr tutorial?
 
@@ -263,18 +267,97 @@ Also put some code here:
 ## #   Btc` <dbl>
 \end{verbatim}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(data.table)}
+\KeywordTok{data.table}\NormalTok{(practice_sheet)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                      Id                            Name Symbol
+##    1:                           bitcoin                         Bitcoin    btc
+##    2:                          ethereum                        Ethereum    eth
+##    3:                               xrp                             XRP    xrp
+##    4:                      bitcoin-cash                    Bitcoin Cash    bch
+##    5:                        bitcoin-sv                      Bitcoin SV    bsv
+##   ---                                                                         
+## 2417:                            ftoken                          FToken     ft
+## 2418:                          eosblack                        eosBLACK  black
+## 2419: airline-and-life-networking-token Airline & Life Networking Token   alln
+## 2420:                          harcomia                        Harcomia    hca
+## 2421:                             blocs                           Blocs  blocs
+##       Rank     Price Usd    Price Btc 24h Volume Usd Market Cap Usd
+##    1:    1 9769.48991700 1.0000000000    40463828067   178146277391
+##    2:    2  269.05298170 0.0275401258    19542499911    29551156294
+##    3:    3    0.27378778 0.0000280248     2377865581    11978054912
+##    4:    4  382.85920450 0.0391892727     4421385407     7004887720
+##    5:    5  284.46044790 0.0291172262     2228030328     5203799131
+##   ---                                                              
+## 2417: 2417    0.04225120 0.0000043248             NA             NA
+## 2418: 2418    0.01052418 0.0000010773             NA             NA
+## 2419: 2419    0.02015197 0.0000020627             NA             NA
+## 2420: 2420            NA           NA             NA             NA
+## 2421: 2421   55.94342404 0.0057263403             NA             NA
+##       Circulating Supply Total Supply   Max Supply Percent Change 1h
+##    1:           18234962     18234962     21000000             -0.02
+##    2:          109833967    109833967           NA             -0.29
+##    3:        43749413421  99991077044 100000000000             -0.11
+##    4:           18296250     18296250     21000000             -1.36
+##    5:           18293577     18293577     21000000             -0.80
+##   ---                                                               
+## 2417:                 NA   2510925464           NA              0.00
+## 2418:                 NA   3000000000           NA              0.00
+## 2419:                 NA   3500000000           NA              0.00
+## 2420:                 NA       122000           NA                NA
+## 2421:                 NA     21000000           NA              0.00
+##       Percent Change 24h Percent Change 7d        last_updated 24h Volume Btc
+##    1:              -0.99              1.19 2020-02-24 15:07:35      4141856.8
+##    2:              -0.62              6.30 2020-02-24 15:07:35      2000360.3
+##    3:              -2.63             -2.21 2020-02-24 15:07:35       243397.1
+##    4:              -3.06             -2.63 2020-02-24 15:07:35       452570.8
+##    5:              -2.18             -1.17 2020-02-24 15:07:35       228060.0
+##   ---                                                                        
+## 2417:               0.00              0.00 2020-02-24 15:07:35             NA
+## 2418:               0.00              0.00 2020-02-24 15:07:35             NA
+## 2419:               0.00              0.00 2020-02-24 15:07:35             NA
+## 2420:                 NA                NA 2020-02-24 15:07:35             NA
+## 2421:               0.00              0.00 2020-02-24 15:07:35             NA
+##       Market Cap Btc
+##    1:     18234962.0
+##    2:      3024841.3
+##    3:      1226067.6
+##    4:       717016.7
+##    5:       532658.2
+##   ---               
+## 2417:             NA
+## 2418:             NA
+## 2419:             NA
+## 2420:             NA
+## 2421:             NA
+\end{verbatim}
+
+COULD MAKE THE
+
 \hypertarget{build-interactive-learnr-tutorials-for-tidymodels}{%
-\section{2. Build interactive learnr tutorials for tidymodels}\label{build-interactive-learnr-tutorials-for-tidymodels}}
+\section{Build interactive learnr tutorials for tidymodels}\label{build-interactive-learnr-tutorials-for-tidymodels}}
 
 \url{https://education.rstudio.com/blog/2020/02/conf20-intro-ml/}
 
 \url{https://conf20-intro-ml.netlify.com/materials/01-predicting/}
 
 \hypertarget{build-interactive-learnr-tutorials-for-python-using-reticulate}{%
-\section{3. Build interactive learnr tutorials for Python using reticulate}\label{build-interactive-learnr-tutorials-for-python-using-reticulate}}
+\section{Build interactive learnr tutorials for Python using reticulate}\label{build-interactive-learnr-tutorials-for-python-using-reticulate}}
 
-knitr::include\_app(``\url{https://predictcrypto.shinyapps.io/R_Basics/}'',
-height = ``600px'')
+Replace this with the Python one:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_app}\NormalTok{(}\StringTok{"https://predictcrypto.shinyapps.io/R_Basics/"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\href{https://predictcrypto.shinyapps.io/R_Basics/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-5-1.pdf}}
 
   \bibliography{book.bib,packages.bib,main.bib}
 
