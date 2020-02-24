@@ -1,0 +1,173 @@
+# What makes me a good fit for the internship {#fit}
+
+<!-- ```{r setup, message=F, echo=F, include=FALSE} -->
+<!-- # global.R to import libraries or error on shinyapps for some reason -->
+<!-- library(shiny) -->
+<!-- library(DBI) -->
+<!-- library(RMySQL) -->
+<!-- library(anytime) -->
+<!-- library(ggthemes) -->
+<!-- library(plotly) -->
+<!-- library(lubridate) -->
+<!-- library(tidyverse) -->
+<!-- library(data.table) -->
+<!-- library(stringr) -->
+<!-- library(DT) -->
+<!-- library(ggmap) -->
+<!-- library(rayshader) -->
+<!-- # library(ggstatsplot) -->
+<!-- library(bibtex) -->
+<!-- # To resolve issue with BioConductor package needed for ggstatsplot: -->
+<!-- # if (!requireNamespace("BiocManager", quietly = TRUE)) -->
+<!-- #     install.packages("BiocManager") -->
+<!-- # BiocManager::install() -->
+<!-- library(BiocManager) -->
+<!-- # options(repos = BiocManager::repositories()) -->
+<!-- # options(repos = BiocInstaller::biocinstallRepos()) -->
+<!-- ############# SQL CONNECTION ############### -->
+<!-- source("login_info.R") -->
+<!-- getSqlConnection <- function(){ -->
+<!--   con <- -->
+<!--     dbConnect( -->
+<!--       RMySQL::MySQL(), -->
+<!--       username = Sys.getenv('user'), -->
+<!--       password = Sys.getenv('pswd'), -->
+<!--       host = Sys.getenv('ipAddress'), -->
+<!--       dbname = 'ScrapeStorm' -->
+<!--     ) -->
+<!--   return(con) -->
+<!-- } -->
+<!-- database_connection <- getSqlConnection() -->
+<!-- tables_list <- dbListTables(database_connection) -->
+<!-- #Set knitr options for all chunks to remove annoying warnings -->
+<!-- knitr::opts_chunk$set(warning=F) -->
+<!-- query <- "SELECT Date as 'DateExtracted', DateTime as 'DateTimeUTC', Name, Rank, PriceUSD, PriceBTC, PercChange24hVsUSD, PercChange24hVsBTC, Reported_MarketCap, Reported24hVolume, VolumeTurnover24h, Reported_Supply, CurrentInflation, ATH_USD, TimeFromATH, PercDownFromATH, BreakevenMultiple, PercUpSinceLow, PercChange7d, PercChange7d_BTC, PercChange30d, PercChange30d_BTC, PercChange90d, PercChange90d_BTC, PercChange1y,PercChange1y_BTC, PercChange_MTD, PercChange_QTD, PercChange_YTD, NetworkPercStaking, FlipsideFCAS_Grade, FlipsideFCAS_Rating, FlipsideScore_Dev, FlipsideScore_Utility, FlipsideScore_Maturity, TokenInsight_Grade, TokenInsight_TeamScore, TokenInsight_SubjectScore, TxVol24h, AdjstedTxVol24h, MedianTxValueUSD, ActiveAddresses, Transactions24h, Fees24hUSD, MedianFeeUSD, AvgDifficulty, KilobytesAdded24h, NumBlocks24h, Git_Stars, Git_Watchers, Git_CommitsLast90Days, Git_CommitsLastYear, Git_LinesAddedLast90Days, Git_LinesAddedLastYear, Git_LinesRemovedLast90Days, Git_LinesRemovedLastYear, ROI_2018, ROI_2017, ROI_2016, Volatility30d, Volatility90d, Volatility1y, Volatility3y, Sharpe30d, Sharpe90d, Sharpe1y, Sharpe3y, BlockReward, TargetBlockTimeSeconds, OnChainGovernanceStructure, IsTreasuryDecentralized, LaunchStyle, MiningAlgorithm, NextHalvingDate, GenesisBlockDate, Age, HasExperienced51PercAttack, EmissionType_General, EmissionType_Precise, IsSupplyCapped, MaxSupply, Sector, Category, TokenUsage, TokenType, ConsensusAlgorithm, pkDummy FROM Messari WHERE Date >= date_sub(now(), INTERVAL 7 DAY) AND Name != '' order by pkDummy desc, cast(Rank as unsigned) asc" #Manually picked all fields that could be interesting for this + Use Case tutorial -->
+<!-- cryptoData <- dbFetch(dbSendQuery(database_connection, query), 250000) -->
+<!-- #Write data to .csv and read it in to automatically adjust all data types from strings -->
+<!-- write.csv(cryptoData, 'cryptoData.csv') -->
+<!-- cryptoData <- read.csv('cryptoData.csv', stringsAsFactors = F) -->
+<!-- #Convert Date and DateTime fields -->
+<!-- cryptoData$DateExtracted <- anytime(cryptoData$DateExtracted) -->
+<!-- cryptoData$DateTimeUTC <- anytime(cryptoData$DateTimeUTC) -->
+<!-- #Remove scientific notation -->
+<!-- options(scipen=999) -->
+<!-- #Convert rank to numeric -->
+<!-- cryptoData$Rank <- as.numeric(cryptoData$Rank) -->
+<!-- #Remove data with NA PriceUSD field - Haven't done it but might be good to do to avoid issues with things like calculating means -->
+<!-- ##### CREATE ALL GLOBAL OBJECTS USED THROUGHOUT THE TUTORIAL HERE TO AVOID ISSUES -->
+<!-- #It's also good to remember that before uploading app should Source code, clear cache and ALWAYS press on the "start over" button before uploading to avoid issue with continue button not working -->
+<!-- #Create a custom function to create % change target over "X" hours -->
+<!-- calculateChange <- function(df, enterHours){ -->
+<!--   dfHLater <- df -->
+<!--   #exclude most recent 12 hours since they wouldn't have data -->
+<!--   #df12hLater_new <- filter(dfHLater, DateTimeUTC <= max(df$DateTimeUTC) - hours(12) ) -->
+<!--   dfHLater$DateTimeUTC <- dfHLater$DateTimeUTC - hours(enterHours) -->
+<!--   #Replace pkDummy -->
+<!--   dfHLater$pkDummy <-substr(dfHLater$DateTimeUTC, 1, 13) -->
+<!--   df$pkDummy <-substr(df$DateTimeUTC, 1, 13) -->
+<!--   #Create both pkeys -->
+<!--   df$pkey <- paste0(df$pkDummy,df$Name) -->
+<!--   dfHLater$pkey <- paste0(dfHLater$pkDummy,dfHLater$Name) -->
+<!--   #Re-adjust the 12hLater time -->
+<!--   dfHLater$DateTimeUTC <- dfHLater$DateTimeUTC + hours(enterHours) -->
+<!--   #narrow down new dataframe to just the Price -->
+<!--   dfHLater <- select(dfHLater, PriceUSD, pkey, DateTimeUTC) %>% rename(PriceUSD_XhoursLater = PriceUSD, DateTimeUTC_XhoursLater = DateTimeUTC) -->
+<!--   #join data -->
+<!--   joinedDataset <- left_join(df, dfHLater, by='pkey') -->
+<!--   joinedDataset <- filter(joinedDataset, DateTimeUTC <= max(df$DateTimeUTC) - hours(enterHours) ) -->
+<!--   #Now calculate % change -->
+<!--   joinedDataset$TargetPercChange <- ((joinedDataset$PriceUSD_XhoursLater-joinedDataset$PriceUSD) / joinedDataset$PriceUSD) * 100 -->
+<!--   return(joinedDataset) -->
+<!-- } -->
+<!-- #### IMPORTANT NOTE FOR CODE ABOVE. RATHER THAN HAVING "XhoursLater", find a way to concat the string of the field name with the user input enterHours! Important, do it before tutorial is too far along! -->
+<!-- #Remove first column of the data "X" -->
+<!-- cryptoData <- select(cryptoData,-1) -->
+<!-- ########## DATA SELECTION ############# -->
+<!-- #Create df with different % calculated -->
+<!-- targetData <- calculateChange(cryptoData,6) -->
+<!-- targetData12 <- calculateChange(cryptoData,12) -->
+<!-- targetData24 <- calculateChange(cryptoData,24) -->
+<!-- # Pull KuCoin Exchange data -->
+<!-- query <- "SELECT * FROM ScrapeStorm.ShrimpyPrices WHERE Date >= date_sub(now(), INTERVAL 7 DAY) ORDER BY pkDummy DESC" -->
+<!-- shrimpyData <- dbFetch(dbSendQuery(database_connection, query), 250000) -->
+<!-- # Rename DateTime to DateTimeUTC -->
+<!-- shrimpyData <- rename(shrimpyData, DateTimeUTC = DateTime) -->
+<!-- # After adjusting fields could also easily get the % change on KuCoinData: -->
+<!-- shrimpyData$PriceUSD <- as.numeric(shrimpyData$Price) -->
+<!-- shrimpyData$DateTimeUTC <- anytime(shrimpyData$DateTimeUTC) -->
+<!-- shrimpyData <- calculateChange(shrimpyData,12) -->
+<!-- #Filter down to Ethereum data -->
+<!-- ethereumData <- filter(cryptoData, Name == 'Ethereum') -->
+<!-- ``` -->
+
+
+
+
+<!-- ## Previous 24h % Change - Whole Market - Hex Bins -->
+
+
+<!-- ```{r rayshader, echo=FALSE, message=FALSE, warning=FALSE} -->
+<!-- filename_movie = 'rayshader.mp4' -->
+<!-- phivechalf = 30 + 60 * 1/(1 + exp(seq(-7, 20, length.out = 180)/2)) -->
+<!-- phivecfull = c(phivechalf, rev(phivechalf)) -->
+<!-- thetavec = -90 + 45 * sin(seq(0,359,length.out = 360) * pi/180) -->
+<!-- zoomvec = 0.45 + 0.2 * 1/(1 + exp(seq(-5, 20, length.out = 180))) -->
+<!-- zoomvecfull = c(zoomvec, rev(zoomvec)) -->
+
+<!-- plot_gg(ggplot(data = cryptoData, aes(x=DateTimeUTC, y=PercChange24hVsUSD)) + -->
+<!--           geom_hex() + -->
+<!--           ylim(-50,50) + -->
+<!--           scale_fill_gradient(low="white", high="blue")) -->
+
+
+<!-- render_movie(filename = filename_movie, type = "custom", -->
+<!--              frames = 360,  phi = phivecfull, zoom = zoomvecfull, theta = thetavec) -->
+<!-- rgl::rgl.close() -->
+<!-- ``` -->
+
+<!-- <video width="600" height="500" controls> -->
+<!--   <source src="rayshader.mp4" type="video/mp4"> -->
+<!-- </video> -->
+
+<!-- <br /> -->
+  
+
+
+<!-- ```{r disconnectDB, echo=F, message=F, warning=F} -->
+<!-- # Disconnect from the database -->
+<!-- dbDisconnect(database_connection) -->
+<!-- # Disconnect all connections just to be safe -->
+<!-- lapply(dbListConnections(dbDriver(drv = "MySQL")), dbDisconnect) -->
+<!-- ``` -->
+
+
+
+## I `r emo::ji("heart")` .Rmd
+
+I was completely blown away by the R Markdown file format when I first discovered it, and I definitely felt a bit cheated by the fact that none of the courses I took during my undergrad in R mentioned it at all or the tidyverse. I have spent a lot of my time learning R Markdown and digging through books and amazing resources made available by RStudio, so here are some of my favorite formats that I would love to make more content around and teach people about:
+
+
+### Bookdown
+
+I was actually very close to paying $8 a month for a subscription on gitbook.com because I thought it was such an amazing format to provide documentation through, so I was particularly impressed by the bookdown[@R-bookdown] package.
+
+
+
+
+
+
+
+
+<!-- I believe helping others is the most straightforward way  -->
+
+
+
+
+<!-- Rayshader -->
+
+
+<!-- ```{r} -->
+
+<!-- ``` -->
+
+
