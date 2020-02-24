@@ -24,7 +24,6 @@
 <meta name="author" content="Riccardo Esclapon" />
 
 
-<meta name="date" content="2020-02-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -70,21 +69,20 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
-<li class="chapter" data-level="2" data-path="fit.html"><a href="fit.html"><i class="fa fa-check"></i><b>2</b> What makes me a good fit for the internship</a><ul>
+<li class="chapter" data-level="2" data-path="fit.html"><a href="fit.html"><i class="fa fa-check"></i><b>2</b> Why me?</a><ul>
 <li class="chapter" data-level="2.1" data-path="fit.html"><a href="fit.html#i-️-.rmd-files"><i class="fa fa-check"></i><b>2.1</b> I ❤️ .Rmd files</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="fit.html"><a href="fit.html#bookdownbookdown"><i class="fa fa-check"></i><b>2.1.1</b> Bookdown{bookdown}</a></li>
-<li class="chapter" data-level="2.1.2" data-path="fit.html"><a href="fit.html#librarylearnr"><i class="fa fa-check"></i><b>2.1.2</b> library(learnr)</a></li>
+<li class="chapter" data-level="2.1.1" data-path="fit.html"><a href="fit.html#learnr"><i class="fa fa-check"></i><b>2.1.1</b> learnr</a></li>
+<li class="chapter" data-level="2.1.2" data-path="fit.html"><a href="fit.html#bookdown"><i class="fa fa-check"></i><b>2.1.2</b> Bookdown</a></li>
 <li class="chapter" data-level="2.1.3" data-path="fit.html"><a href="fit.html#presentations"><i class="fa fa-check"></i><b>2.1.3</b> Presentations</a></li>
 <li class="chapter" data-level="2.1.4" data-path="fit.html"><a href="fit.html#blogdown"><i class="fa fa-check"></i><b>2.1.4</b> Blogdown</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="fit.html"><a href="fit.html#i-️-automation"><i class="fa fa-check"></i><b>2.2</b> I ❤️ automation</a></li>
-<li class="chapter" data-level="2.3" data-path="fit.html"><a href="fit.html#i-️-rstudio"><i class="fa fa-check"></i><b>2.3</b> I ❤️ RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="fit.html"><a href="fit.html#automation"><i class="fa fa-check"></i><b>2.2</b> I ❤️ automation</a></li>
+<li class="chapter" data-level="2.3" data-path="fit.html"><a href="fit.html#rstudio"><i class="fa fa-check"></i><b>2.3</b> I ❤️ RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="about-me.html"><a href="about-me.html"><i class="fa fa-check"></i><b>3</b> About Me</a></li>
 <li class="chapter" data-level="4" data-path="ideal-tutorial.html"><a href="ideal-tutorial.html"><i class="fa fa-check"></i><b>4</b> Ideal Tutorial</a></li>
 <li class="chapter" data-level="5" data-path="cool-charts.html"><a href="cool-charts.html"><i class="fa fa-check"></i><b>5</b> Cool Charts</a><ul>
 <li class="chapter" data-level="5.1" data-path="cool-charts.html"><a href="cool-charts.html#disable-while-working-on-bookdown-takes-too-long-to-render"><i class="fa fa-check"></i><b>5.1</b> Disable while working on bookdown, takes too long to render!</a></li>
-<li class="chapter" data-level="5.2" data-path="cool-charts.html"><a href="cool-charts.html#previous-24h-change---global-market---hex-bins"><i class="fa fa-check"></i><b>5.2</b> Previous 24h % Change - Global Market - Hex Bins</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -112,15 +110,27 @@
 <div id="disable-while-working-on-bookdown-takes-too-long-to-render" class="section level2">
 <h2><span class="header-section-number">5.1</span> Disable while working on bookdown, takes too long to render!</h2>
 <p>Here are some examples of charts, which refresh daily using GitHub actions and Netlify for automation.</p>
-</div>
-<div id="previous-24h-change---global-market---hex-bins" class="section level2">
-<h2><span class="header-section-number">5.2</span> Previous 24h % Change - Global Market - Hex Bins</h2>
-<p>The y-axis in the chart below is limited to a range of -30% to 30%</p>
-<pre><code>## [1] &quot;C:\\Users\\info\\Desktop\\RStudio-Internship-Application\\rayshader.mp4&quot;</code></pre>
-<video width="600" height="500" controls>
-<source src="rayshader.mp4" type="video/mp4">
-</video>
-<p><br /></p>
+<!-- ## Previous 24h % Change - Global Market - Hex Bins -->
+<!-- The y-axis in the chart below is limited to a range of -25% to 25% -->
+<!-- ```{r rayshader, echo=FALSE, message=FALSE, warning=FALSE} -->
+<!-- filename_movie = 'rayshader.mp4' -->
+<!-- phivechalf = 30 + 60 * 1/(1 + exp(seq(-7, 20, length.out = 180)/2)) -->
+<!-- phivecfull = c(phivechalf, rev(phivechalf)) -->
+<!-- thetavec = -90 + 45 * sin(seq(0,359,length.out = 360) * pi/180) -->
+<!-- zoomvec = 0.45 + 0.2 * 1/(1 + exp(seq(-5, 20, length.out = 180))) -->
+<!-- zoomvecfull = c(zoomvec, rev(zoomvec)) -->
+<!-- plot_gg(ggplot(data = cryptoData, aes(x=DateTimeUTC, y=PercChange24hVsUSD)) + -->
+<!--           geom_hex() + -->
+<!--           ylim(-25,25) + -->
+<!--           scale_fill_gradient(low="white", high="blue")) #adjust the color of this chart -->
+<!-- render_movie(filename = filename_movie, type = "custom", -->
+<!--              frames = 360,  phi = phivecfull, zoom = zoomvecfull, theta = thetavec) -->
+<!-- rgl::rgl.close() -->
+<!-- ``` -->
+<!-- <video width="600" height="500" controls> -->
+<!--   <source src="rayshader.mp4" type="video/mp4"> -->
+<!-- </video> -->
+<!-- <br /> -->
 <pre><code>## [1] TRUE</code></pre>
 <pre><code>## list()</code></pre>
 

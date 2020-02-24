@@ -1,10 +1,9 @@
 --- 
 title: "RStudio 2020 Internship Application"
 author: "Riccardo Esclapon"
-date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography: [book.bib, packages.bib, main.bib]
 biblio-style: apalike
 link-citations: yes
 description: "This is Ricky's application to the 2020 RStudio Internship."
@@ -16,7 +15,9 @@ description: "This is Ricky's application to the 2020 RStudio Internship."
 Video intro here
 
 
+https://education.rstudio.com/blog/2020/02/applications-for-2020-intern-program-are-now-open/
 
+APPLICATIONS END ON MARCH 5TH BE SURE TO APPLY BEFORE THEN!!
 
 
 
@@ -24,6 +25,6 @@ Video intro here
 ```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'plotly','rayshader'
-), 'packages.bib')
+  .packages(), "bookdown", "knitr", "rmarkdown", "tidyverse", "plotly", "rayshader"
+), "packages.bib")
 ```

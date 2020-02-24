@@ -108,34 +108,34 @@ ethereumData <- filter(cryptoData, Name == 'Ethereum')
 
 
 
-## Previous 24h % Change - Global Market - Hex Bins
+<!-- ## Previous 24h % Change - Global Market - Hex Bins -->
 
-The y-axis in the chart below is limited to a range of -25% to 25%
+<!-- The y-axis in the chart below is limited to a range of -25% to 25% -->
 
-```{r rayshader, echo=FALSE, message=FALSE, warning=FALSE}
-filename_movie = 'rayshader.mp4'
-phivechalf = 30 + 60 * 1/(1 + exp(seq(-7, 20, length.out = 180)/2))
-phivecfull = c(phivechalf, rev(phivechalf))
-thetavec = -90 + 45 * sin(seq(0,359,length.out = 360) * pi/180)
-zoomvec = 0.45 + 0.2 * 1/(1 + exp(seq(-5, 20, length.out = 180)))
-zoomvecfull = c(zoomvec, rev(zoomvec))
+<!-- ```{r rayshader, echo=FALSE, message=FALSE, warning=FALSE} -->
+<!-- filename_movie = 'rayshader.mp4' -->
+<!-- phivechalf = 30 + 60 * 1/(1 + exp(seq(-7, 20, length.out = 180)/2)) -->
+<!-- phivecfull = c(phivechalf, rev(phivechalf)) -->
+<!-- thetavec = -90 + 45 * sin(seq(0,359,length.out = 360) * pi/180) -->
+<!-- zoomvec = 0.45 + 0.2 * 1/(1 + exp(seq(-5, 20, length.out = 180))) -->
+<!-- zoomvecfull = c(zoomvec, rev(zoomvec)) -->
 
-plot_gg(ggplot(data = cryptoData, aes(x=DateTimeUTC, y=PercChange24hVsUSD)) +
-          geom_hex() +
-          ylim(-25,25) +
-          scale_fill_gradient(low="white", high="blue")) #adjust the color of this chart
+<!-- plot_gg(ggplot(data = cryptoData, aes(x=DateTimeUTC, y=PercChange24hVsUSD)) + -->
+<!--           geom_hex() + -->
+<!--           ylim(-25,25) + -->
+<!--           scale_fill_gradient(low="white", high="blue")) #adjust the color of this chart -->
 
 
-render_movie(filename = filename_movie, type = "custom",
-             frames = 360,  phi = phivecfull, zoom = zoomvecfull, theta = thetavec)
-rgl::rgl.close()
-```
+<!-- render_movie(filename = filename_movie, type = "custom", -->
+<!--              frames = 360,  phi = phivecfull, zoom = zoomvecfull, theta = thetavec) -->
+<!-- rgl::rgl.close() -->
+<!-- ``` -->
 
-<video width="600" height="500" controls>
-  <source src="rayshader.mp4" type="video/mp4">
-</video>
+<!-- <video width="600" height="500" controls> -->
+<!--   <source src="rayshader.mp4" type="video/mp4"> -->
+<!-- </video> -->
 
-<br />
+<!-- <br /> -->
 
 
 
