@@ -1,3 +1,50 @@
 # Projects Well Suited For
 
 ![](images/projects_list.png)
+
+
+## 1. Create resources for people working with spreadsheets in R
+
+Here make a guide using github environments making a repo. Maybe a learnr tutorial?
+
+Also put some code here:
+
+```{r message=FALSE, warning=FALSE}
+library(googlesheets4)
+practice_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4")
+practice_sheet
+```
+
+
+
+
+
+
+
+
+## 2. Build interactive learnr tutorials for tidymodels
+
+https://education.rstudio.com/blog/2020/02/conf20-intro-ml/
+
+https://conf20-intro-ml.netlify.com/materials/01-predicting/
+
+
+
+
+
+
+
+
+
+
+## 3. Build interactive learnr tutorials for Python using reticulate
+
+
+Replace this with the Python one:
+
+```{r}
+knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/")
+```
+
+
+

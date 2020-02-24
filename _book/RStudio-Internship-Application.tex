@@ -41,6 +41,46 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -87,6 +127,10 @@
 
 Video intro here
 
+\url{https://education.rstudio.com/blog/2020/02/applications-for-2020-intern-program-are-now-open/}
+
+APPLICATIONS END ON MARCH 5TH BE SURE TO APPLY BEFORE THEN!!
+
 \hypertarget{fit}{%
 \chapter{Why me?}\label{fit}}
 
@@ -98,11 +142,20 @@ Here are some of the things I believe make me a great fit for the internship:
 I was completely blown away by the R Markdown file format when I first discovered it, and I definitely felt a bit cheated by the fact that none of the courses I took during my undergrad in R mentioned it at all or the tidyverse. I have spent a lot of my time learning R Markdown and digging through books and amazing resources made available by RStudio, so here are some of my favorite formats that I would love to make more content around and teach people about:
 
 \hypertarget{learnr}{%
-\subsection{learnr}\label{learnr}}
+\subsection{Learnr}\label{learnr}}
 
 I first discovered the \textbf{\emph{learnr}} \citep{R-learnr} package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: \url{https://github.com/ries9112/R-Tutorial}
 
 \textbf{Today, I use learnr to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:} \url{https://predictcrypto.org/tutorials}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_app}\NormalTok{(}\StringTok{"https://predictcrypto.shinyapps.io/R_Basics/"}\NormalTok{, }
+  \DataTypeTok{height =} \StringTok{"600px"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\href{https://predictcrypto.shinyapps.io/R_Basics/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-2-1.pdf}}
 
 \hypertarget{bookdown}{%
 \subsection{Bookdown}\label{bookdown}}
@@ -119,6 +172,8 @@ I also found that documentation done in bookdown can work really great when work
 I am a \textbf{big} fan of ioslides and revealjs in particular as R Markdown outputs. I find the revealjs output to be incredibly cool with the rotating cube animation, and the ability to not only move forward but move downward adds a surprisingly useful tool to break down topics; ioslides is just really clean, well made and easy to use and looks great with widescreen enabled.
 
 Making presentations in R Markdown is what really got me working with .Rmd files, because I started working towards a very specific project using an idea I haven't really seen elsewhere of creating presentations that give the user options and as they make their way through the slides, those options affect not only what they see in the slides that come afterwards, but also the options they are given. For example, the user could choose to do an analysis for a particular asset, then choose the main category of the analysis to perform, then the sub-category of the analysis and so on, until by the end of the presentation the user has performed an analysis that was completely unique and tailored to their preferences and interests. See the gif below for an example of what this looks like:
+
+FIGURE OUT WHAT IS WRONG WITH THE GIF
 
 \hypertarget{blogdown}{%
 \subsection{Blogdown}\label{blogdown}}
@@ -149,6 +204,8 @@ Put pictures with JJ and Hadley here
 \hypertarget{ideal-tutorial}{%
 \chapter{Ideal Tutorial}\label{ideal-tutorial}}
 
+\includegraphics{images/idealTutorial.png}
+
 \hypertarget{cool-charts}{%
 \chapter{Cool Charts}\label{cool-charts}}
 
@@ -164,6 +221,60 @@ Here are some examples of charts, which refresh daily using GitHub actions and N
 \begin{verbatim}
 ## list()
 \end{verbatim}
+
+\hypertarget{projects-well-suited-for}{%
+\chapter{Projects Well Suited For}\label{projects-well-suited-for}}
+
+\includegraphics{images/projects_list.png}
+
+\hypertarget{create-resources-for-people-working-with-spreadsheets-in-r}{%
+\section{1. Create resources for people working with spreadsheets in R}\label{create-resources-for-people-working-with-spreadsheets-in-r}}
+
+Here make a guide using github environments making a repo. Maybe a learnr tutorial?
+
+Also put some code here:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(googlesheets4)}
+\NormalTok{practice_sheet <-}\StringTok{ }\KeywordTok{read_sheet}\NormalTok{(}\StringTok{"https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4"}\NormalTok{)}
+\NormalTok{practice_sheet}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2,421 x 17
+##    Id    Name  Symbol  Rank `Price Usd` `Price Btc` `24h Volume Usd`
+##    <chr> <chr> <chr>  <dbl>       <dbl>       <dbl>            <dbl>
+##  1 bitc~ Bitc~ btc        1    9769.      1             40463828067 
+##  2 ethe~ Ethe~ eth        2     269.      0.0275        19542499911 
+##  3 xrp   XRP   xrp        3       0.274   0.0000280      2377865581 
+##  4 bitc~ Bitc~ bch        4     383.      0.0392         4421385407 
+##  5 bitc~ Bitc~ bsv        5     284.      0.0291         2228030328 
+##  6 lite~ Lite~ ltc        6      75.5     0.00773        5638873067 
+##  7 teth~ Teth~ usdt       7       1.00    0.000102      47741567290 
+##  8 eos   EOS   eos        8       4.14    0.000424       3697914797 
+##  9 bina~ Bina~ bnb        9      22.6     0.00231         409613428 
+## 10 tezos Tezos xtz       10       3.19    0.000327        196594975.
+## # ... with 2,411 more rows, and 10 more variables: `Market Cap Usd` <dbl>,
+## #   `Circulating Supply` <dbl>, `Total Supply` <dbl>, `Max Supply` <dbl>,
+## #   `Percent Change 1h` <dbl>, `Percent Change 24h` <dbl>, `Percent Change
+## #   7d` <dbl>, last_updated <dttm>, `24h Volume Btc` <dbl>, `Market Cap
+## #   Btc` <dbl>
+\end{verbatim}
+
+\hypertarget{build-interactive-learnr-tutorials-for-tidymodels}{%
+\section{2. Build interactive learnr tutorials for tidymodels}\label{build-interactive-learnr-tutorials-for-tidymodels}}
+
+\url{https://education.rstudio.com/blog/2020/02/conf20-intro-ml/}
+
+\url{https://conf20-intro-ml.netlify.com/materials/01-predicting/}
+
+\hypertarget{build-interactive-learnr-tutorials-for-python-using-reticulate}{%
+\section{3. Build interactive learnr tutorials for Python using reticulate}\label{build-interactive-learnr-tutorials-for-python-using-reticulate}}
+
+knitr::include\_app(``\url{https://predictcrypto.shinyapps.io/R_Basics/}'',
+height = ``600px'')
 
   \bibliography{book.bib,packages.bib,main.bib}
 

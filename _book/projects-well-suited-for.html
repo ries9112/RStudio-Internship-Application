@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | RStudio 2020 Internship Application</title>
+  <title>6 Projects Well Suited For | RStudio 2020 Internship Application</title>
   <meta name="description" content="This is Ricky’s application to the 2020 RStudio Internship." />
   <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | RStudio 2020 Internship Application" />
+  <meta property="og:title" content="6 Projects Well Suited For | RStudio 2020 Internship Application" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | RStudio 2020 Internship Application" />
+  <meta name="twitter:title" content="6 Projects Well Suited For | RStudio 2020 Internship Application" />
   
   <meta name="twitter:description" content="This is Ricky’s application to the 2020 RStudio Internship." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="projects-well-suited-for.html"/>
-
+<link rel="prev" href="cool-charts.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -172,19 +172,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="projects-well-suited-for" class="section level1">
+<h1><span class="header-section-number">6</span> Projects Well Suited For</h1>
+<p><img src="images/projects_list.png" /></p>
+<div id="create-resources-for-people-working-with-spreadsheets-in-r" class="section level2">
+<h2><span class="header-section-number">6.1</span> 1. Create resources for people working with spreadsheets in R</h2>
+<p>Here make a guide using github environments making a repo. Maybe a learnr tutorial?</p>
+<p>Also put some code here:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">library</span>(googlesheets4)</a>
+<a class="sourceLine" id="cb4-2" title="2">practice_sheet &lt;-<span class="st"> </span><span class="kw">read_sheet</span>(<span class="st">&quot;https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4&quot;</span>)</a></code></pre></div>
+<pre><code>## Using an auto-discovered, cached token.
+## To suppress this message, modify your code or options to clearly consent to the use of a cached token.
+## See gargle&#39;s &quot;Non-interactive auth&quot; vignette for more details:
+## https://gargle.r-lib.org/articles/non-interactive-auth.html
+## The googlesheets4 package is using a cached token for ries9112@colorado.edu.</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">practice_sheet</a></code></pre></div>
+<pre><code>## # A tibble: 2,421 x 17
+##    Id    Name  Symbol  Rank `Price Usd` `Price Btc` `24h Volume Usd`
+##    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;            &lt;dbl&gt;
+##  1 bitc~ Bitc~ btc        1    9769.      1             40463828067 
+##  2 ethe~ Ethe~ eth        2     269.      0.0275        19542499911 
+##  3 xrp   XRP   xrp        3       0.274   0.0000280      2377865581 
+##  4 bitc~ Bitc~ bch        4     383.      0.0392         4421385407 
+##  5 bitc~ Bitc~ bsv        5     284.      0.0291         2228030328 
+##  6 lite~ Lite~ ltc        6      75.5     0.00773        5638873067 
+##  7 teth~ Teth~ usdt       7       1.00    0.000102      47741567290 
+##  8 eos   EOS   eos        8       4.14    0.000424       3697914797 
+##  9 bina~ Bina~ bnb        9      22.6     0.00231         409613428 
+## 10 tezos Tezos xtz       10       3.19    0.000327        196594975.
+## # ... with 2,411 more rows, and 10 more variables: `Market Cap Usd` &lt;dbl&gt;,
+## #   `Circulating Supply` &lt;dbl&gt;, `Total Supply` &lt;dbl&gt;, `Max Supply` &lt;dbl&gt;,
+## #   `Percent Change 1h` &lt;dbl&gt;, `Percent Change 24h` &lt;dbl&gt;, `Percent Change
+## #   7d` &lt;dbl&gt;, last_updated &lt;dttm&gt;, `24h Volume Btc` &lt;dbl&gt;, `Market Cap
+## #   Btc` &lt;dbl&gt;</code></pre>
+</div>
+<div id="build-interactive-learnr-tutorials-for-tidymodels" class="section level2">
+<h2><span class="header-section-number">6.2</span> 2. Build interactive learnr tutorials for tidymodels</h2>
+<p><a href="https://education.rstudio.com/blog/2020/02/conf20-intro-ml/" class="uri">https://education.rstudio.com/blog/2020/02/conf20-intro-ml/</a></p>
+<p><a href="https://conf20-intro-ml.netlify.com/materials/01-predicting/" class="uri">https://conf20-intro-ml.netlify.com/materials/01-predicting/</a></p>
+</div>
+<div id="build-interactive-learnr-tutorials-for-python-using-reticulate" class="section level2">
+<h2><span class="header-section-number">6.3</span> 3. Build interactive learnr tutorials for Python using reticulate</h2>
+<p>knitr::include_app(“<a href="https://predictcrypto.shinyapps.io/R_Basics/" class="uri">https://predictcrypto.shinyapps.io/R_Basics/</a>”,
+height = “600px”)</p>
 
-<div id="refs" class="references">
-<div>
-<p>Schloerke, Barret, JJ Allaire, and Barbara Borges. 2019. “Learnr: Interactive Tutorials for R.” <a href="https://CRAN.R-project.org/package=learnr">https://CRAN.R-project.org/package=learnr</a>.</p>
-</div>
-<div>
-<p>Xie, Yihui. 2019. “Blogdown: Create Blogs and Websites with R Markdown.” <a href="https://CRAN.R-project.org/package=blogdown">https://CRAN.R-project.org/package=blogdown</a>.</p>
-</div>
-<div>
-<p>———. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
-</div>
 </div>
 </div>
             </section>
@@ -192,8 +223,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="projects-well-suited-for.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="cool-charts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

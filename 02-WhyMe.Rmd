@@ -13,6 +13,14 @@ I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was rea
 
 **Today, I use learnr to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:** https://predictcrypto.org/tutorials
 
+(this takes a long time to load, give it more time if it's blank)
+
+```{r}
+knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/", 
+  height = "600px")
+```
+
+
 
 ### Bookdown {#bookdown}
 
@@ -30,7 +38,7 @@ I am a **big** fan of ioslides and revealjs in particular as R Markdown outputs.
 
 Making presentations in R Markdown is what really got me working with .Rmd files, because I started working towards a very specific project using an idea I haven't really seen elsewhere of creating presentations that give the user options and as they make their way through the slides, those options affect not only what they see in the slides that come afterwards, but also the options they are given. For example, the user could choose to do an analysis for a particular asset, then choose the main category of the analysis to perform, then the sub-category of the analysis and so on, until by the end of the presentation the user has performed an analysis that was completely unique and tailored to their preferences and interests. See the gif below for an example of what this looks like:
 
-![](images/dynamic_presentation.gif)
+<!-- ![](images/dynamic_presentation.gif) --> FIGURE OUT WHAT IS WRONG WITH THE GIF
 
 
 ### Blogdown {#blogdown}
