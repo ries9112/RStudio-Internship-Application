@@ -8,9 +8,11 @@ I was completely blown away by the R Markdown file format when I first discovere
 
 ### Bookdown{bookdown}
 
-I was actually very close to paying for a monthly subscription on gitbook.com because I thought it was such an amazing format to provide documentation through, so I was particularly impressed by the bookdown[@R-bookdown] package and these days it's my go to for organizing most things I work on.
+At one point I was very close to paying for a monthly subscription on gitbook.com because I thought it was such an amazing format to provide documentation through, so I was particularly impressed by the bookdown[@R-bookdown] package and these days it's my go to for organizing most things I work on.
 
-This document is obviously an example of a bookdown document in itself, but here's another guide I put together using bookdown: https://predictcryptodb-quickstart.com/
+This document is obviously an example of a bookdown document in itself, but here's another guide I put together using bookdown: https://predictcryptodb-quickstart.com/ *<- MAKE SURE THIS ACTUALLY REFRESHES WITH GITHUB ACTIONS BEFORE APPLYING*
+
+
 
 I also found that documentation done in bookdown can work really great when working within a large company as well, and I put together some very thorough documentation for a project using bookdown that was very well received. In my particular case it worked really well because I could send the link to the html index of the bookdown document and when opened it would behave like a website hosted on the shared folders within the secure network which ended up being particularly simple and effective.
 
