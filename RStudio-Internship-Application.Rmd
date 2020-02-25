@@ -144,7 +144,7 @@ library(reticulate)
 
 <!--chapter:end:01-ProjectsSuitedFor.Rmd-->
 
-# Why I am a good fit {#fit}
+# What makes me a good fit {#fit}
 
 Here are some of the things I believe make me a great fit for the internship:
 
@@ -215,6 +215,10 @@ Pagedown[@R-pagedown] is yet another awesome way to create html outputs and I us
 knitr::include_url("https://ricky-cv.netlify.com/")
 ```
 
+
+### Flexdashboards {#flexdashboards}
+
+Flexdashboards were my first introduction to shiny apps and I was completely blown away by that framework and have used it for several projects and is one of my absolute favorite tools.
 
 ## I `r emo::ji("heart")` Automation {#automation}
 
