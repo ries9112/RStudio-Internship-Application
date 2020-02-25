@@ -155,16 +155,9 @@ I was completely blown away by the R Markdown file format when I first discovere
 
 ### Learnr {#learnr}
 
-I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: https://github.com/ries9112/R-Tutorial
+I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: https://github.com/ries9112/R-Tutorial (the apps themselves are down but the repo has some gifs illustrating the past functionality)
 
-```{r, echo=F}
-knitr::include_app("https://github.com/ries9112/R-Tutorial",
-  height = "600px")
-```
-
-
-
-**Today, I use learnr to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:** 
+**More recently, I have been using learnr to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:** 
 
 (this takes about 45 seconds to load, give it more time if it's showing up blank)
 
@@ -305,7 +298,7 @@ library(bibtex)
 # if (!requireNamespace("BiocManager", quietly = TRUE))
 #     install.packages("BiocManager")
 # BiocManager::install()
-library(BiocManager)
+#library(BiocManager)
 # options(repos = BiocManager::repositories())
 # options(repos = BiocInstaller::biocinstallRepos())
 ############# SQL CONNECTION ###############
