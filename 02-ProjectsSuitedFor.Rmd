@@ -11,13 +11,22 @@ Also put some code here:
 
 ```{r message=FALSE, warning=FALSE}
 library(googlesheets4)
-practice_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4")
-practice_sheet
+practice_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit?usp=sharing",sheet = 'coinmetrics_btc_eth')
 ```
 
 ```{r}
-library(data.table)
-data.table(practice_sheet)
+knitr::kable(practice_sheet)
+```
+
+**This data is sourced from the website [coinmetrics.io](https://coinmetrics.io/community-network-data/#comm-files)**
+
+They also provide a data dictionary to go along with the data, let's also read that in with `googlesheets4`:
+```{r message=FALSE, warning=FALSE}
+data_dictionary <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit?usp=sharing",sheet = 'coinmetrics_data_dictionary')
+```
+
+```{r}
+knitr::kable(data_dictionary)
 ```
 
 
