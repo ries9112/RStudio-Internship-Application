@@ -15,10 +15,16 @@ I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was rea
 
 (this takes about 45 seconds to load, give it more time if it's showing up blank)
 
-```{r}
-knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/", 
-  height = "600px")
-```
+<!-- ```{r} -->
+<!-- knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/",  -->
+<!--   height = "600px") -->
+<!-- ``` -->
+
+<!-- Test website here -->
+<!-- ```{r} -->
+<!-- knitr::include_app("https://predictcrypto.com",  -->
+<!--   height = "600px") -->
+<!-- ``` -->
 
 I post these on my website: https://predictcrypto.org/tutorials
 

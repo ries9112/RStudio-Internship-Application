@@ -50,10 +50,16 @@ I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was rea
 
 (this takes about 45 seconds to load, give it more time if it's showing up blank)
 
-```{r}
-knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/", 
-  height = "600px")
-```
+<!-- ```{r} -->
+<!-- knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/",  -->
+<!--   height = "600px") -->
+<!-- ``` -->
+
+<!-- Test website here -->
+<!-- ```{r} -->
+<!-- knitr::include_app("https://predictcrypto.com",  -->
+<!--   height = "600px") -->
+<!-- ``` -->
 
 I post these on my website: https://predictcrypto.org/tutorials
 
@@ -335,29 +341,29 @@ xgboost_parsnip <- boost_tree() %>%
   set_mode("regression")
 ```
 
-Remember to create split
+<!-- Remember to create split -->
 
-Train/fit the model
+<!-- Train/fit the model -->
 
-```{r}
-fit_data(
-  Sale_Price ~ Gr_Liv_Area, # a formula
-  model = lm_spec,          # parsnip model
-  data = ames               # dataframe
-  )
-```
+<!-- ```{r} -->
+<!-- fit_data( -->
+<!--   Sale_Price ~ Gr_Liv_Area, # a formula -->
+<!--   model = lm_spec,          # parsnip model -->
+<!--   data = ames               # dataframe -->
+<!--   ) -->
+<!-- ``` -->
 
-Use the trained model to make new predictions
+<!-- Use the trained model to make new predictions -->
 
-```{r}
-predict(lm_fit, new_data = ames)
-```
+<!-- ```{r} -->
+<!-- predict(lm_fit, new_data = ames) -->
+<!-- ``` -->
 
-Calculate accuracy
+<!-- Calculate accuracy -->
 
-```{r}
-rmse(price_pred, truth = price_truth, estimate = .pred)
-```
+<!-- ```{r} -->
+<!-- rmse(price_pred, truth = price_truth, estimate = .pred) -->
+<!-- ``` -->
 
 
 

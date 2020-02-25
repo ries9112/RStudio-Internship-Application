@@ -51,29 +51,29 @@ xgboost_parsnip <- boost_tree() %>%
   set_mode("regression")
 ```
 
-Remember to create split
+<!-- Remember to create split -->
 
-Train/fit the model
+<!-- Train/fit the model -->
 
-```{r}
-fit_data(
-  Sale_Price ~ Gr_Liv_Area, # a formula
-  model = lm_spec,          # parsnip model
-  data = ames               # dataframe
-  )
-```
+<!-- ```{r} -->
+<!-- fit_data( -->
+<!--   Sale_Price ~ Gr_Liv_Area, # a formula -->
+<!--   model = lm_spec,          # parsnip model -->
+<!--   data = ames               # dataframe -->
+<!--   ) -->
+<!-- ``` -->
 
-Use the trained model to make new predictions
+<!-- Use the trained model to make new predictions -->
 
-```{r}
-predict(lm_fit, new_data = ames)
-```
+<!-- ```{r} -->
+<!-- predict(lm_fit, new_data = ames) -->
+<!-- ``` -->
 
-Calculate accuracy
+<!-- Calculate accuracy -->
 
-```{r}
-rmse(price_pred, truth = price_truth, estimate = .pred)
-```
+<!-- ```{r} -->
+<!-- rmse(price_pred, truth = price_truth, estimate = .pred) -->
+<!-- ``` -->
 
 
 
