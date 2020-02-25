@@ -5,41 +5,118 @@
 
 ## Create resources for people working with spreadsheets in R
 
-Here make a guide using github environments making a repo. Maybe a learnr tutorial?
 
-Also put some code here:
+What better way to show I am suited for a project than to give a hands-on example? See the code below for a use-case using `googlesheets4`[@R-googlesheets4]. 
 
-```{r message=FALSE, warning=FALSE}
-library(googlesheets4)
-practice_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit?usp=sharing", sheet = 'coinmetrics_btc_eth')
+First I will go ahead and import every package in the `tidyverse`[@R-tidyverse]:
+```{r import_tidyverse}
+library(tidyverse)
 ```
 
-```{r}
+
+Next let's import the package and read a spreadsheet I made for this internship application, specifying the sheet called *coinmetrics_btc_eth* inside the function `read_sheet()`:
+
+```{r mute_gargle_sheets_warning, echo=F}
+options(gargle_quiet = TRUE)
+```
+
+
+```{r import_coinmetrics_btc_eth, message=FALSE, warning=FALSE}
+spreadsheet_url <- "https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit?usp=sharing"
+library(googlesheets4)
+googlesheets_data <- read_sheet(spreadsheet_url, sheet = 'coinmetrics_btc_eth') %>% as.data.frame()
+```
+
+Let's take a peek at the `datatable()`[@R-DT]
+```{r show_googlesheets_data}
 library(DT)
-datatable(practice_sheet,  style = "default", 
+datatable(googlesheets_data,  style = "default", 
           options = list(scrollX = TRUE, pageLength=5,dom='t'), rownames = F)
 ```
 
 **This data is sourced from the website [coinmetrics.io](https://coinmetrics.io/community-network-data/#comm-files)**
 
-They also provide a data dictionary to go along with the data, let's also read that in with `googlesheets4`:
-```{r message=FALSE, warning=FALSE}
-data_dictionary <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit?usp=sharing",sheet = 'coinmetrics_data_dictionary')
+Coinmetrics also provides a data dictionary to go along with the data, let's also read that in and take a look:
+```{r pull_data_dictionary, message=FALSE, warning=FALSE}
+data_dictionary <- read_sheet(spreadsheet_url, sheet = 'coinmetrics_data_dictionary')
 ```
 
-```{r}
+```{r show_data_dictionary}
 datatable(data_dictionary,  style = "default", 
           options = list(scrollX = TRUE, pageLength=2, searchHighlight = TRUE), rownames = F) %>% 
-  formatStyle(columns = 9, width='800px')
+  formatStyle(columns = 9, width='800px') # Figure out how to adjust description to take up space horizontally and not vertically
+```
+
+
+Using the data from coinmetrics, I will create a predictive model to forecast the percentage change in price over time in order to show that I would be a good fit for the first two projects listed.
+
+
+First, I will import a package that I am making that is **still in development** `PredictCrypto`:
+
+```{r library_predict_crypto}
+library(PredictCrypto)
+```
+(this is an in-development tool that I will use for a research paper I am working on)
+
+I attended the two day building tidy tools workshop working with Charlotte and Hadley at RStudio::conf 2020 and I am comfortable writing packages in R as well as using testthat and showing code coverage for a repository.
+
+Here is the GitHub Pages environment associated with the repository: https://ries9112.github.io/PredictCrypto/
+
+```{r show_github_pages, echo=F}
+knitr::include_url("https://ries9112.github.io/PredictCrypto/")
+```
+
+I am going to convert the column names from ***CamelCase*** to ***snake_case*** using the `janitor`[@R-janitor] package because the functions in my package use snake_case and I want to avoid mixing the two:
+
+```{r print_before_colnames, echo=F}
+print('Before:')
+colnames(googlesheets_data)
+```
+
+```{r janitor_clean_names, message=FALSE, warning=FALSE}
+library(janitor)
+googlesheets_data <- clean_names(googlesheets_data)
+```
+
+```{r print_after_colnames, echo=F}
+print('After:')
+colnames(googlesheets_data)
+```
+
+
+Now that I imported the `PredictCrypto` package and the data is in snake_case, I can use the function `calculate_percent_change()` to create the target variable to predict. Before I can do that however, I need one more adjustment to the date/time fields, so let's do that using the `anytime`[@R-anytime] package:
+
+```{r conversions_anytime}
+library(anytime)
+googlesheets_data$date <- anytime(googlesheets_data$date)
+googlesheets_data$date_time_utc <- anytime(googlesheets_data$date_time_utc)
+```
+
+
+Now I can use the function `calculate_percent_change()` to calculate the % change of the price of each cryptocurrency and add a new column ***target_percent_change*** to each row, which will represent the percentage change in price for the 7 day period that came after that data point was collected:
+```{r calculate_percent_change_function, warning=FALSE}
+exercise_data <- PredictCrypto::calculate_percent_change(googlesheets_data, 7, 'days')
+```
+
+Let's take a peek at the new field:
+```{r}
+head(exercise_data$target_percent_change, 10)
+```
+
+I could easily change this to a 14 day period:
+
+```{r target_14d}
+calculate_percent_change(googlesheets_data, 14, 'days') %>% head(10) %>% select(target_percent_change)
+```
+
+Or a 24 hour period:
+
+```{r target_24h}
+calculate_percent_change(googlesheets_data, 24, 'hours') %>% head(10) %>% select(target_percent_change)
 ```
 
 
 
-**I am comfortable writing packages in R as well as using testthat and showing code coverage for a repository. I attended the building tidy tools workshop working with Charlotte and Hadley at RStudio::conf 2020.** 
-
-
-
-COULD MAKE THIS FIRST SECTION FROM GOOGLE SHEETS USING DATA ACTUALLY PREDICTING % CHANGE AND WHATNOT IF I LOAD THAT OTHER DATA INTO HERE. COULD THEN WORK ON NEXT SECTION WHILE MAKING PROGRESS ON BOTH INTERNSHIP AND RESEARCH PAPER!
 
 
 ## Build interactive learnr tutorials for tidymodels
@@ -48,17 +125,17 @@ https://education.rstudio.com/blog/2020/02/conf20-intro-ml/
 
 https://conf20-intro-ml.netlify.com/materials/01-predicting/
 
+***Disclaimer***:**Most of the code to follow was built using the content made available by Allison Hill from the RStudio::conf2020 intro to machine learning workshop and was not code I was familiar with before writing it for this internship application.**
 
-Create parsnip model
+Create parsnip[@R-parsnip] model
 
-```{r}
+```{r parsnip models}
 library(parsnip)
 linear_reg() %>%              
   set_engine("glmnet") %>%             
   set_mode("regression")
 
 # List of models to refer to: https://tidymodels.github.io/parsnip/articles/articles/Models.html
-
 xgboost_parsnip <- boost_tree() %>% 
   set_engine("xgboost") %>%             
   set_mode("regression")
@@ -93,6 +170,16 @@ xgboost_parsnip <- boost_tree() %>%
 
 ## Build interactive learnr tutorials for Python using reticulate
 
+I also think I could be a great fit for the third project listed related to creating learnr tutorials for Python using reticulate. I have a fair amount of experience in Python, but it's never really clicked very much for as much as R in the past, and I am looking to step-up my Python skills. My Master's in Data Science will work with Python a lot, and people immediately ask if I make tutorials in Python when I show them the R tutorials I have made, so **this one would be my preferred project to work on.** I am also constantly told that Python is better than R for the incorrect reasons, and being more of an expert in Python would certainly help me debunk that myth when someone makes that argument.
+
+I am very familiar with the `reticulate` package and I have used it in the past in an RMarkdown file to make automated cryptocurrency trades through a Python package `shrimpy-python`, which worked really well: https://github.com/shrimpy-dev/shrimpy-python
+
+Since I have already demonstrated my familiarity with learnr tutorials **[in the previous section](#learnr)**, I will keep going with the code from the tidymodels project example I just finished and use Python for ... ADD GOAL HERE ...
+
+
+
+
+DEV:
 
 Replace this with the Python one:
 
