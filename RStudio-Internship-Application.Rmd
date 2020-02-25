@@ -166,13 +166,11 @@ knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/",
   height = "600px")
 ```
 
-<!-- Test website here -->
+I post these on my website:
 ```{r}
 knitr::include_url("https://predictcrypto.com/tutorials",
   height = "600px")
 ```
-
-I post these on my website: https://predictcrypto.org/tutorials
 
 
 ### Bookdown {#bookdown}
@@ -205,7 +203,7 @@ knitr::include_url("https://predictcryptodb.com")
 
 ### Pagedown {#pagedown}
 
-Pagedown[@R-pagedown] is yet another awesome way to create html outputs. I used Nick Strayer's repository: https://github.com/nstrayer/cv to build my cv and resume using his template:
+Pagedown[@R-pagedown] is yet another awesome way to create html outputs and I used Nick Strayer's repository https://github.com/nstrayer/cv to build my cv and resume using his template:
 
 ```{r}
 knitr::include_url("https://ricky-cv.netlify.com/")
