@@ -15,7 +15,7 @@ practice_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au
 ```
 
 ```{r}
-knitr::kable(practice_sheet)
+knitr::kable(head(practice_sheet,30))
 ```
 
 **This data is sourced from the website [coinmetrics.io](https://coinmetrics.io/community-network-data/#comm-files)**
