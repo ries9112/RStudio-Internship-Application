@@ -11,11 +11,13 @@ Also put some code here:
 
 ```{r message=FALSE, warning=FALSE}
 library(googlesheets4)
-practice_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit?usp=sharing",sheet = 'coinmetrics_btc_eth')
+practice_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit?usp=sharing", sheet = 'coinmetrics_btc_eth')
 ```
 
 ```{r}
-knitr::kable(head(practice_sheet,30))
+library(DT)
+datatable(head(practice_sheet, 1000),  style = "default", 
+          options = list(scrollX = TRUE, pageLength=5), rownames = F)
 ```
 
 **This data is sourced from the website [coinmetrics.io](https://coinmetrics.io/community-network-data/#comm-files)**
@@ -26,7 +28,8 @@ data_dictionary <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1a
 ```
 
 ```{r}
-knitr::kable(data_dictionary)
+datatable(head(data_dictionary, 1000),  style = "default", 
+          options = list(scrollX = TRUE, pageLength=5), rownames = F)
 ```
 
 

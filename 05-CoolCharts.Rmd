@@ -142,6 +142,4 @@ ethereumData <- filter(cryptoData, Name == 'Ethereum')
 ```{r disconnect_db, echo=F, message=F, warning=F}
 # Disconnect from the database
 dbDisconnect(database_connection)
-# Disconnect all connections just to be safe
-lapply(dbListConnections(dbDriver(drv = "MySQL")), dbDisconnect)
 ```
