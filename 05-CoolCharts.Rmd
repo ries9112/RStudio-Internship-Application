@@ -26,7 +26,7 @@ library(bibtex)
 # if (!requireNamespace("BiocManager", quietly = TRUE))
 #     install.packages("BiocManager")
 # BiocManager::install()
-library(BiocManager)
+#library(BiocManager)
 # options(repos = BiocManager::repositories())
 # options(repos = BiocInstaller::biocinstallRepos())
 ############# SQL CONNECTION ###############
