@@ -29,7 +29,8 @@ data_dictionary <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1a
 
 ```{r}
 datatable(data_dictionary,  style = "default", 
-          options = list(scrollX = TRUE, pageLength=5), rownames = F)
+          options = list(scrollX = TRUE, pageLength=2, searchHighlight = TRUE), rownames = F) %>% 
+  formatStyle(columns = 9, width='800px')
 ```
 
 

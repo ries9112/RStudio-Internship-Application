@@ -57,6 +57,9 @@
 <script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/dt-plugin-searchhighlight-1.10.19/source.css" rel="stylesheet" />
+<script src="libs/dt-plugin-searchhighlight-1.10.19/jquery.highlight.js"></script>
+<script src="libs/dt-plugin-searchhighlight-1.10.19/source.min.js"></script>
 
 
 <style type="text/css">
@@ -150,8 +153,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.5" data-path="fit.html"><a href="fit.html#pagedown"><i class="fa fa-check"></i><b>2.1.5</b> Pagedown</a></li>
 <li class="chapter" data-level="2.1.6" data-path="fit.html"><a href="fit.html#flexdashboard"><i class="fa fa-check"></i><b>2.1.6</b> Flexdashboard</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="fit.html"><a href="fit.html#automation"><i class="fa fa-check"></i><b>2.2</b> I ❤️ Automation</a></li>
-<li class="chapter" data-level="2.3" data-path="fit.html"><a href="fit.html#rstudio"><i class="fa fa-check"></i><b>2.3</b> I ❤️ RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="fit.html"><a href="fit.html#automation"><i class="fa fa-check"></i><b>2.2</b> Automation</a></li>
+<li class="chapter" data-level="2.3" data-path="fit.html"><a href="fit.html#rstudio"><i class="fa fa-check"></i><b>2.3</b> Fit Within the Company</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="projects-well-suited-for.html"><a href="projects-well-suited-for.html"><i class="fa fa-check"></i><b>3</b> Projects Well Suited For</a><ul>
 <li class="chapter" data-level="3.1" data-path="projects-well-suited-for.html"><a href="projects-well-suited-for.html#create-resources-for-people-working-with-spreadsheets-in-r"><i class="fa fa-check"></i><b>3.1</b> Create resources for people working with spreadsheets in R</a></li>
@@ -231,22 +234,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="flexdashboard" class="section level3">
 <h3><span class="header-section-number">2.1.6</span> Flexdashboard</h3>
 <p>Flexdashboards<span class="citation">(Iannone, Allaire, and Borges <a href="#ref-R-flexdashboard" role="doc-biblioref">2018</a>)</span> were my first introduction to shiny apps and I was completely blown away by that framework and have used it for several projects and is one of my absolute favorite tools.</p>
-<p>For my first flexdashboard, I converted some of the content found in <a href="https://www.tidytextmining.com/">Tidy Text Mining by Julia Silge and David Robinson</a> and made it into a flexdashboard. I made no changes to the code found within the book, this was simply an experiment to learn more about flexdashboards and semantic analysis:</p>
+<p>To get some practice, I converted some of the content found in <a href="https://www.tidytextmining.com/">Tidy Text Mining by Julia Silge and David Robinson</a> and made it into a flexdashboard. I made no changes to the code found within the book, this was simply an experiment to learn more about flexdashboards and semantic analysis:</p>
 <iframe src="https://predictcrypto.shinyapps.io/SemanticAnalysisExample/" width="672" height="400px">
 </iframe>
 <p>I made the code available through RStudio Cloud here as well: <a href="https://rstudio.cloud/spaces/9369/join?access_code=pkfhGuOMRhleNIHSHH6YOQPEWstEdg0e7Pi6Ue3q" class="uri">https://rstudio.cloud/spaces/9369/join?access_code=pkfhGuOMRhleNIHSHH6YOQPEWstEdg0e7Pi6Ue3q</a></p>
 </div>
 </div>
 <div id="automation" class="section level2">
-<h2><span class="header-section-number">2.2</span> I ❤️ Automation</h2>
+<h2><span class="header-section-number">2.2</span> Automation</h2>
 <p>Automation is at the center of everything I do and my one true passion. One of my big goals for RStudio::conf 2020 was to learn more about automating things through GitHub using CI since I always had a hard time figuring that out, and the things I learned about especially relating to GitHub actions and using Netlify were above my expectations in terms of the ease of use, capabilities and free tier offerings, and I am super excited to share how crazy simple automating a very complex process can be through RStudio, GitHub Actions and Netlify.</p>
 <p>The bookdown example from earlier <a href="https://predictcryptodb-quickstart.com/" class="uri">https://predictcryptodb-quickstart.com/</a> for example uses those tools to refresh the guide daily in order to show the latest data in the <a href="https://predictcryptodb-quickstart.com/useful-tables.html"><em>useful tables</em> section</a></p>
 <p>It’s pretty mindblowing that these frameworks allow a user to create an interactive book with complex javascript, HTML, CSS, TeX, etc… from scratch, deploy it to an https secured website and create an automated process around it, all in less than 10 minutes with minimal code involved. What’s even more mindblowing, is that the same methodologies can be applied to make other interfaces, like making a blogdown website, and I can’t speak highly enough of all the work Yihui blessed us all with.</p>
 </div>
 <div id="rstudio" class="section level2">
-<h2><span class="header-section-number">2.3</span> I ❤️ RStudio</h2>
+<h2><span class="header-section-number">2.3</span> Fit Within the Company</h2>
 <p>I really wanted to go to RStudio::conf 2019 but was not able to make it out and after all the videos got posted I watched most of them and immediately knew I had to come to RStudio::conf 2020 and it was a truly incredible experience.</p>
-<p>JJ’s talk and BCorp announcement really resonated with me and there is no other company who’s mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I love the values that RStudio holds dear as a company.</p>
+<p>JJ’s talk and BCorp announcement really resonated with me and there is no other company who’s mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I love the values that RStudio holds dear as a company and there is really no other company that I want to work for more than RStudio.</p>
 <!-- I tried really hard to not be too much of a fanboy at the conference, but I couldn't help but get a picture with JJ and Hadley.  -->
 <!-- ![](images/pic_with_jj.jpg) -->
 <!-- ![](images/pic_with_hadley.jpg) -->
