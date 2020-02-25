@@ -144,6 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.2" data-path="fit.html"><a href="fit.html#bookdown"><i class="fa fa-check"></i><b>3.1.2</b> Bookdown</a></li>
 <li class="chapter" data-level="3.1.3" data-path="fit.html"><a href="fit.html#presentations"><i class="fa fa-check"></i><b>3.1.3</b> Presentations</a></li>
 <li class="chapter" data-level="3.1.4" data-path="fit.html"><a href="fit.html#blogdown"><i class="fa fa-check"></i><b>3.1.4</b> Blogdown</a></li>
+<li class="chapter" data-level="3.1.5" data-path="fit.html"><a href="fit.html#pagedown"><i class="fa fa-check"></i><b>3.1.5</b> Pagedown</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="fit.html"><a href="fit.html#automation"><i class="fa fa-check"></i><b>3.2</b> I ❤️ Automation</a></li>
 <li class="chapter" data-level="3.3" data-path="fit.html"><a href="fit.html#rstudio"><i class="fa fa-check"></i><b>3.3</b> I ❤️ RStudio</a></li>
@@ -185,15 +186,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>I first discovered the <strong><em>learnr</em></strong> <span class="citation">(Schloerke, Allaire, and Borges <a href="#ref-R-learnr" role="doc-biblioref">2019</a>)</span> package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: <a href="https://github.com/ries9112/R-Tutorial" class="uri">https://github.com/ries9112/R-Tutorial</a></p>
 <p><strong>Today, I use learnr to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:</strong></p>
 <p>(this takes about 45 seconds to load, give it more time if it’s showing up blank)</p>
-<!-- ```{r} -->
-<!-- knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/",  -->
-<!--   height = "600px") -->
-<!-- ``` -->
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="fit.html#cb11-1"></a>knitr<span class="op">::</span><span class="kw">include_app</span>(<span class="st">&quot;https://predictcrypto.shinyapps.io/R_Basics/&quot;</span>,</span>
+<span id="cb11-2"><a href="fit.html#cb11-2"></a>  <span class="dt">height =</span> <span class="st">&quot;600px&quot;</span>)</span></code></pre></div>
+<iframe src="https://predictcrypto.shinyapps.io/R_Basics/?showcase=0" width="672" height="600px">
+</iframe>
 <!-- Test website here -->
-<!-- ```{r} -->
-<!-- knitr::include_app("https://predictcrypto.com",  -->
-<!--   height = "600px") -->
-<!-- ``` -->
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="fit.html#cb12-1"></a>knitr<span class="op">::</span><span class="kw">include_url</span>(<span class="st">&quot;https://predictcrypto.com&quot;</span>,</span>
+<span id="cb12-2"><a href="fit.html#cb12-2"></a>  <span class="dt">height =</span> <span class="st">&quot;600px&quot;</span>)</span></code></pre></div>
+<iframe src="https://predictcrypto.com" width="672" height="600px">
+</iframe>
 <p>I post these on my website: <a href="https://predictcrypto.org/tutorials" class="uri">https://predictcrypto.org/tutorials</a></p>
 </div>
 <div id="bookdown" class="section level3">
@@ -212,6 +213,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="blogdown" class="section level3">
 <h3><span class="header-section-number">3.1.4</span> Blogdown</h3>
 <p>Blogdown<span class="citation">(Xie <a href="#ref-R-blogdown" role="doc-biblioref">2019</a>)</span> and bookdown work very similarly, so most of what I mentioned in the <a href="fit.html#bookdown">bookdown section</a> applies here. Because my website predictcrypto.com only shows the latest data based on the current date, I leverage blogdown to create weekly snapshots of the visualizations over the last 7 day period: <a href="https://predictcryptoblog.com/" class="uri">https://predictcryptoblog.com/</a>. Because all these systems work so well with automation, as I keep adding new interesting content to my website I can also add archives of that content using blogdown.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="fit.html#cb13-1"></a>knitr<span class="op">::</span><span class="kw">include_url</span>(<span class="st">&quot;https://predictcryptodb.com&quot;</span>)</span></code></pre></div>
+<iframe src="https://predictcryptodb.com" width="672" height="400px">
+</iframe>
+</div>
+<div id="pagedown" class="section level3">
+<h3><span class="header-section-number">3.1.5</span> Pagedown</h3>
+<p>Pagedown<span class="citation">(<span class="citeproc-not-found" data-reference-id="R-pagedown"><strong>???</strong></span>)</span> is yet another awesome way to create html outputs. I used Nick Strayer’s repository: <a href="https://github.com/nstrayer/cv" class="uri">https://github.com/nstrayer/cv</a> to build my cv and resume using his template:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="fit.html#cb14-1"></a>knitr<span class="op">::</span><span class="kw">include_url</span>(<span class="st">&quot;https://ricky-cv.netlify.com/&quot;</span>)</span></code></pre></div>
+<iframe src="https://ricky-cv.netlify.com/" width="672" height="400px">
+</iframe>
 </div>
 </div>
 <div id="automation" class="section level2">
