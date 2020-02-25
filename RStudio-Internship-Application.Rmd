@@ -1,0 +1,401 @@
+--- 
+title: "RStudio 2020 Internship Application"
+author: "Riccardo Esclapon"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib, main.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is Ricky's application to the 2020 RStudio Internship."
+---
+
+
+# Overview
+
+Video intro here
+
+
+https://education.rstudio.com/blog/2020/02/applications-for-2020-intern-program-are-now-open/
+
+APPLICATIONS END ON MARCH 5TH BE SURE TO APPLY BEFORE THEN!!
+
+For video:
+
+Start off with overview of projects I am suited for showing work I did for this application specifically. Then go on to talk about ways I have applied the broad RMarkdown ecosystem and automation in my work. Then talk a bit more about myself. Talk about ideal tutorial overview and close things by mentioning cool charts/visualizations section (outline this at a high level under 2 minutes in the video at the start here)
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), "bookdown", "knitr", "rmarkdown", "tidyverse", "plotly", "rayshader"
+), "packages.bib")
+```
+
+<!--chapter:end:index.Rmd-->
+
+# Why me? {#fit}
+
+Here are some of the things I believe make me a great fit for the internship:
+
+## I `r emo::ji("heart")` .Rmd files
+
+I was completely blown away by the R Markdown file format when I first discovered it, and I definitely felt a bit cheated by the fact that none of the courses I took during my undergrad in R mentioned it at all or the tidyverse. I have spent a lot of my time learning R Markdown and digging through books and amazing resources made available by RStudio, so here are some of my favorite formats that I would love to make more content around and teach people about:
+
+
+### Learnr {#learnr}
+
+I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: https://github.com/ries9112/R-Tutorial
+
+**Today, I use learnr to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:** 
+
+(this takes about 45 seconds to load, give it more time if it's showing up blank)
+
+```{r}
+knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/", 
+  height = "600px")
+```
+
+I post these on my website: https://predictcrypto.org/tutorials
+
+
+### Bookdown {#bookdown}
+
+At one point I was very close to paying for a monthly subscription on gitbook.com because I thought it was such an amazing format to provide documentation through, so I was particularly impressed by and grateful for the bookdown [@R-bookdown] package, and these days it's my go to for organizing most things I work on, so why not my application?
+
+This document is obviously an example of a bookdown document in itself, but here's another guide I put together using bookdown: https://predictcryptodb-quickstart.com/ *<- MAKE SURE THIS ACTUALLY REFRESHES WITH GITHUB ACTIONS BEFORE APPLYING*
+
+
+I also found that documentation done in bookdown can work really great when working within a large company as well, and I put together some very thorough documentation for a project using bookdown that was very well received (but I can't show here). In my particular case it worked really well because I could send the link to the html index of the bookdown document and when opened it would behave like a website hosted on the shared folders within the secure network which ended up being particularly simple and effective.
+
+
+### Presentations {#presentations}
+
+I am a **big** fan of ioslides and revealjs in particular as R Markdown outputs. I find the revealjs output to be incredibly cool with the rotating cube animation, and the ability to not only move forward but move downward adds a surprisingly useful tool to break down topics; ioslides is just really clean, well made and easy to use and looks great with widescreen enabled. I aspire to be an expert in Xaringan one day but am not currently.
+
+Making presentations in R Markdown is what really got me working with .Rmd files, because I started working towards a very specific project using an idea I haven't really seen elsewhere of creating presentations that give the user options and as they make their way through the slides, those options affect not only what they see in the slides that come afterwards, but also the options they are given. For example, the user could choose to do an analysis for a particular asset, then choose the main category of the analysis to perform, then the sub-category of the analysis and so on, until by the end of the presentation the user has performed an analysis that was completely unique and tailored to their preferences and interests. See the gif below for an example of what this looks like:
+
+<!-- ![](images/dynamic_presentation.gif) --> FIGURE OUT WHAT IS WRONG WITH THE GIF
+
+
+### Blogdown {#blogdown}
+
+Blogdown[@R-blogdown] and bookdown work very similarly, so most of what I mentioned in the [bookdown section](#bookdown) applies here. Because my website predictcrypto.com only shows the latest data based on the current date, I leverage blogdown to create weekly snapshots of the visualizations over the last 7 day period: https://predictcryptoblog.com/. Because all these systems work so well with automation, as I keep adding new interesting content to my website I can also add archives of that content using blogdown.
+
+
+## I `r emo::ji("heart")` Automation {#automation}
+
+Automation is at the center of everything I do and my one true passion. One of my big goals for RStudio::conf 2020 was to learn more about automating things through GitHub using CI since I always had a hard time figuring that out, and the things I learned about especially relating to GitHub actions and using Netlify were above my expectations in terms of the ease of use, capabilities and free tier offerings, and I am super excited to share how crazy simple automating a very complex process can be through RStudio, GitHub Actions and Netlify. 
+
+The bookdown example from earlier https://predictcryptodb-quickstart.com/ for example uses those tools to refresh the guide daily in order to show the latest data for the *useful tables* section https://predictcryptodb-quickstart.com/useful-tables.html
+
+It's pretty mindblowing that these frameworks allow a user to create an interactive book with complex javascript, HTML, CSS, TeX, etc... from scratch, deploy it to an https secured website and create an automated process around it, all in less than 10 minutes with minimal code involved. What's even more mindblowing, is that the same methodologies can be applied to make other interfaces, like making a blogdown website, and I can't wait to see what Yihui will bless us all with next!
+
+
+
+
+## I `r emo::ji("heart")` RStudio {#rstudio}
+
+I really wanted to go to RStudio::conf 2019 but was not able to make it out and after all the videos got posted I watched most of them and immediately knew I had to come to RStudio::conf 2020 and it was a truly incredible experience.
+
+JJ's talk and BCorp announcement really resonated with me and there is no other company who's mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I love the values that RStudio holds dear as a company.
+
+Put pictures with JJ and Hadley here
+
+<!-- I believe helping others is the most straightforward way  -->
+
+
+<!-- Rayshader -->
+
+
+<!-- ```{r} -->
+
+<!-- ``` -->
+
+
+
+<!--chapter:end:02-WhyMe.Rmd-->
+
+# About Me
+
+
+
+
+
+<!--chapter:end:03-AboutMe.Rmd-->
+
+# Ideal Tutorial
+
+![](images/idealTutorial.png)
+
+
+
+
+<!--chapter:end:04-IdealTutorial.Rmd-->
+
+# Cool Charts 
+
+## Disable while working on bookdown, takes too long to render!
+
+Here are some examples of charts, which refresh daily using GitHub actions and Netlify for automation.
+
+
+```{r setup, message=F, echo=F, include=FALSE}
+# global.R to import libraries or error on shinyapps for some reason
+library(shiny)
+library(DBI)
+library(RMySQL)
+library(anytime)
+library(ggthemes)
+library(plotly)
+library(lubridate)
+library(tidyverse)
+library(data.table)
+library(stringr)
+library(DT)
+library(ggmap)
+library(rayshader)
+# library(ggstatsplot)
+library(bibtex)
+# To resolve issue with BioConductor package needed for ggstatsplot:
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#     install.packages("BiocManager")
+# BiocManager::install()
+library(BiocManager)
+# options(repos = BiocManager::repositories())
+# options(repos = BiocInstaller::biocinstallRepos())
+############# SQL CONNECTION ###############
+source("login_info.R")
+getSqlConnection <- function(){
+  con <-
+    dbConnect(
+      RMySQL::MySQL(),
+      username = Sys.getenv('user'),
+      password = Sys.getenv('pswd'),
+      host = Sys.getenv('ipAddress'),
+      dbname = 'ScrapeStorm'
+    )
+  return(con)
+}
+database_connection <- getSqlConnection()
+tables_list <- dbListTables(database_connection)
+#Set knitr options for all chunks to remove annoying warnings
+knitr::opts_chunk$set(warning=F)
+query <- "SELECT Date as 'DateExtracted', DateTime as 'DateTimeUTC', Name, Rank, PriceUSD, PriceBTC, PercChange24hVsUSD, PercChange24hVsBTC, Reported_MarketCap, Reported24hVolume, VolumeTurnover24h, Reported_Supply, CurrentInflation, ATH_USD, TimeFromATH, PercDownFromATH, BreakevenMultiple, PercUpSinceLow, PercChange7d, PercChange7d_BTC, PercChange30d, PercChange30d_BTC, PercChange90d, PercChange90d_BTC, PercChange1y,PercChange1y_BTC, PercChange_MTD, PercChange_QTD, PercChange_YTD, NetworkPercStaking, FlipsideFCAS_Grade, FlipsideFCAS_Rating, FlipsideScore_Dev, FlipsideScore_Utility, FlipsideScore_Maturity, TokenInsight_Grade, TokenInsight_TeamScore, TokenInsight_SubjectScore, TxVol24h, AdjstedTxVol24h, MedianTxValueUSD, ActiveAddresses, Transactions24h, Fees24hUSD, MedianFeeUSD, AvgDifficulty, KilobytesAdded24h, NumBlocks24h, Git_Stars, Git_Watchers, Git_CommitsLast90Days, Git_CommitsLastYear, Git_LinesAddedLast90Days, Git_LinesAddedLastYear, Git_LinesRemovedLast90Days, Git_LinesRemovedLastYear, ROI_2018, ROI_2017, ROI_2016, Volatility30d, Volatility90d, Volatility1y, Volatility3y, Sharpe30d, Sharpe90d, Sharpe1y, Sharpe3y, BlockReward, TargetBlockTimeSeconds, OnChainGovernanceStructure, IsTreasuryDecentralized, LaunchStyle, MiningAlgorithm, NextHalvingDate, GenesisBlockDate, Age, HasExperienced51PercAttack, EmissionType_General, EmissionType_Precise, IsSupplyCapped, MaxSupply, Sector, Category, TokenUsage, TokenType, ConsensusAlgorithm, pkDummy FROM Messari WHERE Date >= date_sub(now(), INTERVAL 7 DAY) AND Name != '' order by pkDummy desc, cast(Rank as unsigned) asc" #Manually picked all fields that could be interesting for this + Use Case tutorial
+cryptoData <- dbFetch(dbSendQuery(database_connection, query), 250000)
+#Write data to .csv and read it in to automatically adjust all data types from strings
+write.csv(cryptoData, 'cryptoData.csv')
+cryptoData <- read.csv('cryptoData.csv', stringsAsFactors = F)
+#Convert Date and DateTime fields
+cryptoData$DateExtracted <- anytime(cryptoData$DateExtracted)
+cryptoData$DateTimeUTC <- anytime(cryptoData$DateTimeUTC)
+#Remove scientific notation
+options(scipen=999)
+#Convert rank to numeric
+cryptoData$Rank <- as.numeric(cryptoData$Rank)
+#Remove data with NA PriceUSD field - Haven't done it but might be good to do to avoid issues with things like calculating means
+##### CREATE ALL GLOBAL OBJECTS USED THROUGHOUT THE TUTORIAL HERE TO AVOID ISSUES
+#It's also good to remember that before uploading app should Source code, clear cache and ALWAYS press on the "start over" button before uploading to avoid issue with continue button not working
+#Create a custom function to create % change target over "X" hours
+calculateChange <- function(df, enterHours){
+  dfHLater <- df
+  #exclude most recent 12 hours since they wouldn't have data
+  #df12hLater_new <- filter(dfHLater, DateTimeUTC <= max(df$DateTimeUTC) - hours(12) )
+  dfHLater$DateTimeUTC <- dfHLater$DateTimeUTC - hours(enterHours)
+  #Replace pkDummy
+  dfHLater$pkDummy <-substr(dfHLater$DateTimeUTC, 1, 13)
+  df$pkDummy <-substr(df$DateTimeUTC, 1, 13)
+  #Create both pkeys
+  df$pkey <- paste0(df$pkDummy,df$Name)
+  dfHLater$pkey <- paste0(dfHLater$pkDummy,dfHLater$Name)
+  #Re-adjust the 12hLater time
+  dfHLater$DateTimeUTC <- dfHLater$DateTimeUTC + hours(enterHours)
+  #narrow down new dataframe to just the Price
+  dfHLater <- select(dfHLater, PriceUSD, pkey, DateTimeUTC) %>% rename(PriceUSD_XhoursLater = PriceUSD, DateTimeUTC_XhoursLater = DateTimeUTC)
+  #join data
+  joinedDataset <- left_join(df, dfHLater, by='pkey')
+  joinedDataset <- filter(joinedDataset, DateTimeUTC <= max(df$DateTimeUTC) - hours(enterHours) )
+  #Now calculate % change
+  joinedDataset$TargetPercChange <- ((joinedDataset$PriceUSD_XhoursLater-joinedDataset$PriceUSD) / joinedDataset$PriceUSD) * 100
+  return(joinedDataset)
+}
+#### IMPORTANT NOTE FOR CODE ABOVE. RATHER THAN HAVING "XhoursLater", find a way to concat the string of the field name with the user input enterHours! Important, do it before tutorial is too far along!
+#Remove first column of the data "X"
+cryptoData <- select(cryptoData,-1)
+########## DATA SELECTION #############
+#Create df with different % calculated
+targetData <- calculateChange(cryptoData,6)
+targetData12 <- calculateChange(cryptoData,12)
+targetData24 <- calculateChange(cryptoData,24)
+# Pull KuCoin Exchange data
+query <- "SELECT * FROM ScrapeStorm.ShrimpyPrices WHERE Date >= date_sub(now(), INTERVAL 7 DAY) ORDER BY pkDummy DESC"
+shrimpyData <- dbFetch(dbSendQuery(database_connection, query), 250000)
+# Rename DateTime to DateTimeUTC
+shrimpyData <- rename(shrimpyData, DateTimeUTC = DateTime)
+# After adjusting fields could also easily get the % change on KuCoinData:
+shrimpyData$PriceUSD <- as.numeric(shrimpyData$Price)
+shrimpyData$DateTimeUTC <- anytime(shrimpyData$DateTimeUTC)
+shrimpyData <- calculateChange(shrimpyData,12)
+#Filter down to Ethereum data
+ethereumData <- filter(cryptoData, Name == 'Ethereum')
+```
+
+
+
+
+<!-- ## Previous 24h % Change - Global Market - Hex Bins -->
+
+<!-- The y-axis in the chart below is limited to a range of -25% to 25% -->
+
+<!-- ```{r rayshader, echo=FALSE, message=FALSE, warning=FALSE} -->
+<!-- filename_movie = 'rayshader.mp4' -->
+<!-- phivechalf = 30 + 60 * 1/(1 + exp(seq(-7, 20, length.out = 180)/2)) -->
+<!-- phivecfull = c(phivechalf, rev(phivechalf)) -->
+<!-- thetavec = -90 + 45 * sin(seq(0,359,length.out = 360) * pi/180) -->
+<!-- zoomvec = 0.45 + 0.2 * 1/(1 + exp(seq(-5, 20, length.out = 180))) -->
+<!-- zoomvecfull = c(zoomvec, rev(zoomvec)) -->
+
+<!-- plot_gg(ggplot(data = cryptoData, aes(x=DateTimeUTC, y=PercChange24hVsUSD)) + -->
+<!--           geom_hex() + -->
+<!--           ylim(-25,25) + -->
+<!--           scale_fill_gradient(low="white", high="blue")) #adjust the color of this chart -->
+
+
+<!-- render_movie(filename = filename_movie, type = "custom", -->
+<!--              frames = 360,  phi = phivecfull, zoom = zoomvecfull, theta = thetavec) -->
+<!-- rgl::rgl.close() -->
+<!-- ``` -->
+
+<!-- <video width="600" height="500" controls> -->
+<!--   <source src="rayshader.mp4" type="video/mp4"> -->
+<!-- </video> -->
+
+<!-- <br /> -->
+
+
+
+```{r disconnect_db, echo=F, message=F, warning=F}
+# Disconnect from the database
+dbDisconnect(database_connection)
+# Disconnect all connections just to be safe
+lapply(dbListConnections(dbDriver(drv = "MySQL")), dbDisconnect)
+```
+
+<!--chapter:end:05-CoolCharts.Rmd-->
+
+# Projects Well Suited For
+
+![](images/projects_list.png)
+
+
+## Create resources for people working with spreadsheets in R
+
+Here make a guide using github environments making a repo. Maybe a learnr tutorial?
+
+Also put some code here:
+
+```{r message=FALSE, warning=FALSE}
+library(googlesheets4)
+practice_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4")
+practice_sheet
+```
+
+```{r}
+library(data.table)
+data.table(practice_sheet)
+```
+
+
+
+**I am comfortable writing packages in R as well as using testthat and showing code coverage for a repository. I attended the building tidy tools workshop working with Charlotte and Hadley at RStudio::conf 2020.** 
+
+
+
+COULD MAKE THIS FIRST SECTION FROM GOOGLE SHEETS USING DATA ACTUALLY PREDICTING % CHANGE AND WHATNOT IF I LOAD THAT OTHER DATA INTO HERE. COULD THEN WORK ON NEXT SECTION WHILE MAKING PROGRESS ON BOTH INTERNSHIP AND RESEARCH PAPER!
+
+
+## Build interactive learnr tutorials for tidymodels
+
+https://education.rstudio.com/blog/2020/02/conf20-intro-ml/
+
+https://conf20-intro-ml.netlify.com/materials/01-predicting/
+
+
+Create parsnip model
+
+```{r}
+library(parsnip)
+linear_reg() %>%              
+  set_engine("glmnet") %>%             
+  set_mode("regression")
+
+# List of models to refer to: https://tidymodels.github.io/parsnip/articles/articles/Models.html
+
+xgboost_parsnip <- boost_tree() %>% 
+  set_engine("xgboost") %>%             
+  set_mode("regression")
+```
+
+Remember to create split
+
+Train/fit the model
+
+```{r}
+fit_data(
+  Sale_Price ~ Gr_Liv_Area, # a formula
+  model = lm_spec,          # parsnip model
+  data = ames               # dataframe
+  )
+```
+
+Use the trained model to make new predictions
+
+```{r}
+predict(lm_fit, new_data = ames)
+```
+
+Calculate accuracy
+
+```{r}
+rmse(price_pred, truth = price_truth, estimate = .pred)
+```
+
+
+
+
+## Build interactive learnr tutorials for Python using reticulate
+
+
+Replace this with the Python one:
+
+<!-- ```{r} -->
+<!-- knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/") -->
+<!-- ``` -->
+
+Could make a very simple xgboost model maybe?
+
+Could also show using Shrimpy API to pull latest data, manipulate in pandas and visualize
+
+Mention experience/courses taken in Python and how it's never clicked with me very much but how I am taking a basic Python course in my Master's in Data Science and I am looking to take it as an opportunity to create a lot of content using reticulate.
+
+```{r import_reticulate}
+library(reticulate)
+```
+
+```{python}
+
+```
+
+
+
+
+
+
+
+<!--chapter:end:05-ProjectsSuitedFor.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:06-references.Rmd-->
+

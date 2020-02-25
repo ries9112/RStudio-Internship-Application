@@ -139,7 +139,7 @@ ethereumData <- filter(cryptoData, Name == 'Ethereum')
 
 
 
-```{r disconnectDB, echo=F, message=F, warning=F}
+```{r disconnect_db, echo=F, message=F, warning=F}
 # Disconnect from the database
 dbDisconnect(database_connection)
 # Disconnect all connections just to be safe
