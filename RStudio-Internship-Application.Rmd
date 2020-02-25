@@ -224,15 +224,9 @@ Flexdashboards were my first introduction to shiny apps and I was completely blo
 
 Automation is at the center of everything I do and my one true passion. One of my big goals for RStudio::conf 2020 was to learn more about automating things through GitHub using CI since I always had a hard time figuring that out, and the things I learned about especially relating to GitHub actions and using Netlify were above my expectations in terms of the ease of use, capabilities and free tier offerings, and I am super excited to share how crazy simple automating a very complex process can be through RStudio, GitHub Actions and Netlify. 
 
-The bookdown example from earlier https://predictcryptodb-quickstart.com/ for example uses those tools to refresh the guide daily in order to show the latest data in the *useful tables* section:
+The bookdown example from earlier https://predictcryptodb-quickstart.com/ for example uses those tools to refresh the guide daily in order to show the latest data in the [*useful tables* section](https://predictcryptodb-quickstart.com/useful-tables.html)
 
-```{r, echo=F}
-knitr::include_url("https://predictcryptodb-quickstart.com/useful-tables.html")
-```
-
-It's pretty mindblowing that these frameworks allow a user to create an interactive book with complex javascript, HTML, CSS, TeX, etc... from scratch, deploy it to an https secured website and create an automated process around it, all in less than 10 minutes with minimal code involved. What's even more mindblowing, is that the same methodologies can be applied to make other interfaces, like making a blogdown website, and I can't wait to see what Yihui will bless us all with next!
-
-
+It's pretty mindblowing that these frameworks allow a user to create an interactive book with complex javascript, HTML, CSS, TeX, etc... from scratch, deploy it to an https secured website and create an automated process around it, all in less than 10 minutes with minimal code involved. What's even more mindblowing, is that the same methodologies can be applied to make other interfaces, like making a blogdown website, and I can't speak highly enough of all the work Yihui blessed us all with.
 
 
 ## I `r emo::ji("heart")` RStudio {#rstudio}
