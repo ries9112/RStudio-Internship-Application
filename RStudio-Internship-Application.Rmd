@@ -166,8 +166,8 @@ practice_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au
 
 ```{r}
 library(DT)
-datatable(head(practice_sheet, 1000),  style = "default", 
-          options = list(scrollX = TRUE, pageLength=5), rownames = F)
+datatable(practice_sheet,  style = "default", 
+          options = list(scrollX = TRUE, pageLength=5,dom='t'), rownames = F)
 ```
 
 **This data is sourced from the website [coinmetrics.io](https://coinmetrics.io/community-network-data/#comm-files)**
@@ -178,8 +178,8 @@ data_dictionary <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1a
 ```
 
 ```{r}
-datatable(head(data_dictionary, 1000),  style = "default", 
-          options = list(scrollX = TRUE, pageLength=5), rownames = F)
+datatable(data_dictionary,  style = "default", 
+          options = list(scrollX = TRUE, pageLength=5,dom='t'), rownames = F)
 ```
 
 
