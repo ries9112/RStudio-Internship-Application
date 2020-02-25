@@ -164,7 +164,7 @@ library(tidyverse)
 ```
 
 
-Next let's import the package and read a spreadsheet I made for this internship application, specifying the sheet called *coinmetrics_btc_eth* inside the function `read_sheet()`:
+Next let's import the `googlesheets4` and read a spreadsheet I made for this internship application, specifying the sheet called *coinmetrics_btc_eth* inside the function `read_sheet()`:
 
 ```{r mute_gargle_sheets_warning, echo=F}
 options(gargle_quiet = TRUE)
@@ -190,6 +190,8 @@ Coinmetrics also provides a data dictionary to go along with the data, let's als
 ```{r pull_data_dictionary, message=FALSE, warning=FALSE}
 data_dictionary <- read_sheet(spreadsheet_url, sheet = 'coinmetrics_data_dictionary')
 ```
+
+(IF I CAN'T ADJUST THE COLUMN SIZE FOR DESCRIPTION, PUT SCREENSHOTS IN HERE INSTEAD SINCE I ALREADY HAVE THEM ANYWAYS)
 
 ```{r show_data_dictionary}
 datatable(data_dictionary,  style = "default", 
@@ -250,22 +252,24 @@ exercise_data <- PredictCrypto::calculate_percent_change(googlesheets_data, 7, '
 
 Let's take a peek at the new field:
 ```{r}
-head(exercise_data$target_percent_change, 10)
+tail(exercise_data$target_percent_change, 10)
 ```
 
 I could easily change this to a 14 day period:
 
 ```{r target_14d}
-calculate_percent_change(googlesheets_data, 14, 'days') %>% head(10) %>% select(target_percent_change)
+calculate_percent_change(googlesheets_data, 14, 'days') %>% tail(10) %>% select(target_percent_change)
 ```
 
 Or a 24 hour period:
 
 ```{r target_24h}
-calculate_percent_change(googlesheets_data, 24, 'hours') %>% head(10) %>% select(target_percent_change)
+calculate_percent_change(googlesheets_data, 24, 'hours') %>% tail(10) %>% select(target_percent_change)
 ```
 
-
+<!-- 
+note to self: taking the tail here because of join exclusion and sorting which would compare different data points using head() 
+-->
 
 
 
