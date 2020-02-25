@@ -33,7 +33,118 @@ knitr::write_bib(c(
 
 <!--chapter:end:index.Rmd-->
 
-# Why me? {#fit}
+# Projects Well Suited For
+
+![](images/projects_list.png)
+
+
+## Create resources for people working with spreadsheets in R
+
+Here make a guide using github environments making a repo. Maybe a learnr tutorial?
+
+Also put some code here:
+
+```{r message=FALSE, warning=FALSE}
+library(googlesheets4)
+practice_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4")
+practice_sheet
+```
+
+```{r}
+library(data.table)
+data.table(practice_sheet)
+```
+
+
+
+**I am comfortable writing packages in R as well as using testthat and showing code coverage for a repository. I attended the building tidy tools workshop working with Charlotte and Hadley at RStudio::conf 2020.** 
+
+
+
+COULD MAKE THIS FIRST SECTION FROM GOOGLE SHEETS USING DATA ACTUALLY PREDICTING % CHANGE AND WHATNOT IF I LOAD THAT OTHER DATA INTO HERE. COULD THEN WORK ON NEXT SECTION WHILE MAKING PROGRESS ON BOTH INTERNSHIP AND RESEARCH PAPER!
+
+
+## Build interactive learnr tutorials for tidymodels
+
+https://education.rstudio.com/blog/2020/02/conf20-intro-ml/
+
+https://conf20-intro-ml.netlify.com/materials/01-predicting/
+
+
+Create parsnip model
+
+```{r}
+library(parsnip)
+linear_reg() %>%              
+  set_engine("glmnet") %>%             
+  set_mode("regression")
+
+# List of models to refer to: https://tidymodels.github.io/parsnip/articles/articles/Models.html
+
+xgboost_parsnip <- boost_tree() %>% 
+  set_engine("xgboost") %>%             
+  set_mode("regression")
+```
+
+<!-- Remember to create split -->
+
+<!-- Train/fit the model -->
+
+<!-- ```{r} -->
+<!-- fit_data( -->
+<!--   Sale_Price ~ Gr_Liv_Area, # a formula -->
+<!--   model = lm_spec,          # parsnip model -->
+<!--   data = ames               # dataframe -->
+<!--   ) -->
+<!-- ``` -->
+
+<!-- Use the trained model to make new predictions -->
+
+<!-- ```{r} -->
+<!-- predict(lm_fit, new_data = ames) -->
+<!-- ``` -->
+
+<!-- Calculate accuracy -->
+
+<!-- ```{r} -->
+<!-- rmse(price_pred, truth = price_truth, estimate = .pred) -->
+<!-- ``` -->
+
+
+
+
+## Build interactive learnr tutorials for Python using reticulate
+
+
+Replace this with the Python one:
+
+<!-- ```{r} -->
+<!-- knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/") -->
+<!-- ``` -->
+
+Could make a very simple xgboost model maybe?
+
+Could also show using Shrimpy API to pull latest data, manipulate in pandas and visualize
+
+Mention experience/courses taken in Python and how it's never clicked with me very much but how I am taking a basic Python course in my Master's in Data Science and I am looking to take it as an opportunity to create a lot of content using reticulate.
+
+```{r import_reticulate}
+library(reticulate)
+```
+
+```{python}
+
+```
+
+
+
+
+
+
+
+<!--chapter:end:01-ProjectsSuitedFor.Rmd-->
+
+# Why I am a good fit {#fit}
 
 Here are some of the things I believe make me a great fit for the internship:
 
@@ -287,117 +398,6 @@ lapply(dbListConnections(dbDriver(drv = "MySQL")), dbDisconnect)
 ```
 
 <!--chapter:end:05-CoolCharts.Rmd-->
-
-# Projects Well Suited For
-
-![](images/projects_list.png)
-
-
-## Create resources for people working with spreadsheets in R
-
-Here make a guide using github environments making a repo. Maybe a learnr tutorial?
-
-Also put some code here:
-
-```{r message=FALSE, warning=FALSE}
-library(googlesheets4)
-practice_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4")
-practice_sheet
-```
-
-```{r}
-library(data.table)
-data.table(practice_sheet)
-```
-
-
-
-**I am comfortable writing packages in R as well as using testthat and showing code coverage for a repository. I attended the building tidy tools workshop working with Charlotte and Hadley at RStudio::conf 2020.** 
-
-
-
-COULD MAKE THIS FIRST SECTION FROM GOOGLE SHEETS USING DATA ACTUALLY PREDICTING % CHANGE AND WHATNOT IF I LOAD THAT OTHER DATA INTO HERE. COULD THEN WORK ON NEXT SECTION WHILE MAKING PROGRESS ON BOTH INTERNSHIP AND RESEARCH PAPER!
-
-
-## Build interactive learnr tutorials for tidymodels
-
-https://education.rstudio.com/blog/2020/02/conf20-intro-ml/
-
-https://conf20-intro-ml.netlify.com/materials/01-predicting/
-
-
-Create parsnip model
-
-```{r}
-library(parsnip)
-linear_reg() %>%              
-  set_engine("glmnet") %>%             
-  set_mode("regression")
-
-# List of models to refer to: https://tidymodels.github.io/parsnip/articles/articles/Models.html
-
-xgboost_parsnip <- boost_tree() %>% 
-  set_engine("xgboost") %>%             
-  set_mode("regression")
-```
-
-<!-- Remember to create split -->
-
-<!-- Train/fit the model -->
-
-<!-- ```{r} -->
-<!-- fit_data( -->
-<!--   Sale_Price ~ Gr_Liv_Area, # a formula -->
-<!--   model = lm_spec,          # parsnip model -->
-<!--   data = ames               # dataframe -->
-<!--   ) -->
-<!-- ``` -->
-
-<!-- Use the trained model to make new predictions -->
-
-<!-- ```{r} -->
-<!-- predict(lm_fit, new_data = ames) -->
-<!-- ``` -->
-
-<!-- Calculate accuracy -->
-
-<!-- ```{r} -->
-<!-- rmse(price_pred, truth = price_truth, estimate = .pred) -->
-<!-- ``` -->
-
-
-
-
-## Build interactive learnr tutorials for Python using reticulate
-
-
-Replace this with the Python one:
-
-<!-- ```{r} -->
-<!-- knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/") -->
-<!-- ``` -->
-
-Could make a very simple xgboost model maybe?
-
-Could also show using Shrimpy API to pull latest data, manipulate in pandas and visualize
-
-Mention experience/courses taken in Python and how it's never clicked with me very much but how I am taking a basic Python course in my Master's in Data Science and I am looking to take it as an opportunity to create a lot of content using reticulate.
-
-```{r import_reticulate}
-library(reticulate)
-```
-
-```{python}
-
-```
-
-
-
-
-
-
-
-<!--chapter:end:05-ProjectsSuitedFor.Rmd-->
 
 `r if (knitr::is_html_output()) '
 # References {-}
