@@ -16,11 +16,6 @@ library(tidyverse)
 
 Next let's import the `googlesheets4` and read a spreadsheet I made for this internship application, specifying the sheet called *coinmetrics_btc_eth* inside the function `read_sheet()`:
 
-```{r mute_gargle_sheets_warning, echo=F}
-options(gargle_quiet = TRUE)
-```
-
-
 ```{r import_coinmetrics_btc_eth, message=FALSE, warning=FALSE}
 spreadsheet_url <- "https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit?usp=sharing"
 library(googlesheets4)
@@ -71,10 +66,10 @@ Here is the GitHub Pages environment associated with the repository: https://rie
 knitr::include_url("https://ries9112.github.io/PredictCrypto/")
 ```
 
-I am going to convert the column names from ***CamelCase*** to ***snake_case*** using the `janitor`[@R-janitor] package because the functions in my package use snake_case and I want to avoid mixing the two:
+I am going to convert the column names from ***CamelCase*** to ***snake_case*** using the `janitor`[@R-janitor] package because the functions in my package use snake_case and I want to avoid mixing the two:  
 
+Before:
 ```{r print_before_colnames, echo=F}
-print('Before:')
 colnames(googlesheets_data)
 ```
 
@@ -83,8 +78,8 @@ library(janitor)
 googlesheets_data <- clean_names(googlesheets_data)
 ```
 
+After:
 ```{r print_after_colnames, echo=F}
-print('After:')
 colnames(googlesheets_data)
 ```
 
@@ -123,6 +118,11 @@ calculate_percent_change(googlesheets_data, 24, 'hours') %>% tail(10) %>% select
 <!-- 
 note to self: taking the tail here because of join exclusion and sorting which would compare different data points using head() 
 -->
+
+Let's also scale the variables
+
+
+ADD FEATURE SCALING HERE
 
 
 
