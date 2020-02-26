@@ -27,7 +27,7 @@ library(googlesheets4)
 googlesheets_data <- read_sheet(spreadsheet_url, sheet = 'coinmetrics_btc_eth') %>% as.data.frame()
 ```
 
-Let's take a peek at the `datatable()`[@R-DT]
+Let's take a peek at the `datatable()` using `DT` [@R-DT]
 ```{r show_googlesheets_data}
 library(DT)
 datatable(googlesheets_data,  style = "default", 
@@ -36,19 +36,22 @@ datatable(googlesheets_data,  style = "default",
 
 **This data is sourced from the website [coinmetrics.io](https://coinmetrics.io/community-network-data/#comm-files)**
 
-Coinmetrics also provides a data dictionary to go along with the data, let's also read that in and take a look:
-```{r pull_data_dictionary, message=FALSE, warning=FALSE}
-data_dictionary <- read_sheet(spreadsheet_url, sheet = 'coinmetrics_data_dictionary')
-```
+[Coinmetrics also provides a data dictionary to go along with the data:](https://coinmetrics.io/community-data-dictionary/)
 
-(IF I CAN'T ADJUST THE COLUMN SIZE FOR DESCRIPTION, PUT SCREENSHOTS IN HERE INSTEAD SINCE I ALREADY HAVE THEM ANYWAYS)
 
-```{r show_data_dictionary}
-datatable(data_dictionary,  style = "default", 
-          options = list(scrollX = TRUE, pageLength=2, searchHighlight = TRUE), rownames = F) %>% 
-  formatStyle(columns = 9, width='800px') # Figure out how to adjust description to take up space horizontally and not vertically
-```
+![](images/coinmetrics_datadictionary1.png)
+![](images/coinmetrics_datadictionary2.png)
+![](images/coinmetrics_datadictionary3.png)
+![](images/coinmetrics_datadictionary4.png)
+![](images/coinmetrics_datadictionary5.png)
+![](images/coinmetrics_datadictionary6.png)
+![](images/coinmetrics_datadictionary7.png)
+![](images/coinmetrics_datadictionary8.png)
 
+
+
+
+### Predictive Model - Data Prep
 
 Using the data from coinmetrics, I will create a predictive model to forecast the percentage change in price over time in order to show that I would be a good fit for the first two projects listed.
 
@@ -131,7 +134,7 @@ https://conf20-intro-ml.netlify.com/materials/01-predicting/
 
 ***Disclaimer***:**Most of the code to follow was built using the content made available by Allison Hill from the RStudio::conf2020 intro to machine learning workshop and was not code I was familiar with before writing it for this internship application.**
 
-Create parsnip[@R-parsnip] model
+### Create the `parsnip` [@R-parsnip] model
 
 ```{r parsnip models}
 library(parsnip)
@@ -159,11 +162,11 @@ xgboost_model <- xgboost_parsnip <- boost_tree() %>%
 Remove fields not used for models (NOTE: REMOVE price_usd_x_daysLater AND date_time_x_days_Later FROM BEING GENERATED INSIDE THE FUNCTION)
 
 ```{r}
-exercise_data <- select(exercise_data, -date, -date_time_utc, -date_time, -pkDummy, -pkey, -price_usd_x_daysLater, -date_time_x_daysLater)
+exercise_data <- select(exercise_data, -date_time_utc, -date_time, -pkDummy, -pkey, -price_usd_x_daysLater, -date_time_x_daysLater)
 ```
 
 
-Create train/test split:
+Create train/test split using `rsample`[@R-rsample]:
 
 (should I do 10-fold cross validation?)
 ```{r}
@@ -176,7 +179,7 @@ crypto_test  <-  testing(crypto_data)
 ```
 
 
-Train/fit the model:
+### Train/fit the model:
 
 ```{r}
 library(modelr)
@@ -197,7 +200,7 @@ xgboost_fitted <- xgboost_model %>% fit(price_usd ~ ., data=crypto_train)
 ```
 
 
-Use the trained model to make predictions on test data
+Use the trained model to make predictions on test data:
 
 ```{r}
 library(tidymodels)
@@ -212,44 +215,124 @@ lm_predictions <- lm_fitted %>% predict(crypto_test)
 xgboost_predictions <- xgboost_fitted %>% predict(crypto_test)
 ```
 
-Join predictions back to dataset
+Join the full dataset back to the predictions:
 
 ```{r}
+lm_predictions <- lm_predictions %>% bind_cols(crypto_test)
+
 xgboost_predictions <- xgboost_predictions %>% bind_cols(crypto_test)
 ```
 
 
-Get metrics
+Get metrics:
 ```{r}
+lm_predictions %>%
+  metrics(truth = target_percent_change, estimate = .pred)
+
 xgboost_predictions %>%
   metrics(truth = target_percent_change, estimate = .pred)
 ```
 
 
+### Now make one model for each cryptocurrency. 
 
-Another good resource to look at: https://towardsdatascience.com/modelling-with-tidymodels-and-parsnip-bae2c01c131c
+***Code adapted from: https://r4ds.had.co.nz/many-models.html***
 
+First I group the data
 
+```{r group_nest_data}
+crypto_data_grouped <- exercise_data %>% group_by(symbol) %>% nest()
+```
 
-Yardstick for metrics: https://tidymodels.github.io/yardstick/
+```{r show_grouped_nested_data}
+crypto_data_grouped
+```
 
+Make a helper function with the model:
+
+```{r modelFunction}
+grouped_linear_model <- function(df) {
+  lm(target_percent_change ~ ., data = df)
+}
+```
+
+Now we can use `purrr`[@R-purrr] to apply the model to each element of the grouped dataframe:
 ```{r}
-library(yardstick)
-metrics(xgboost_predictions, target_percent_change,  estimate = .pred)
+grouped_models <- map(crypto_data_grouped$data, grouped_linear_model)
 ```
 
 
+The models can be added into the dataframe as nested lists. We can also add the corresponding residuals:
+```{r message=FALSE, warning=FALSE}
+crypto_data_grouped <- crypto_data_grouped %>% 
+  mutate(model=map(data,grouped_linear_model)) %>% 
+  mutate(resids = map2(data, model, add_residuals))
+```
+
+Let's look at the object again:
+```{r}
+crypto_data_grouped
+```
+
+
+Let's unnest the residuals to take a closer look:
+
+```{r}
+resids <- unnest(crypto_data_grouped, resids)
+```
+
+```{r message=FALSE, warning=FALSE}
+resids %>% 
+  ggplot(aes(date, resid)) +
+    geom_line(aes(group = symbol), alpha = 1 / 3) + 
+    geom_smooth(se = FALSE) +
+    ylim(c(-20,20)) +
+    facet_wrap(~symbol)
+```
+
+### Add error metrics using `broom` [@R-broom]:
+
+```{r broom_metrics_all}
+crypto_models_metrics <- crypto_data_grouped %>% mutate(metrics=map(model,broom::glance)) %>% unnest(metrics)
+```
+
+
+Sort by the best scores:
+```{r}
+crypto_models_metrics %>% arrange(-r.squared)
+```
+
+
+### How much better do the models get if we add more variables?
+
+Add MA, EMA, etc...
 
 
 
-This article was before modelr came along, but good guide on using group_by and do() in dplyr to make one model for each cryptocurrency if I'm stuck: https://r4stats.com/2017/04/18/group-by-modeling-in-r-made-easy/
+### Next Steps:
 
-Also remember to consult this as a resource: https://r4ds.had.co.nz/many-models.html
+I won't go further than this here, but as my next steps, here is what I would do:
+
+1. Use parsnip + purrr to iterate through lots of predictive models
+
+2. How much better do the models get with hyperparameter tuning?
+
+3. Visualize the best model before and after parameter tuning and then do the same with the worst performing model
+
+
+
+<!-- Could also use `yardstick` [@R-yardstick] for metrics: https://tidymodels.github.io/yardstick/ -->
+
+<!-- ```{r} -->
+<!-- library(yardstick) -->
+<!-- metrics(lm_predictions, target_percent_change,  estimate = .pred) -->
+<!-- ``` -->
+
 
 
 ## Build interactive learnr tutorials for Python using reticulate
 
-I also think I could be a great fit for the third project listed related to creating learnr tutorials for Python using reticulate. I have a fair amount of experience in Python, but it's never really clicked very much for as much as R in the past, and I am looking to step-up my Python skills. My Master's in Data Science will work with Python a lot, and people immediately ask if I make tutorials in Python when I show them the R tutorials I have made, so **this one would be my preferred project to work on.** I am also constantly told that Python is better than R for the incorrect reasons, and being more of an expert in Python would certainly help me debunk that myth when someone makes that argument.
+I think I could be a great fit for the third project listed related to creating learnr tutorials for Python using reticulate. I have a fair amount of experience in Python, but it's never really clicked very much for as much as R in the past, and I am looking to step-up my Python skills. My Master's in Data Science will work with Python a lot, and people immediately ask if I make tutorials in Python when I show them the R tutorials I have made, so this would be a great one for me to work on. I am also constantly told that Python is better than R for the incorrect reasons, and being more of an expert in Python would certainly help me debunk that myth when someone makes that argument.
 
 I am very familiar with the `reticulate` package and I have used it in the past in an RMarkdown file to make automated cryptocurrency trades through a Python package `shrimpy-python`, which worked really well: https://github.com/shrimpy-dev/shrimpy-python
 
