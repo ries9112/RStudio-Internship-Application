@@ -1,4 +1,4 @@
-# Projects Well Suited For
+# Projects Well Suited For {#ideal-projects}
 
 ![](images/projects_list.png)
 
@@ -135,40 +135,84 @@ Create parsnip[@R-parsnip] model
 
 ```{r parsnip models}
 library(parsnip)
-linear_reg() %>%              
-  set_engine("glmnet") %>%             
+lm_model <- linear_reg() %>%              
+  set_engine("lm") %>%             
   set_mode("regression")
 
 # List of models to refer to: https://tidymodels.github.io/parsnip/articles/articles/Models.html
-xgboost_parsnip <- boost_tree() %>% 
+xgboost_model <- xgboost_parsnip <- boost_tree() %>% 
   set_engine("xgboost") %>%             
   set_mode("regression")
 ```
 
-<!-- Remember to create split -->
+Remove fields not used for models (NOTE: REMOVE price_usd_x_daysLater AND date_time_x_days_Later FROM BEING GENERATED INSIDE THE FUNCTION)
 
-<!-- Train/fit the model -->
+```{r}
+exercise_data <- select(exercise_data, -date, -date_time_utc, -date_time, -pkDummy, -pkey, -price_usd_x_daysLater, -date_time_x_daysLater)
+```
 
-<!-- ```{r} -->
-<!-- fit_data( -->
-<!--   Sale_Price ~ Gr_Liv_Area, # a formula -->
-<!--   model = lm_spec,          # parsnip model -->
-<!--   data = ames               # dataframe -->
-<!--   ) -->
-<!-- ``` -->
 
-<!-- Use the trained model to make new predictions -->
+Create train/test split:
+```{r}
+library(rsample)
 
-<!-- ```{r} -->
-<!-- predict(lm_fit, new_data = ames) -->
-<!-- ``` -->
+set.seed(250)
+crypto_data <- initial_split(exercise_data, prop = 0.8)
+crypto_train <- training(crypto_data)
+crypto_test  <-  testing(crypto_data)
+```
 
-<!-- Calculate accuracy -->
 
-<!-- ```{r} -->
-<!-- rmse(price_pred, truth = price_truth, estimate = .pred) -->
-<!-- ``` -->
+Train/fit the model:
 
+```{r}
+library(modelr)
+lm_fitted <- lm_model %>% fit(price_usd ~ ., data=crypto_train)
+```
+
+XGBoost:
+
+```{r}
+xgboost_fitted <- xgboost_model %>% fit(price_usd ~ ., data=crypto_train)
+```
+
+
+
+Use the trained model to make predictions on test data
+
+```{r}
+lm_predictions <- crypto_test %>% add_predictions(lm_fitted)
+```
+
+```{r}
+xgboost_predictions <- crypto_test %>% add_predictions(xgboost_fitted)
+```
+
+Visualize 
+```{r}
+
+```
+
+
+Calculate accuracy
+
+```{r}
+#running into issues using method above, non-standardized method below works for accuracy metrics
+lm_model <- lm(target_percent_change ~ ., data=crypto_train)
+
+library(broom)
+glance(lm_model)
+
+
+library(randomForest)
+randomforest_model <- randomForest(target_percent_change ~ ., data=crypto_train)
+
+glance(randomforest_model)
+```
+
+This article was before modelr came along, but good guide on using group_by and do() in dplyr to make one model for each cryptocurrency if I'm stuck: https://r4stats.com/2017/04/18/group-by-modeling-in-r-made-easy/
+
+Also remember to consult this as a resource: https://r4ds.had.co.nz/many-models.html
 
 
 

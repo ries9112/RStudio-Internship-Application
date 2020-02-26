@@ -9,9 +9,9 @@ I was completely blown away by the R Markdown file format when I first discovere
 
 ### Learnr {#learnr}
 
-I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: https://github.com/ries9112/R-Tutorial (the apps themselves are down but the repo has some gifs illustrating the past functionality)
+<!-- I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: https://github.com/ries9112/R-Tutorial (the apps themselves are down but the repo has some gifs illustrating the past functionality) -->
 
-**More recently, I have been using learnr to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:** 
+**I have been using learnr for about a year and a half, and recently I started to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:** 
 
 (this takes about 45 seconds to load, give it more time if it's showing up blank)
 
@@ -25,6 +25,8 @@ I post these on my website:
 knitr::include_url("https://predictcrypto.com/tutorials",
   height = "600px")
 ```
+
+I'm loving the integrated tutorials tab within RStudio in the 1.3 preview and I am working towards including these with my `PredictCrypto` package, which I talk more about and use in the [next section](#ideal-projects) of this document.
 
 
 ### Bookdown {#bookdown}
@@ -97,6 +99,10 @@ It's pretty mindblowing that these frameworks allow a user to create an interact
 I really wanted to go to RStudio::conf 2019 but was not able to make it out and after all the videos got posted I watched most of them and immediately knew I had to come to RStudio::conf 2020 and it was a truly incredible experience.
 
 JJ's talk and BCorp announcement really resonated with me and there is no other company who's mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I love the values that RStudio holds dear as a company and there is really no other company that I want to work for more than RStudio.
+
+
+
+<!-- I'm a big fan of the RStudio internship program. I applied last year too, and it was really awesome seeing Maya do such a great job on her tidyblocks project  -->
 
 
 <!-- I tried really hard to not be too much of a fanboy at the conference, but I couldn't help but get a picture with JJ and Hadley.  -->
