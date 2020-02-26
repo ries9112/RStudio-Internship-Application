@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="projects-well-suited-for.html"/>
+<link rel="next" href="ideal-projects.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -156,10 +156,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="fit.html"><a href="fit.html#automation"><i class="fa fa-check"></i><b>2.2</b> Automation</a></li>
 <li class="chapter" data-level="2.3" data-path="fit.html"><a href="fit.html#rstudio"><i class="fa fa-check"></i><b>2.3</b> Fit Within the Company</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="projects-well-suited-for.html"><a href="projects-well-suited-for.html"><i class="fa fa-check"></i><b>3</b> Projects Well Suited For</a><ul>
-<li class="chapter" data-level="3.1" data-path="projects-well-suited-for.html"><a href="projects-well-suited-for.html#create-resources-for-people-working-with-spreadsheets-in-r"><i class="fa fa-check"></i><b>3.1</b> Create resources for people working with spreadsheets in R</a></li>
-<li class="chapter" data-level="3.2" data-path="projects-well-suited-for.html"><a href="projects-well-suited-for.html#build-interactive-learnr-tutorials-for-tidymodels"><i class="fa fa-check"></i><b>3.2</b> Build interactive learnr tutorials for tidymodels</a></li>
-<li class="chapter" data-level="3.3" data-path="projects-well-suited-for.html"><a href="projects-well-suited-for.html#build-interactive-learnr-tutorials-for-python-using-reticulate"><i class="fa fa-check"></i><b>3.3</b> Build interactive learnr tutorials for Python using reticulate</a></li>
+<li class="chapter" data-level="3" data-path="ideal-projects.html"><a href="ideal-projects.html"><i class="fa fa-check"></i><b>3</b> Projects Well Suited For</a><ul>
+<li class="chapter" data-level="3.1" data-path="ideal-projects.html"><a href="ideal-projects.html#create-resources-for-people-working-with-spreadsheets-in-r"><i class="fa fa-check"></i><b>3.1</b> Create resources for people working with spreadsheets in R</a></li>
+<li class="chapter" data-level="3.2" data-path="ideal-projects.html"><a href="ideal-projects.html#build-interactive-learnr-tutorials-for-tidymodels"><i class="fa fa-check"></i><b>3.2</b> Build interactive learnr tutorials for tidymodels</a></li>
+<li class="chapter" data-level="3.3" data-path="ideal-projects.html"><a href="ideal-projects.html#build-interactive-learnr-tutorials-for-python-using-reticulate"><i class="fa fa-check"></i><b>3.3</b> Build interactive learnr tutorials for Python using reticulate</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="about-me.html"><a href="about-me.html"><i class="fa fa-check"></i><b>4</b> About Me</a></li>
 <li class="chapter" data-level="5" data-path="ideal-tutorial.html"><a href="ideal-tutorial.html"><i class="fa fa-check"></i><b>5</b> Ideal Tutorial</a></li>
@@ -195,13 +195,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>I was completely blown away by the R Markdown file format when I first discovered it, and I definitely felt a bit cheated by the fact that none of the courses I took during my undergrad in R mentioned it at all or the tidyverse. I have spent a lot of my time learning R Markdown and digging through books and amazing resources made available by RStudio, so here are some of my favorite formats that I would love to make more content around and teach people about:</p>
 <div id="learnr" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Learnr</h3>
-<p>I first discovered the <strong><em>learnr</em></strong> <span class="citation">(Schloerke, Allaire, and Borges <a href="#ref-R-learnr" role="doc-biblioref">2019</a>)</span> package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: <a href="https://github.com/ries9112/R-Tutorial" class="uri">https://github.com/ries9112/R-Tutorial</a> (the apps themselves are down but the repo has some gifs illustrating the past functionality)</p>
-<p><strong>More recently, I have been using learnr to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:</strong></p>
+<!-- I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: https://github.com/ries9112/R-Tutorial (the apps themselves are down but the repo has some gifs illustrating the past functionality) -->
+<p><strong>I have been using learnr for about a year and a half, and recently I started to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:</strong></p>
 <p>(this takes about 45 seconds to load, give it more time if it’s showing up blank)</p>
 <iframe src="https://predictcrypto.shinyapps.io/R_Basics/?showcase=0" width="672" height="600px">
 </iframe>
 <p>I post these on my website:
 <iframe src="https://predictcrypto.com/tutorials" width="672" height="600px"></iframe></p>
+<p>I’m loving the integrated tutorials tab within RStudio in the 1.3 preview and I am working towards including these with my <code>PredictCrypto</code> package, which I talk more about and use in the <a href="ideal-projects.html#ideal-projects">next section</a> of this document.</p>
 </div>
 <div id="bookdown" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Bookdown</h3>
@@ -250,6 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.3</span> Fit Within the Company</h2>
 <p>I really wanted to go to RStudio::conf 2019 but was not able to make it out and after all the videos got posted I watched most of them and immediately knew I had to come to RStudio::conf 2020 and it was a truly incredible experience.</p>
 <p>JJ’s talk and BCorp announcement really resonated with me and there is no other company who’s mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I love the values that RStudio holds dear as a company and there is really no other company that I want to work for more than RStudio.</p>
+<!-- I'm a big fan of the RStudio internship program. I applied last year too, and it was really awesome seeing Maya do such a great job on her tidyblocks project  -->
 <!-- I tried really hard to not be too much of a fanboy at the conference, but I couldn't help but get a picture with JJ and Hadley.  -->
 <!-- ![](images/pic_with_jj.jpg) -->
 <!-- ![](images/pic_with_hadley.jpg) -->
@@ -261,9 +263,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="refs" class="references">
 <div id="ref-R-flexdashboard">
 <p>Iannone, Richard, JJ Allaire, and Barbara Borges. 2018. “Flexdashboard: R Markdown Format for Flexible Dashboards.” <a href="https://CRAN.R-project.org/package=flexdashboard">https://CRAN.R-project.org/package=flexdashboard</a>.</p>
-</div>
-<div id="ref-R-learnr">
-<p>Schloerke, Barret, JJ Allaire, and Barbara Borges. 2019. “Learnr: Interactive Tutorials for R.” <a href="https://CRAN.R-project.org/package=learnr">https://CRAN.R-project.org/package=learnr</a>.</p>
 </div>
 <div id="ref-R-blogdown">
 <p>Xie, Yihui. 2019. “Blogdown: Create Blogs and Websites with R Markdown.” <a href="https://CRAN.R-project.org/package=blogdown">https://CRAN.R-project.org/package=blogdown</a>.</p>
@@ -281,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="projects-well-suited-for.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ideal-projects.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

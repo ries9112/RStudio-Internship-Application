@@ -138,8 +138,19 @@ library(parsnip)
 lm_model <- linear_reg() %>%              
   set_engine("lm") %>%             
   set_mode("regression")
+```
 
-# List of models to refer to: https://tidymodels.github.io/parsnip/articles/articles/Models.html
+List of models to refer to: https://tidymodels.github.io/parsnip/articles/articles/Models.html
+
+Random Forest:
+```{r}
+random_forest_model <- rand_forest(trees = 100, mode = "regression") %>%
+  set_engine("randomForest") 
+```
+
+
+XGBoost:
+```{r}
 xgboost_model <- xgboost_parsnip <- boost_tree() %>% 
   set_engine("xgboost") %>%             
   set_mode("regression")
@@ -153,6 +164,8 @@ exercise_data <- select(exercise_data, -date, -date_time_utc, -date_time, -pkDum
 
 
 Create train/test split:
+
+(should I do 10-fold cross validation?)
 ```{r}
 library(rsample)
 
@@ -170,6 +183,13 @@ library(modelr)
 lm_fitted <- lm_model %>% fit(price_usd ~ ., data=crypto_train)
 ```
 
+Random Forest:
+```{r}
+random_forest_fitted <- random_forest_model %>%
+  fit(target_percent_change ~ ., data = exercise_data)
+```
+
+
 XGBoost:
 
 ```{r}
@@ -177,43 +197,54 @@ xgboost_fitted <- xgboost_model %>% fit(price_usd ~ ., data=crypto_train)
 ```
 
 
-
 Use the trained model to make predictions on test data
 
 ```{r}
-lm_predictions <- crypto_test %>% add_predictions(lm_fitted)
+library(tidymodels)
+lm_predictions <- lm_fitted %>% predict(crypto_test)
 ```
+
+<!-- ```{r} -->
+<!-- random_forest_predictions <- random_forest_fitted %>% predict(crypto_test) -->
+<!-- ``` -->
+
+```{r message=FALSE, warning=FALSE}
+xgboost_predictions <- xgboost_fitted %>% predict(crypto_test)
+```
+
+Join predictions back to dataset
 
 ```{r}
-xgboost_predictions <- crypto_test %>% add_predictions(xgboost_fitted)
+xgboost_predictions <- xgboost_predictions %>% bind_cols(crypto_test)
 ```
 
-Visualize 
+
+Get metrics
 ```{r}
-
+xgboost_predictions %>%
+  metrics(truth = target_percent_change, estimate = .pred)
 ```
 
 
-Calculate accuracy
+
+Another good resource to look at: https://towardsdatascience.com/modelling-with-tidymodels-and-parsnip-bae2c01c131c
+
+
+
+Yardstick for metrics: https://tidymodels.github.io/yardstick/
 
 ```{r}
-#running into issues using method above, non-standardized method below works for accuracy metrics
-lm_model <- lm(target_percent_change ~ ., data=crypto_train)
-
-library(broom)
-glance(lm_model)
-
-
-library(randomForest)
-randomforest_model <- randomForest(target_percent_change ~ ., data=crypto_train)
-
-glance(randomforest_model)
+library(yardstick)
+metrics(xgboost_predictions, target_percent_change,  estimate = .pred)
 ```
+
+
+
+
 
 This article was before modelr came along, but good guide on using group_by and do() in dplyr to make one model for each cryptocurrency if I'm stuck: https://r4stats.com/2017/04/18/group-by-modeling-in-r-made-easy/
 
 Also remember to consult this as a resource: https://r4ds.had.co.nz/many-models.html
-
 
 
 ## Build interactive learnr tutorials for Python using reticulate

@@ -44,9 +44,9 @@ I was completely blown away by the R Markdown file format when I first discovere
 
 ### Learnr {#learnr}
 
-I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: https://github.com/ries9112/R-Tutorial (the apps themselves are down but the repo has some gifs illustrating the past functionality)
+<!-- I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: https://github.com/ries9112/R-Tutorial (the apps themselves are down but the repo has some gifs illustrating the past functionality) -->
 
-**More recently, I have been using learnr to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:** 
+**I have been using learnr for about a year and a half, and recently I started to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:** 
 
 (this takes about 45 seconds to load, give it more time if it's showing up blank)
 
@@ -60,6 +60,8 @@ I post these on my website:
 knitr::include_url("https://predictcrypto.com/tutorials",
   height = "600px")
 ```
+
+I'm loving the integrated tutorials tab within RStudio in the 1.3 preview and I am working towards including these with my `PredictCrypto` package, which I talk more about and use in the [next section](#ideal-projects) of this document.
 
 
 ### Bookdown {#bookdown}
@@ -134,6 +136,10 @@ I really wanted to go to RStudio::conf 2019 but was not able to make it out and 
 JJ's talk and BCorp announcement really resonated with me and there is no other company who's mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I love the values that RStudio holds dear as a company and there is really no other company that I want to work for more than RStudio.
 
 
+
+<!-- I'm a big fan of the RStudio internship program. I applied last year too, and it was really awesome seeing Maya do such a great job on her tidyblocks project  -->
+
+
 <!-- I tried really hard to not be too much of a fanboy at the conference, but I couldn't help but get a picture with JJ and Hadley.  -->
 
 <!-- ![](images/pic_with_jj.jpg) -->
@@ -148,7 +154,7 @@ JJ's talk and BCorp announcement really resonated with me and there is no other 
 
 <!--chapter:end:01-WhyMe.Rmd-->
 
-# Projects Well Suited For
+# Projects Well Suited For {#ideal-projects}
 
 ![](images/projects_list.png)
 
@@ -285,41 +291,116 @@ Create parsnip[@R-parsnip] model
 
 ```{r parsnip models}
 library(parsnip)
-linear_reg() %>%              
-  set_engine("glmnet") %>%             
+lm_model <- linear_reg() %>%              
+  set_engine("lm") %>%             
   set_mode("regression")
+```
 
-# List of models to refer to: https://tidymodels.github.io/parsnip/articles/articles/Models.html
-xgboost_parsnip <- boost_tree() %>% 
+List of models to refer to: https://tidymodels.github.io/parsnip/articles/articles/Models.html
+
+Random Forest:
+```{r}
+random_forest_model <- rand_forest(trees = 100, mode = "regression") %>%
+  set_engine("randomForest") 
+```
+
+
+XGBoost:
+```{r}
+xgboost_model <- xgboost_parsnip <- boost_tree() %>% 
   set_engine("xgboost") %>%             
   set_mode("regression")
 ```
 
-<!-- Remember to create split -->
+Remove fields not used for models (NOTE: REMOVE price_usd_x_daysLater AND date_time_x_days_Later FROM BEING GENERATED INSIDE THE FUNCTION)
 
-<!-- Train/fit the model -->
+```{r}
+exercise_data <- select(exercise_data, -date, -date_time_utc, -date_time, -pkDummy, -pkey, -price_usd_x_daysLater, -date_time_x_daysLater)
+```
+
+
+Create train/test split:
+
+(should I do 10-fold cross validation?)
+```{r}
+library(rsample)
+
+set.seed(250)
+crypto_data <- initial_split(exercise_data, prop = 0.8)
+crypto_train <- training(crypto_data)
+crypto_test  <-  testing(crypto_data)
+```
+
+
+Train/fit the model:
+
+```{r}
+library(modelr)
+lm_fitted <- lm_model %>% fit(price_usd ~ ., data=crypto_train)
+```
+
+Random Forest:
+```{r}
+random_forest_fitted <- random_forest_model %>%
+  fit(target_percent_change ~ ., data = exercise_data)
+```
+
+
+XGBoost:
+
+```{r}
+xgboost_fitted <- xgboost_model %>% fit(price_usd ~ ., data=crypto_train)
+```
+
+
+Use the trained model to make predictions on test data
+
+```{r}
+library(tidymodels)
+lm_predictions <- lm_fitted %>% predict(crypto_test)
+```
 
 <!-- ```{r} -->
-<!-- fit_data( -->
-<!--   Sale_Price ~ Gr_Liv_Area, # a formula -->
-<!--   model = lm_spec,          # parsnip model -->
-<!--   data = ames               # dataframe -->
-<!--   ) -->
+<!-- random_forest_predictions <- random_forest_fitted %>% predict(crypto_test) -->
 <!-- ``` -->
 
-<!-- Use the trained model to make new predictions -->
+```{r message=FALSE, warning=FALSE}
+xgboost_predictions <- xgboost_fitted %>% predict(crypto_test)
+```
 
-<!-- ```{r} -->
-<!-- predict(lm_fit, new_data = ames) -->
-<!-- ``` -->
+Join predictions back to dataset
 
-<!-- Calculate accuracy -->
-
-<!-- ```{r} -->
-<!-- rmse(price_pred, truth = price_truth, estimate = .pred) -->
-<!-- ``` -->
+```{r}
+xgboost_predictions <- xgboost_predictions %>% bind_cols(crypto_test)
+```
 
 
+Get metrics
+```{r}
+xgboost_predictions %>%
+  metrics(truth = target_percent_change, estimate = .pred)
+```
+
+
+
+Another good resource to look at: https://towardsdatascience.com/modelling-with-tidymodels-and-parsnip-bae2c01c131c
+
+
+
+Yardstick for metrics: https://tidymodels.github.io/yardstick/
+
+```{r}
+library(yardstick)
+metrics(xgboost_predictions, target_percent_change,  estimate = .pred)
+```
+
+
+
+
+
+This article was before modelr came along, but good guide on using group_by and do() in dplyr to make one model for each cryptocurrency if I'm stuck: https://r4stats.com/2017/04/18/group-by-modeling-in-r-made-easy/
+
+Also remember to consult this as a resource: https://r4ds.had.co.nz/many-models.html
 
 
 ## Build interactive learnr tutorials for Python using reticulate
