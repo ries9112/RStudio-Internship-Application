@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2020.2.29)  29 FEB 2020 11:29
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2020.2.29)  29 FEB 2020 16:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -927,7 +927,7 @@ File: RStudio-Internship-Application_files/figure-latex/unnamed-chunk-3-1.pdf G
 raphic file (type pdf)
 <use RStudio-Internship-Application_files/figure-latex/unnamed-chunk-3-1.pdf>
 
-Overfull \hbox (12.859pt too wide) in paragraph at lines 159--161
+Overfull \hbox (11.75513pt too wide) in paragraph at lines 161--163
 []\TU/lmr/m/n/10 I post these on my website: [][][] 
  []
 
@@ -941,7 +941,7 @@ ext;!
 [9] [10]
 
 Package natbib Warning: Citation `R-bookdown' on page 11 undefined on input lin
-e 167.
+e 169.
 
 File: RStudio-Internship-Application_files/figure-latex/unnamed-chunk-4-1.pdf G
 raphic file (type pdf)
@@ -953,7 +953,7 @@ ext;!
 [11]
 
 Package natbib Warning: Citation `R-blogdown' on page 12 undefined on input lin
-e 187.
+e 189.
 
 File: RStudio-Internship-Application_files/figure-latex/unnamed-chunk-5-1.pdf G
 raphic file (type pdf)
@@ -964,7 +964,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [12]
 
 Package natbib Warning: Citation `R-pagedown' on page 13 undefined on input lin
-e 196.
+e 198.
 
 File: RStudio-Internship-Application_files/figure-latex/unnamed-chunk-6-1.pdf G
 raphic file (type pdf)
@@ -979,7 +979,7 @@ ext;!
 [13]
 
 Package natbib Warning: Citation `R-flexdashboard' on page 14 undefined on inpu
-t line 203.
+t line 205.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -989,13 +989,13 @@ File: RStudio-Internship-Application_files/figure-latex/unnamed-chunk-7-1.pdf G
 raphic file (type pdf)
 <use RStudio-Internship-Application_files/figure-latex/unnamed-chunk-7-1.pdf>
 [15]
-Underfull \hbox (badness 1297) in paragraph at lines 216--217
+Underfull \hbox (badness 1297) in paragraph at lines 218--219
 \TU/lmr/m/n/10 called []Alteryx[] to create fully automated processes with the 
 main pur-
  []
 
 
-Underfull \hbox (badness 1990) in paragraph at lines 216--217
+Underfull \hbox (badness 1990) in paragraph at lines 218--219
 \TU/lmr/m/n/10 cryptocurrency markets using my own database, SQL, R and Python
  []
 
@@ -1005,32 +1005,20 @@ File: images/projects_list.png Graphic file (type bmp)
 <images/projects_list.png>
 
 Package natbib Warning: Citation `R-googlesheets4' on page 17 undefined on inpu
-t line 235.
+t line 237.
 
 
 Package natbib Warning: Citation `R-tidyverse' on page 17 undefined on input li
-ne 237.
+ne 239.
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 241.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 243.
 [17
 
 ]
 
-Package natbib Warning: Citation `R-DT' on page 18 undefined on input line 255.
+Package natbib Warning: Citation `R-DT' on page 18 undefined on input line 264.
 
-
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 269--269
-[]\TU/lmtt/m/n/10 ## Warning in instance$preRenderHook(instance): It seems your
- data is too big[] 
- []
-
-
-Overfull \hbox (75.0pt too wide) in paragraph at lines 269--269
-[]\TU/lmtt/m/n/10 ## for client-side DataTables. You may consider server-side p
-rocessing: https://[] 
- []
 
 File: RStudio-Internship-Application_files/figure-latex/show_googlesheets_data-
 1.pdf Graphic file (type pdf)
@@ -1053,12 +1041,12 @@ File: images/coinmetrics_datadictionary7.png Graphic file (type bmp)
 File: images/coinmetrics_datadictionary8.png Graphic file (type bmp)
 <images/coinmetrics_datadictionary8.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--285
+Underfull \hbox (badness 10000) in paragraph at lines 280--288
 []
  []
 
 
-Underfull \vbox (badness 6412) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [18]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1080,189 +1068,211 @@ File: RStudio-Internship-Application_files/figure-latex/show_github_pages-1.pdf
 [21]
 
 Package natbib Warning: Citation `R-janitor' on page 22 undefined on input line
- 310.
+ 313.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [22]
-Overfull \hbox (22.5pt too wide) in paragraph at lines 326--326
+Overfull \hbox (22.5pt too wide) in paragraph at lines 329--329
 []\TU/lmtt/m/n/10 ##  [1] "Date"            "Symbol"          "AdrActCnt"      
  "BlkCnt"[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 326--326
+Overfull \hbox (59.25pt too wide) in paragraph at lines 329--329
 []\TU/lmtt/m/n/10 ##  [5] "BlkSizeByte"     "BlkSizeMeanByte" "CapMVRVCur"     
  "CapMrktCurUSD"[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 326--326
+Overfull \hbox (43.5pt too wide) in paragraph at lines 329--329
 []\TU/lmtt/m/n/10 ##  [9] "CapRealUSD"      "DiffMean"        "FeeMeanNtv"     
  "FeeMeanUSD"[] 
  []
 
 
-Overfull \hbox (38.25pt too wide) in paragraph at lines 326--326
+Overfull \hbox (38.25pt too wide) in paragraph at lines 329--329
 []\TU/lmtt/m/n/10 ## [13] "FeeMedNtv"       "FeeMedUSD"       "FeeTotNtv"      
  "FeeTotUSD"[] 
  []
 
 
-Overfull \hbox (43.5pt too wide) in paragraph at lines 326--326
+Overfull \hbox (43.5pt too wide) in paragraph at lines 329--329
 []\TU/lmtt/m/n/10 ## [17] "HashRate"        "IssContNtv"      "IssContPctAnn"  
  "IssContUSD"[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 326--326
+Overfull \hbox (33.0pt too wide) in paragraph at lines 329--329
 []\TU/lmtt/m/n/10 ## [21] "IssTotNtv"       "IssTotUSD"       "NVTAdj"         
  "NVTAdj90"[] 
  []
 
 
-Overfull \hbox (22.5pt too wide) in paragraph at lines 326--326
+Overfull \hbox (22.5pt too wide) in paragraph at lines 329--329
 []\TU/lmtt/m/n/10 ## [25] "PriceBTC"        "PriceUSD"        "ROI1yr"         
  "ROI30d"[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 326--326
+Overfull \hbox (64.5pt too wide) in paragraph at lines 329--329
 []\TU/lmtt/m/n/10 ## [29] "SplyCur"         "TxCnt"           "TxTfrCnt"       
  "TxTfrValAdjNtv"[] 
  []
 
 
-Overfull \hbox (64.5pt too wide) in paragraph at lines 326--326
+Overfull \hbox (64.5pt too wide) in paragraph at lines 329--329
 []\TU/lmtt/m/n/10 ## [33] "TxTfrValAdjUSD"  "TxTfrValMeanNtv" "TxTfrValMeanUSD"
  "TxTfrValMedNtv"[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 326--326
+Overfull \hbox (59.25pt too wide) in paragraph at lines 329--329
 []\TU/lmtt/m/n/10 ## [37] "TxTfrValMedUSD"  "TxTfrValNtv"     "TxTfrValUSD"    
  "VtyDayRet180d"[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 352--352
+Overfull \hbox (33.0pt too wide) in paragraph at lines 355--355
 []\TU/lmtt/m/n/10 ##  [4] "blk_cnt"             "blk_size_byte"       "blk_size
 _mean_byte"[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 352--352
+Overfull \hbox (1.5pt too wide) in paragraph at lines 355--355
 []\TU/lmtt/m/n/10 ##  [7] "cap_mvrv_cur"        "cap_mrkt_cur_usd"    "cap_real
 _usd"[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 352--352
+Overfull \hbox (1.5pt too wide) in paragraph at lines 355--355
 []\TU/lmtt/m/n/10 ## [10] "diff_mean"           "fee_mean_ntv"        "fee_mean
 _usd"[] 
  []
 
 
-Overfull \hbox (1.5pt too wide) in paragraph at lines 352--352
+Overfull \hbox (1.5pt too wide) in paragraph at lines 355--355
 []\TU/lmtt/m/n/10 ## [16] "fee_tot_usd"         "hash_rate"           "iss_cont
 _ntv"[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 352--352
+Overfull \hbox (33.0pt too wide) in paragraph at lines 355--355
 []\TU/lmtt/m/n/10 ## [31] "tx_tfr_cnt"          "tx_tfr_val_adj_ntv"  "tx_tfr_v
 al_adj_usd"[] 
  []
 
 
-Overfull \hbox (33.0pt too wide) in paragraph at lines 352--352
+Overfull \hbox (33.0pt too wide) in paragraph at lines 355--355
 []\TU/lmtt/m/n/10 ## [34] "tx_tfr_val_mean_ntv" "tx_tfr_val_mean_usd" "tx_tfr_v
 al_med_ntv"[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 352--352
+Overfull \hbox (12.0pt too wide) in paragraph at lines 355--355
 []\TU/lmtt/m/n/10 ## [37] "tx_tfr_val_med_usd"  "tx_tfr_val_ntv"      "tx_tfr_v
 al_usd"[] 
  []
 
 
 Package natbib Warning: Citation `R-anytime' on page 23 undefined on input line
- 354.
+ 357.
 
 [23]
-Overfull \hbox (38.25pt too wide) in paragraph at lines 383--383
+Overfull \hbox (38.25pt too wide) in paragraph at lines 386--386
 []\TU/lmtt/m/n/10 ##  [1]   2.371123   7.142857  20.891949  23.846718   6.70704
 5  19.548486[] 
  []
 
 [24]
+Overfull \hbox (80.25pt too wide) in paragraph at lines 452--452
+[]\TU/lmtt/m/n/10 ## Warning in mean.default(exercise_data$roi_30_days): argume
+nt is not numeric or[] 
+ []
 
-Package natbib Warning: Citation `R-parsnip' on page 25 undefined on input line
- 442.
+
+Overfull \hbox (80.25pt too wide) in paragraph at lines 467--467
+[]\TU/lmtt/m/n/10 ## Warning in mean.default(exercise_data$supply_current): arg
+ument is not numeric[] 
+ []
+
+
+Package natbib Warning: Citation `R-recipes' on page 25 undefined on input line
+ 485.
 
 [25]
+Overfull \hbox (12.0pt too wide) in paragraph at lines 520--520
+[]\TU/lmtt/m/n/10 ## Training data contained 5127 data points and 700 incomplet
+e rows.[] 
+ []
 
-Package natbib Warning: Citation `R-rsample' on page 26 undefined on input line
- 482.
-
+Missing character: There is no 🍰 in font [lmroman10-regular]:mapping=tex-text;!
 [26]
 
-Package natbib Warning: Citation `R-purrr' on page 27 undefined on input line 6
-21.
+Package natbib Warning: Citation `R-parsnip' on page 27 undefined on input line
+ 561.
 
-[27]
+
+Package natbib Warning: Citation `R-rsample' on page 27 undefined on input line
+ 601.
+
+[27] [28]
+
+Package natbib Warning: Citation `R-purrr' on page 29 undefined on input line 7
+40.
+
+[29]
 File: RStudio-Internship-Application_files/figure-latex/unnamed-chunk-24-1.pdf 
 Graphic file (type pdf)
 <use RStudio-Internship-Application_files/figure-latex/unnamed-chunk-24-1.pdf>
 
 Underfull \vbox (badness 7631) has occurred while \output is active []
 
-[28]
+[30]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 678.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 797.
 
-Package natbib Warning: Citation `R-broom' on page 29 undefined on input line 6
-78.
+Package natbib Warning: Citation `R-broom' on page 31 undefined on input line 7
+97.
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 703--703
+Overfull \hbox (75.0pt too wide) in paragraph at lines 822--822
 []\TU/lmtt/m/n/10 ##   symbol data  model resids r.squared adj.r.squared  sigma
  statistic  p.value[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 703--703
+Overfull \hbox (75.0pt too wide) in paragraph at lines 822--822
 []\TU/lmtt/m/n/10 ##   <chr>  <lis> <lis> <list>     <dbl>         <dbl>  <dbl>
      <dbl>    <dbl>[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 703--703
+Overfull \hbox (75.0pt too wide) in paragraph at lines 822--822
 []\TU/lmtt/m/n/10 ## 1 BTC    <tib~ <lm>  <tibb~    0.158        0.148     12.4
      16.1  4.47e-90[] 
  []
 
 
-Overfull \hbox (75.0pt too wide) in paragraph at lines 703--703
+Overfull \hbox (75.0pt too wide) in paragraph at lines 822--822
 []\TU/lmtt/m/n/10 ## 2 ETH    <tib~ <lm>  <tibb~    0.0341       0.00552 3203. 
       1.19 1.99e- 1[] 
  []
 
 
-Overfull \hbox (59.25pt too wide) in paragraph at lines 703--703
+Overfull \hbox (59.25pt too wide) in paragraph at lines 822--822
 []\TU/lmtt/m/n/10 ## # ... with 6 more variables: df <int>, logLik <dbl>, AIC <
 dbl>, BIC <dbl>,[] 
  []
 
-[29] [30]
+[31] [32]
 Overfull \hbox (73.71233pt too wide) has occurred while \output is active
 \TU/lmr/m/sl/10 3.3.  BUILD INTERACTIVE LEARNR TUTORIALS FOR PYTHON USING RETIC
-ULATE \TU/lmr/m/n/10 31
+ULATE \TU/lmr/m/n/10 33
  []
 
-[31] [32
+[33] [34
 
 ]
 Chapter 4.
@@ -1271,64 +1281,44 @@ File: images/sakura_option1.jpg Graphic file (type bmp)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[33]
+[35]
 File: images/sakura_option2.jpg Graphic file (type bmp)
 <images/sakura_option2.jpg>
 
-Overfull \hbox (147.51788pt too wide) in paragraph at lines 761--763
+Overfull \hbox (147.51788pt too wide) in paragraph at lines 880--882
 []\TU/lmr/m/n/10 Is Sakura picture option 2 better? [] 
  []
 
-[34]
+[36]
 File: RStudio-Internship-Application_files/figure-latex/unnamed-chunk-27-1.pdf 
 Graphic file (type pdf)
 <use RStudio-Internship-Application_files/figure-latex/unnamed-chunk-27-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[35]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[36]
-File: RStudio-Internship-Application_files/figure-latex/unnamed-chunk-28-1.pdf 
-Graphic file (type pdf)
-<use RStudio-Internship-Application_files/figure-latex/unnamed-chunk-28-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 [37]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[38]
-File: RStudio-Internship-Application_files/figure-latex/unnamed-chunk-29-1.pdf 
-Graphic file (type pdf)
-<use RStudio-Internship-Application_files/figure-latex/unnamed-chunk-29-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[39]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[40] [41] [42
+[38] [39] [40
 
 ]
 Chapter 5.
 File: images/idealTutorial.png Graphic file (type bmp)
 <images/idealTutorial.png>
-[43] [44] [45] [46] [47] [48]
+[41] [42] [43] [44] [45] [46]
 Chapter 6.
 No file RStudio-Internship-Application.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1039.
-[49
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1156.
+[47
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1039.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1156.
 (./RStudio-Internship-Application.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1039.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1039.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1156.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1156.
 
 
 Package rerunfilecheck Warning: File `RStudio-Internship-Application.out' has c
@@ -1346,15 +1336,15 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1039.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1156.
  ) 
 Here is how much of TeX's memory you used:
- 17583 strings out of 481768
- 316535 string characters out of 5934594
- 723479 words of memory out of 5000000
- 34332 multiletter control sequences out of 15000+600000
+ 17572 strings out of 481768
+ 315732 string characters out of 5934594
+ 724479 words of memory out of 5000000
+ 34323 multiletter control sequences out of 15000+600000
  538821 words of font info for 81 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  52i,6n,115p,1773b,482s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on RStudio-Internship-Application.pdf (49 pages).
+Output written on RStudio-Internship-Application.pdf (47 pages).

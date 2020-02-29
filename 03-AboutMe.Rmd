@@ -6,7 +6,7 @@ I was born and raised in Milan, Italy and moved to the middle of Manhattan with 
 
 ![](images/sakura_option1.jpg)
 
-My girlfriend and I also have an adorable little ferret called Percy:
+I also have an adorable little ferret called Percy:
 
 <video width="320" height="240" controls>
   <source src="images/percy_video.mp4" type="video/mp4">
@@ -19,13 +19,10 @@ Is Sakura picture option 2 better?
 I spent my time as an undergrad at the University of Colorado, Boulder studying information management and being a part of the [CU Triathlon club team](https://www.cutriathlon.com/). As a Junior at CU I was one of the TA's for MGMT 3200 (Business Analytics) after ***really*** enjoying the course, which used Alteryx for doing ETL work, and a tool called [DataRobot](https://www.datarobot.com/) for making predictions. The grade obtained by students in the class was strongly impacted by their team's percentile ranking on the leaderboards of real [Kaggle](https://www.kaggle.com/) competitions that were going on at the time, and I found myself really loving working with data and I have been trying to learn as much as I can about anything and everything relating to data science since then. I spent multiple summers locking myself 40+ hours a week in my office working on just that.
 
 Here are some of the online courses I worked my way through:
-```{r echo=F}
-knitr::include_url("https://resclapon.com/udemy-certificates")
-```
 
-```{r}
-knitr::include_url("https://resclapon.com/datacamp-certificates")
-```
+- https://resclapon.com/datacamp-certificates
+
+- https://resclapon.com/udemy-certificates
 
 
 Here is my resume with the same online learning certificates added:

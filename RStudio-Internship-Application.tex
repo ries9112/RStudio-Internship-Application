@@ -133,6 +133,8 @@ APPLICATIONS END ON MARCH 5TH BE SURE TO APPLY BEFORE THEN!!
 
 For video:
 
+Start off by going over the ``Why Me'' section and talk about ways I have applied the broad RMarkdown ecosystem and automation to my work. Then go to the projects suited for section to give an overview of what makes me a good fit for the first three projects specifically and examples I started to work on for each. Then give intro to about me and ideal tutorial sections. End things with a cool charts/visualizations section (or include in projects suited for section)
+
 Start off with overview of projects I am suited for showing work I did for this application specifically. Then go on to talk about ways I have applied the broad RMarkdown ecosystem and automation in my work. Then talk a bit more about myself. Talk about ideal tutorial overview and close things by mentioning cool charts/visualizations section (outline this at a high level under 2 minutes in the video at the start here)
 
 \hypertarget{fit}{%
@@ -242,11 +244,18 @@ First I will go ahead and import every package in the \texttt{tidyverse}\citep{R
 \end{Highlighting}
 \end{Shaded}
 
-Next let's import the \texttt{googlesheets4} and read a spreadsheet I made for this internship application, specifying the sheet called \emph{coinmetrics\_btc\_eth} inside the function \texttt{read\_sheet()}:
+We will be importing the following spreadsheet:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{spreadsheet_url <-}\StringTok{ "https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit?usp=sharing"}
+\end{Highlighting}
+\end{Shaded}
+
+Next let's import the \texttt{googlesheets4} and read a spreadsheet I made for this internship application, specifying the sheet called \emph{coinmetrics\_btc\_eth} inside the function \texttt{read\_sheet()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(googlesheets4)}
 \NormalTok{googlesheets_data <-}\StringTok{ }\KeywordTok{read_sheet}\NormalTok{(spreadsheet_url, }\DataTypeTok{sheet =} \StringTok{'coinmetrics_btc_eth'}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{()}
 \end{Highlighting}
@@ -261,12 +270,6 @@ Let's take a peek at the \texttt{datatable()} using \texttt{DT} \citep{R-DT}
           \DataTypeTok{options =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{scrollX =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{pageLength=}\DecValTok{5}\NormalTok{,}\DataTypeTok{dom=}\StringTok{'t'}\NormalTok{), }\DataTypeTok{rownames =}\NormalTok{ F)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning in instance$preRenderHook(instance): It seems your data is too big
-## for client-side DataTables. You may consider server-side processing: https://
-## rstudio.github.io/DT/server.html
-\end{verbatim}
 
 \includegraphics{RStudio-Internship-Application_files/figure-latex/show_googlesheets_data-1.pdf}
 
@@ -303,7 +306,7 @@ First, I will import a package that I am making that is \textbf{still in develop
 
 I attended the two day building tidy tools workshop working with Charlotte and Hadley at RStudio::conf 2020 and I am comfortable writing packages in R as well as using testthat and showing code coverage for a repository.
 
-Here is the GitHub Pages environment associated with the repository: \url{https://ries9112.github.io/PredictCrypto/}
+Here is the GitHub Pages environment associated with the repository:
 
 \href{https://ries9112.github.io/PredictCrypto/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/show_github_pages-1.pdf}}
 
@@ -426,18 +429,134 @@ Or a 24 hour period:
 ## 5139             -5.871389
 \end{verbatim}
 
-Let's also scale the variables
-
-ADD FEATURE SCALING HERE
-
-\hypertarget{predictive-modeling}{%
-\subsection{Predictive Modeling}\label{predictive-modeling}}
+\textbf{\emph{Disclaimer:}} \textbf{Most of the code to follow was built using the content made available by Allison Hill from the RStudio::conf2020 intro to machine learning workshop and was not code I was familiar with before writing it for this internship application:}
 
 \url{https://education.rstudio.com/blog/2020/02/conf20-intro-ml/}
 
 \url{https://conf20-intro-ml.netlify.com/materials/01-predicting/}
 
-\textbf{\emph{Disclaimer}}:\textbf{Most of the code to follow was built using the content made available by Allison Hill from the RStudio::conf2020 intro to machine learning workshop and was not code I was familiar with before writing it for this internship application.}
+\hypertarget{feature-scaling}{%
+\subsection{Feature scaling}\label{feature-scaling}}
+
+Before getting started on the predictive modeling section, it's a good idea for us to scale the numeric data in our dataset. Some of the fields in the dataset are bound to have dramatically different ranges in their values:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(exercise_data}\OperatorTok{$}\NormalTok{roi_}\DecValTok{30}\NormalTok{_days)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in mean.default(exercise_data$roi_30_days): argument is not numeric or
+## logical: returning NA
+\end{verbatim}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(exercise_data}\OperatorTok{$}\NormalTok{supply_current)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in mean.default(exercise_data$supply_current): argument is not numeric
+## or logical: returning NA
+\end{verbatim}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+This can be problematic for some models (not every model has this issue), and the difference in the magnitude of the numbers could unfairly influence the model to think that the variable with the larger numbers is more statistically important than the one with the lesser values when that might not actually be true.
+
+For feature scaling, we need to do two things:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{\emph{Center}} the data in every column to have a mean of zero
+\item
+  \textbf{\emph{Scale}} the data in every column to have a standard deviation of one
+\end{enumerate}
+
+The \texttt{recipes} \citep{R-recipes} package is a very useful package for pre-processing data before doing predictive modeling, and it allows us to center the way we do our data engineering around the independent variable we are looking to predict, which in our case is the \texttt{target\_percent\_change}. We can make a recipe which centers all numeric fields in the data using \texttt{step\_center()} and then scale them using \texttt{step\_scale()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(recipes)}
+\NormalTok{scaling_recipe <-}\StringTok{ }\KeywordTok{recipe}\NormalTok{(target_percent_change }\OperatorTok{~}\StringTok{ }\NormalTok{., }\DataTypeTok{data =}\NormalTok{ exercise_data) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{step_center}\NormalTok{(}\KeywordTok{all_numeric}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{step_scale}\NormalTok{(}\KeywordTok{all_numeric}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+Now that we have made a data pre-processing \emph{recipe}, let's map it to the \texttt{exercise\_data} dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{crypto_data_scaled <-}\StringTok{ }\NormalTok{scaling_recipe }\OperatorTok{%>%}\StringTok{ }\KeywordTok{prep}\NormalTok{(exercise_data) }
+\NormalTok{crypto_data_scaled}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Data Recipe
+## 
+## Inputs:
+## 
+##       role #variables
+##    outcome          1
+##  predictor         46
+## 
+## Training data contained 5127 data points and 700 incomplete rows. 
+## 
+## Operations:
+## 
+## Centering for adr_act_cnt, blk_cnt, ... [trained]
+## Scaling for adr_act_cnt, blk_cnt, ... [trained]
+\end{verbatim}
+
+Now let's use \texttt{bake()} to put the old dataset in the oven and get back the scaled data 🍰:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{crypto_data_scaled <-}\StringTok{ }\NormalTok{crypto_data_scaled }\OperatorTok{%>%}\StringTok{ }\KeywordTok{bake}\NormalTok{(exercise_data)}
+\end{Highlighting}
+\end{Shaded}
+
+Now the values are scaled:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(crypto_data_scaled}\OperatorTok{$}\NormalTok{active_addresses,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Unknown or uninitialised column: 'active_addresses'.
+\end{verbatim}
+
+\begin{verbatim}
+## NULL
+\end{verbatim}
+
+You can see the difference from the previous values:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(exercise_data}\OperatorTok{$}\NormalTok{active_addresses,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## NULL
+\end{verbatim}
+
+\hypertarget{predictive-modeling}{%
+\subsection{Predictive Modeling}\label{predictive-modeling}}
 
 Create the \texttt{parsnip} \citep{R-parsnip} model
 
@@ -756,7 +875,7 @@ I was born and raised in Milan, Italy and moved to the middle of Manhattan with 
 
 \includegraphics{images/sakura_option1.jpg}
 
-My girlfriend and I also have an adorable little ferret called Percy:
+I also have an adorable little ferret called Percy:
 
 Is Sakura picture option 2 better?
 \includegraphics{images/sakura_option2.jpg}
@@ -764,15 +883,13 @@ Is Sakura picture option 2 better?
 I spent my time as an undergrad at the University of Colorado, Boulder studying information management and being a part of the \href{https://www.cutriathlon.com/}{CU Triathlon club team}. As a Junior at CU I was one of the TA's for MGMT 3200 (Business Analytics) after \textbf{\emph{really}} enjoying the course, which used Alteryx for doing ETL work, and a tool called \href{https://www.datarobot.com/}{DataRobot} for making predictions. The grade obtained by students in the class was strongly impacted by their team's percentile ranking on the leaderboards of real \href{https://www.kaggle.com/}{Kaggle} competitions that were going on at the time, and I found myself really loving working with data and I have been trying to learn as much as I can about anything and everything relating to data science since then. I spent multiple summers locking myself 40+ hours a week in my office working on just that.
 
 Here are some of the online courses I worked my way through:
-\href{https://resclapon.com/udemy-certificates}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-27-1.pdf}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_url}\NormalTok{(}\StringTok{"https://resclapon.com/datacamp-certificates"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\href{https://resclapon.com/datacamp-certificates}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-28-1.pdf}}
+\begin{itemize}
+\item
+  \url{https://resclapon.com/datacamp-certificates}
+\item
+  \url{https://resclapon.com/udemy-certificates}
+\end{itemize}
 
 Here is my resume with the same online learning certificates added:
 
@@ -782,7 +899,7 @@ Here is my resume with the same online learning certificates added:
 \end{Highlighting}
 \end{Shaded}
 
-\href{https://ricky-cv.netlify.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-29-1.pdf}}
+\href{https://ricky-cv.netlify.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-27-1.pdf}}
 
 In my senior year at CU Boulder, I did a business analytics internship with the Pricing Analytics team at Vail Resorts, which turned out to be a lot of manual work that should have been automated, so that's what I did. After graduating from CU Boulder I spent some time applying the things I learned around automation and web scraping to setup a project to collect data relating to the cryptocurrency markets from several sources because I had been trading on them since early 2014 and I saw an opportunity for some automated trading, and I wanted to have a personal project that I could work on over a longer period of time and use to get more comfortable in tools like SQL, R and Python with the prospect of making some money in the end. After a year and a half of working on this, I realized that I was actually better off opening up my project to others more and using it as a tool to teach others to program and that could be really valuable in my career progression towards eventually being a competent data scientist rather than spending all of my energy trying to make short-term trades, which doesn't really teach any tangible or useful skills outside of its own domain. The tutorials and lessons I am building specifically around this project can be found on \url{https://predictcrypto.org/}.
 
