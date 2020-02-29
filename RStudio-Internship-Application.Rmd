@@ -50,7 +50,7 @@ I have been using learnr [for about a year and a half](https://github.com/ries91
 
 (this takes about 30 seconds to load, give it more time if it's showing up blank)
 
-```{r echo=F, fig.width=900}
+```{r echo=F, fig.width=10}
 knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/",
   height = "612E00px")
 ```
@@ -72,7 +72,7 @@ I was very close to paying for a monthly subscription on gitbook.com because I t
 
 This document is obviously an example of a bookdown document in itself, but here's another guide I put together using bookdown:
 
-```{r echo=F, fig.width=850}
+```{r echo=F}
 knitr::include_url("https://predictcryptodb-quickstart.com/")
 ```
 
@@ -94,7 +94,7 @@ Making presentations in R Markdown is what really got me working with .Rmd files
 
 Blogdown[@R-blogdown] and bookdown work very similarly, so most of what I mentioned in the [bookdown section](#bookdown) applies here. Because my website predictcrypto.com only shows the latest data based on the current date, I leverage blogdown to create weekly snapshots of the visualizations over the last 7 day period: https://predictcryptoblog.com/. 
 
-```{r echo=F, fig.height=750}
+```{r echo=F}
 knitr::include_url("https://predictcryptoblog.com/")
 ```
 
@@ -104,7 +104,7 @@ Because all these systems work so well with automation, as I keep adding new int
 
 Pagedown[@R-pagedown] is yet another awesome way to create html outputs and I used Nick Strayer's repository https://github.com/nstrayer/cv to build my cv and resume using his template:
 
-```{r echo=F, fig.width=900}
+```{r echo=F}
 knitr::include_url("https://ricky-cv.netlify.com/")
 ```
 
@@ -135,6 +135,8 @@ It's pretty mindblowing that these frameworks allow a user to create an interact
 I really wanted to go to RStudio::conf 2019 but was not able to make it out and after all the videos got posted I watched most of them and immediately knew I had to come to RStudio::conf 2020 and it was a truly incredible experience.
 
 JJ's talk and BCorp announcement really resonated with me and there is no other company who's mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I love the values that RStudio holds dear as a company and there is really no other company that I want to work for more than RStudio.
+
+I also work my best remotely and I have a dedicated office to do my work in with a powerful desktop PC and two screens.
 
 
 

@@ -220,6 +220,8 @@ I really wanted to go to RStudio::conf 2019 but was not able to make it out and 
 
 JJ's talk and BCorp announcement really resonated with me and there is no other company who's mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I love the values that RStudio holds dear as a company and there is really no other company that I want to work for more than RStudio.
 
+I also work my best remotely and I have a dedicated office to do my work in with a powerful desktop PC and two screens.
+
 \hypertarget{ideal-projects}{%
 \chapter{Projects Well Suited For}\label{ideal-projects}}
 
@@ -247,6 +249,14 @@ Next let's import the \texttt{googlesheets4} and read a spreadsheet I made for t
 \NormalTok{googlesheets_data <-}\StringTok{ }\KeywordTok{read_sheet}\NormalTok{(spreadsheet_url, }\DataTypeTok{sheet =} \StringTok{'coinmetrics_btc_eth'}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## Using an auto-discovered, cached token.
+## To suppress this message, modify your code or options to clearly consent to the use of a cached token.
+## See gargle's "Non-interactive auth" vignette for more details:
+## https://gargle.r-lib.org/articles/non-interactive-auth.html
+## The googlesheets4 package is using a cached token for ries9112@colorado.edu.
+\end{verbatim}
 
 Let's take a peek at the \texttt{datatable()} using \texttt{DT} \citep{R-DT}
 
@@ -520,6 +530,42 @@ Use the trained model to make predictions on test data:
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(tidymodels)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages ------------------------------------------------------ tidymodels 0.1.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v broom     0.5.4     v tune      0.0.1
+## v dials     0.0.4     v workflows 0.1.0
+## v infer     0.5.1     v yardstick 0.0.5
+## v recipes   0.1.9
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts --------------------------------------------------------- tidymodels_conflicts() --
+## x data.table::between()   masks dplyr::between()
+## x broom::bootstrap()      masks modelr::bootstrap()
+## x scales::discard()       masks purrr::discard()
+## x dplyr::filter()         masks plotly::filter(), stats::filter()
+## x data.table::first()     masks dplyr::first()
+## x recipes::fixed()        masks stringr::fixed()
+## x dplyr::lag()            masks stats::lag()
+## x data.table::last()      masks dplyr::last()
+## x yardstick::mae()        masks modelr::mae()
+## x yardstick::mape()       masks modelr::mape()
+## x dials::margin()         masks ggplot2::margin()
+## x yardstick::rmse()       masks modelr::rmse()
+## x yardstick::spec()       masks readr::spec()
+## x recipes::step()         masks stats::step()
+## x data.table::transpose() masks purrr::transpose()
+## x recipes::yj_trans()     masks scales::yj_trans()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{lm_predictions <-}\StringTok{ }\NormalTok{lm_fitted }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(crypto_test)}
 \end{Highlighting}
 \end{Shaded}
