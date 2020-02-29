@@ -44,11 +44,11 @@ datatable(googlesheets_data,  style = "default",
 ![](images/coinmetrics_datadictionary8.png)
 
 
+## Build interactive learnr tutorials for tidymodels
 
+### Data Prep
 
-### Predictive Model - Data Prep
-
-Using the data from coinmetrics, I will create a predictive model to forecast the percentage change in price over time in order to show that I would be a good fit for the first two projects listed.
+Using the data from coinmetrics, I will create a predictive model to forecast the percentage change in price over time.
 
 
 First, I will import a package that I am making that is **still in development** `PredictCrypto`:
@@ -126,7 +126,7 @@ ADD FEATURE SCALING HERE
 
 
 
-## Build interactive learnr tutorials for tidymodels
+### Predictive Modeling
 
 https://education.rstudio.com/blog/2020/02/conf20-intro-ml/
 
@@ -134,7 +134,7 @@ https://conf20-intro-ml.netlify.com/materials/01-predicting/
 
 ***Disclaimer***:**Most of the code to follow was built using the content made available by Allison Hill from the RStudio::conf2020 intro to machine learning workshop and was not code I was familiar with before writing it for this internship application.**
 
-### Create the `parsnip` [@R-parsnip] model
+Create the `parsnip` [@R-parsnip] model
 
 ```{r parsnip models}
 library(parsnip)

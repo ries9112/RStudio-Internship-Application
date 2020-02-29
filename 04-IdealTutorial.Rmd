@@ -1,6 +1,159 @@
 # Ideal Tutorial
 
+## Overview 
+
 ![](images/idealTutorial.png)
+
+
+I don't see this question on the last post regarding the RStudio internship applications being open through March 6th, but I have been thinking about this question since I saw it [originally posted here in November](https://education.rstudio.com/blog/2019/11/rstudio-internships-2020-preview/), so I wanted to include this answer in my application.
+
+Ultimately I think analyzing cryptocurrencies is fun and interesting and a good way to get people's attention, but I have been thinking that a much more useful application of these ideas would be to be able to do a very similar thing but to create live data feeds from sensors out in the real world. This data could then be used to provide highly interactive programming tutorials, where the outcomes of the analysis would change based on the most recent data that was collected. To give a practical example of what that could look like, if there was a live data feed of sensors across Australia giving live information around particulates, carbon monoxide, ozone, carbon dioxide as well as other factors like informaton about the wind, etc.. it seems to me that this could empower things like early detection and much better prevention in general through predictive modeling and being able to triangulate the location of fires as they start or to figure out how to spread the limited resources across the different fires, and I just love the idea of the possibility of moving the needle on a problem through programming tutorials rather than working with uninteresting old data. Creating a system that allows people to actually contribute towards solving real problems might be wishful thinking, but I do believe that the best to teach someone these concepts is to give them data they care about and give them a realistic path forward to apply their existing intuition to answer questions they care about. The `mtcars` and `iris` datasets are great, but data feeds that change over time would be better in ***some*** cases in terms of getting a person invested in the actual analysis being done.
+
+## Tutorials I Have Planned{#tutorials-planned}
+
+As I was thinking through this question, I realized that beyond doing cool work around the data being used itself, I have a pretty lengthy list of topics that I feel are not always expressed as concisely as they should be. These topics *have* been covered by others in the past, but if I had a 5-10 minute video outlining things the way I plan on doing it, it would have saved me a lot of time, so hopefully even if I only reach a couple of people I will have saved them a lot of time, as well as myself whenever I want to go back to using **any of these tools:**
+
+* Creating a website with bookdown, GitHub and Netlify.
+
+    - Conceptually speaking this is amazingly simple to implement if you just know where to click in GitHub + RStudio and does things that would be pretty difficult to achieve with older tools.
+    
+
+* GitHub actions for automation
+
+    - This is a pretty new topic because GitHub Actions have been very recently introduced and most resources online make this way overcomplicated and/or they are not usually specific to R. It's actually not that difficult though and it makes a ton of sense conceptually, especially when using `devtools::check()`, and is a general tool that can be used for all sorts of automation. In fact, it would be a terrible experience, but you could program in R without needing your own computer by using GitHub actions.
+    
+    - I was running into an issue I did not understand when using GitHub actions with bookdown files because of the default argument `clean_envir=FALSE` when running `render_book()`, and I documented the issue here: https://community.rstudio.com/t/github-actions-object-from-secrets-not-found/54519/5
+    
+    - After making a video tutorial around making a website with bookdown, I plan on using that project to explain github actions in another video.
+
+* Using blogdown and pagedown
+
+* Making an R package
+
+* Creating tests to go along with an R package
+
+    - Including code coverage and having the custom badge on the GitHub page refreshed through GitHub actions
+    
+* General overview of how to use GitHub with RStudio
+
+    - In companies you would have a development space and a **production** environment and I see my personal use of GitHub + RStudio as being very similar to that. When you make changes locally it's conceptually similar to a dev environment, and when you push things to GitHub those changes are published to the production environment where it has downstream effects, for example triggering a new build for a website.
+
+* Setting up R + RStudio + GitHub
+
+    - Downloading R
+    
+    - Downloading RStudio
+    
+    - Downloading GitHub and pointing the global options within RStudio to point to git.exe to prompt RStudio to ask for login and create the **Git** tab in the IDE
+    
+    
+* Flexdashboards
+
+
+* Web Scraping
+
+
+* Using RStudio Add-Ins and coolest ones
+
+
+* Awesome ggplot2 extensions
+
+    - trelliscope
+    
+    - rayshader + rayrender
+    
+    - ggmap
+    
+    - gganimate
+    
+    - gghighlight
+    
+    - ... LOTS more
+
+
+
+
+
+    
+* Understanding the tidyverse. Here's a quick example of the things I would really drive home in a tutorial around the tidyverse and when/why you would want to use the pipe operator:
+
+Take the following example:
+```{r}
+sqrt(25)
+```
+
+Here it is easy enough to keep track of what is happening. We are taking the square root of 25 and nothing more. But let's say we have a more complex operation:
+```{r}
+abs(exp(sqrt(25)))
+```
+
+As the code gets more complicated, it gets more difficult to read the code. What order do the operations run? Things can get pretty out of hand, this is not a particularly extreme example.
+
+In comes the pipe operator! Using the %>% we **start** with the value being manipulated, and apply each operation one step at a time:
+```{r}
+25 %>% 
+  sqrt() %>% 
+  exp() %>% 
+  abs()
+```
+
+Now it becomes much clearer that our code starts with the value 25 and the functions are applied in the order `sqrt()`, `exp()`, `abs()`.
+
+When we work with a full dataset, this will also work much better because it will be much easier to distinguish between the data we want to apply a transformation to and the actual transformation. Let's walk through one more example to illustrate this idea.
+
+Let's make a very simple example dataset:
+```{r}
+data <- data.frame("numbers"=c(3,7,9))
+data
+```
+
+Without using the pipe operator, this is what the usage of the `filter()` function would look like:
+```{r}
+filter(data, numbers > 7)
+```
+
+Treating the object `data` within the `filter()` function is not clear. 
+Using the pipe operator, this operation becomes more clear:
+```{r}
+data %>% filter(numbers > 7)
+```
+
+
+To make this point clear, try to translate this code to english in your head:
+```{r}
+round(log(sqrt(filter(data, numbers > 7))),3)
+```
+
+Not exactly straightforward right? Now try to translate this code in your head and see if it is easier at all:
+```{r}
+data %>%
+  filter(numbers > 7) %>%
+  sqrt() %>% 
+  log() %>% 
+  round(3)
+```
+
+You could read this line by line as:
+
+1. Start with the dataframe object called `data`
+
+2. Filter the rows based on the column called `numbers` having a value larger than 7
+
+3. Take the square root of the result
+
+4. Take the log of the result
+
+5. Round the result by 3 decimal places
+
+
+
+
+## Final notes
+
+I would also have a version of [each planned tutorial](#tutorials-planned) recorded in Italian, because I am bilingual and most of this content does not currently exist in Italian as far as I can tell.
+
+
+
 
 
 

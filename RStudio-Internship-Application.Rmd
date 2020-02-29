@@ -25,6 +25,7 @@ Start off with overview of projects I am suited for showing work I did for this 
 
 
 ```{r include=FALSE}
+library(bibtex)
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), "bookdown", "knitr", "rmarkdown", "tidyverse", "plotly", "rayshader"
@@ -50,7 +51,7 @@ I have been using learnr [for about a year and a half](https://github.com/ries91
 
 (this takes about 30 seconds to load, give it more time if it's showing up blank)
 
-```{r echo=F, fig.width=10}
+```{r echo=F}
 knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/",
   height = "612E00px")
 ```
@@ -105,7 +106,7 @@ Because all these systems work so well with automation, as I keep adding new int
 Pagedown[@R-pagedown] is yet another awesome way to create html outputs and I used Nick Strayer's repository https://github.com/nstrayer/cv to build my cv and resume using his template:
 
 ```{r echo=F}
-knitr::include_url("https://ricky-cv.netlify.com/")
+knitr::include_url("https://ricky-cv.netlify.com/resume")
 ```
 
 
@@ -126,8 +127,9 @@ knitr::include_url("https://predictcrypto.shinyapps.io/SemanticAnalysisExample/"
 
 Automation is at the center of everything I do and my one true passion. One of my big goals for RStudio::conf 2020 was to learn more about automating things through GitHub using CI since I always had a hard time figuring that out, and the things I learned about especially relating to GitHub actions and using Netlify were above my expectations in terms of the ease of use, capabilities and free tier offerings, and I am super excited to share how crazy simple automating a very complex process can be through RStudio, GitHub Actions and Netlify. I didn't fnd a huge wealth of information on automating things in R through GitHub Actions and I'm excited to share those learnings in the months to come.
 
-
 It's pretty mindblowing that these frameworks allow a user to create an interactive book with complex javascript, HTML, CSS, TeX, etc... from scratch, deploy it to an https secured website and create an automated process around it, all in less than 10 minutes with minimal code involved. What's even more mindblowing, is that the same methodologies can be applied to make other interfaces, like making a blogdown website, and I can't speak highly enough of all the work Yihui blessed us all with.
+
+I have also done a lot of automation work for [Vail Resorts](https://www.google.com/search?q=vail+resorts+stock) using a tool called [Alteryx](https://www.alteryx.com/) to create fully automated processes with the main purpose of refreshing Tableau dashboards offering refreshed datasets relating to ski pass sales. You can find an example of an automated Alteryx process I created for a personal project doing automated trading on the cryptocurrency markets using my own database, SQL, R and Python here: https://community.alteryx.com/t5/Alteryx-Use-Cases/Predicting-and-Trading-on-the-Cryptocurrency-Markets-using/ta-p/494058
 
 
 ## Fit Within the Company {#rstudio}
@@ -203,11 +205,11 @@ datatable(googlesheets_data,  style = "default",
 ![](images/coinmetrics_datadictionary8.png)
 
 
+## Build interactive learnr tutorials for tidymodels
 
+### Data Prep
 
-### Predictive Model - Data Prep
-
-Using the data from coinmetrics, I will create a predictive model to forecast the percentage change in price over time in order to show that I would be a good fit for the first two projects listed.
+Using the data from coinmetrics, I will create a predictive model to forecast the percentage change in price over time.
 
 
 First, I will import a package that I am making that is **still in development** `PredictCrypto`:
@@ -285,7 +287,7 @@ ADD FEATURE SCALING HERE
 
 
 
-## Build interactive learnr tutorials for tidymodels
+### Predictive Modeling
 
 https://education.rstudio.com/blog/2020/02/conf20-intro-ml/
 
@@ -293,7 +295,7 @@ https://conf20-intro-ml.netlify.com/materials/01-predicting/
 
 ***Disclaimer***:**Most of the code to follow was built using the content made available by Allison Hill from the RStudio::conf2020 intro to machine learning workshop and was not code I was familiar with before writing it for this internship application.**
 
-### Create the `parsnip` [@R-parsnip] model
+Create the `parsnip` [@R-parsnip] model
 
 ```{r parsnip models}
 library(parsnip)
@@ -532,6 +534,47 @@ library(reticulate)
 
 # About Me
 
+My formal education is more oriented towards business, but during my time in college I tried to focus on learning tangible skills as much as possible, and computer science/programming started becoming more my niche over time vs. business. I am working towards a Master's in Data Science at the University of Denver and I live in Boulder, Colorado.
+
+I was born and raised in Milan, Italy and moved to the middle of Manhattan with my American mom when I was 16 where I finished highschool. I ended up coming to Boulder after reading a [book about ultra marathon running](http://www.scottjurek.com/eat-run) and I could really see myself living in Boulder running with a husky dog training for ultra marathons, so that's what I did:
+
+![](images/sakura_option1.jpg)
+
+My girlfriend and I also have an adorable little ferret called Percy:
+
+<video width="320" height="240" controls>
+  <source src="images/percy_video.mp4" type="video/mp4">
+</video>
+
+
+Is Sakura picture option 2 better? 
+![](images/sakura_option2.jpg)
+
+I spent my time as an undergrad at the University of Colorado, Boulder studying information management and being a part of the [CU Triathlon club team](https://www.cutriathlon.com/). As a Junior at CU I was one of the TA's for MGMT 3200 (Business Analytics) after ***really*** enjoying the course, which used Alteryx for doing ETL work, and a tool called [DataRobot](https://www.datarobot.com/) for making predictions. The grade obtained by students in the class was strongly impacted by their team's percentile ranking on the leaderboards of real [Kaggle](https://www.kaggle.com/) competitions that were going on at the time, and I found myself really loving working with data and I have been trying to learn as much as I can about anything and everything relating to data science since then. I spent multiple summers locking myself 40+ hours a week in my office working on just that.
+
+Here are some of the online courses I worked my way through:
+```{r echo=F}
+knitr::include_url("https://resclapon.com/udemy-certificates")
+```
+
+```{r}
+knitr::include_url("https://resclapon.com/datacamp-certificates")
+```
+
+
+Here is my resume with the same online learning certificates added:
+
+```{r}
+knitr::include_url("https://ricky-cv.netlify.com/")
+```
+
+In my senior year at CU Boulder, I did a business analytics internship with the Pricing Analytics team at Vail Resorts, which turned out to be a lot of manual work that should have been automated, so that's what I did. After graduating from CU Boulder I spent some time applying the things I learned around automation and web scraping to setup a project to collect data relating to the cryptocurrency markets from several sources because I had been trading on them since early 2014 and I saw an opportunity for some automated trading, and I wanted to have a personal project that I could work on over a longer period of time and use to get more comfortable in tools like SQL, R and Python with the prospect of making some money in the end. After a year and a half of working on this, I realized that I was actually better off opening up my project to others more and using it as a tool to teach others to program and that could be really valuable in my career progression towards eventually being a competent data scientist rather than spending all of my energy trying to make short-term trades, which doesn't really teach any tangible or useful skills outside of its own domain. The tutorials and lessons I am building specifically around this project can be found on https://predictcrypto.org/.
+
+Today I am working towards a master's in Data Science part-time online and working on creating more research (including a more legitimate research paper with two professors) around the *PredictCrypto* project, and working on putting out more [tutorials and content through a YouTube channel](https://www.youtube.com/channel/UCZKbm8LERZBe_hwJNwroCPg?view_as=subscriber). My master's program allows me to take one course at a time, be a full-time student, or do anything in between, so that flexibility allows me to work full-time without having an overwhelming schedule.
+
+
+
+
 
 
 
@@ -540,7 +583,160 @@ library(reticulate)
 
 # Ideal Tutorial
 
+## Overview 
+
 ![](images/idealTutorial.png)
+
+
+I don't see this question on the last post regarding the RStudio internship applications being open through March 6th, but I have been thinking about this question since I saw it [originally posted here in November](https://education.rstudio.com/blog/2019/11/rstudio-internships-2020-preview/), so I wanted to include this answer in my application.
+
+Ultimately I think analyzing cryptocurrencies is fun and interesting and a good way to get people's attention, but I have been thinking that a much more useful application of these ideas would be to be able to do a very similar thing but to create live data feeds from sensors out in the real world. This data could then be used to provide highly interactive programming tutorials, where the outcomes of the analysis would change based on the most recent data that was collected. To give a practical example of what that could look like, if there was a live data feed of sensors across Australia giving live information around particulates, carbon monoxide, ozone, carbon dioxide as well as other factors like informaton about the wind, etc.. it seems to me that this could empower things like early detection and much better prevention in general through predictive modeling and being able to triangulate the location of fires as they start or to figure out how to spread the limited resources across the different fires, and I just love the idea of the possibility of moving the needle on a problem through programming tutorials rather than working with uninteresting old data. Creating a system that allows people to actually contribute towards solving real problems might be wishful thinking, but I do believe that the best to teach someone these concepts is to give them data they care about and give them a realistic path forward to apply their existing intuition to answer questions they care about. The `mtcars` and `iris` datasets are great, but data feeds that change over time would be better in ***some*** cases in terms of getting a person invested in the actual analysis being done.
+
+## Tutorials I Have Planned{#tutorials-planned}
+
+As I was thinking through this question, I realized that beyond doing cool work around the data being used itself, I have a pretty lengthy list of topics that I feel are not always expressed as concisely as they should be. These topics *have* been covered by others in the past, but if I had a 5-10 minute video outlining things the way I plan on doing it, it would have saved me a lot of time, so hopefully even if I only reach a couple of people I will have saved them a lot of time, as well as myself whenever I want to go back to using **any of these tools:**
+
+* Creating a website with bookdown, GitHub and Netlify.
+
+    - Conceptually speaking this is amazingly simple to implement if you just know where to click in GitHub + RStudio and does things that would be pretty difficult to achieve with older tools.
+    
+
+* GitHub actions for automation
+
+    - This is a pretty new topic because GitHub Actions have been very recently introduced and most resources online make this way overcomplicated and/or they are not usually specific to R. It's actually not that difficult though and it makes a ton of sense conceptually, especially when using `devtools::check()`, and is a general tool that can be used for all sorts of automation. In fact, it would be a terrible experience, but you could program in R without needing your own computer by using GitHub actions.
+    
+    - I was running into an issue I did not understand when using GitHub actions with bookdown files because of the default argument `clean_envir=FALSE` when running `render_book()`, and I documented the issue here: https://community.rstudio.com/t/github-actions-object-from-secrets-not-found/54519/5
+    
+    - After making a video tutorial around making a website with bookdown, I plan on using that project to explain github actions in another video.
+
+* Using blogdown and pagedown
+
+* Making an R package
+
+* Creating tests to go along with an R package
+
+    - Including code coverage and having the custom badge on the GitHub page refreshed through GitHub actions
+    
+* General overview of how to use GitHub with RStudio
+
+    - In companies you would have a development space and a **production** environment and I see my personal use of GitHub + RStudio as being very similar to that. When you make changes locally it's conceptually similar to a dev environment, and when you push things to GitHub those changes are published to the production environment where it has downstream effects, for example triggering a new build for a website.
+
+* Setting up R + RStudio + GitHub
+
+    - Downloading R
+    
+    - Downloading RStudio
+    
+    - Downloading GitHub and pointing the global options within RStudio to point to git.exe to prompt RStudio to ask for login and create the **Git** tab in the IDE
+    
+    
+* Flexdashboards
+
+
+* Web Scraping
+
+
+* Using RStudio Add-Ins and coolest ones
+
+
+* Awesome ggplot2 extensions
+
+    - trelliscope
+    
+    - rayshader + rayrender
+    
+    - ggmap
+    
+    - gganimate
+    
+    - gghighlight
+    
+    - ... LOTS more
+
+
+
+
+
+    
+* Understanding the tidyverse. Here's a quick example of the things I would really drive home in a tutorial around the tidyverse and when/why you would want to use the pipe operator:
+
+Take the following example:
+```{r}
+sqrt(25)
+```
+
+Here it is easy enough to keep track of what is happening. We are taking the square root of 25 and nothing more. But let's say we have a more complex operation:
+```{r}
+abs(exp(sqrt(25)))
+```
+
+As the code gets more complicated, it gets more difficult to read the code. What order do the operations run? Things can get pretty out of hand, this is not a particularly extreme example.
+
+In comes the pipe operator! Using the %>% we **start** with the value being manipulated, and apply each operation one step at a time:
+```{r}
+25 %>% 
+  sqrt() %>% 
+  exp() %>% 
+  abs()
+```
+
+Now it becomes much clearer that our code starts with the value 25 and the functions are applied in the order `sqrt()`, `exp()`, `abs()`.
+
+When we work with a full dataset, this will also work much better because it will be much easier to distinguish between the data we want to apply a transformation to and the actual transformation. Let's walk through one more example to illustrate this idea.
+
+Let's make a very simple example dataset:
+```{r}
+data <- data.frame("numbers"=c(3,7,9))
+data
+```
+
+Without using the pipe operator, this is what the usage of the `filter()` function would look like:
+```{r}
+filter(data, numbers > 7)
+```
+
+Treating the object `data` within the `filter()` function is not clear. 
+Using the pipe operator, this operation becomes more clear:
+```{r}
+data %>% filter(numbers > 7)
+```
+
+
+To make this point clear, try to translate this code to english in your head:
+```{r}
+round(log(sqrt(filter(data, numbers > 7))),3)
+```
+
+Not exactly straightforward right? Now try to translate this code in your head and see if it is easier at all:
+```{r}
+data %>%
+  filter(numbers > 7) %>%
+  sqrt() %>% 
+  log() %>% 
+  round(3)
+```
+
+You could read this line by line as:
+
+1. Start with the dataframe object called `data`
+
+2. Filter the rows based on the column called `numbers` having a value larger than 7
+
+3. Take the square root of the result
+
+4. Take the log of the result
+
+5. Round the result by 3 decimal places
+
+
+
+
+## Final notes
+
+I would also have a version of [each planned tutorial](#tutorials-planned) recorded in Italian, because I am bilingual and most of this content does not currently exist in Italian as far as I can tell.
+
+
+
 
 
 

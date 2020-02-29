@@ -195,7 +195,7 @@ Because all these systems work so well with automation, as I keep adding new int
 
 Pagedown\citep{R-pagedown} is yet another awesome way to create html outputs and I used Nick Strayer's repository \url{https://github.com/nstrayer/cv} to build my cv and resume using his template:
 
-\href{https://ricky-cv.netlify.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-6-1.pdf}}
+\href{https://ricky-cv.netlify.com/resume}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-6-1.pdf}}
 
 \hypertarget{flexdashboard}{%
 \subsection{Flexdashboard}\label{flexdashboard}}
@@ -212,6 +212,8 @@ To get some practice, I converted some of the content found in \href{https://www
 Automation is at the center of everything I do and my one true passion. One of my big goals for RStudio::conf 2020 was to learn more about automating things through GitHub using CI since I always had a hard time figuring that out, and the things I learned about especially relating to GitHub actions and using Netlify were above my expectations in terms of the ease of use, capabilities and free tier offerings, and I am super excited to share how crazy simple automating a very complex process can be through RStudio, GitHub Actions and Netlify. I didn't fnd a huge wealth of information on automating things in R through GitHub Actions and I'm excited to share those learnings in the months to come.
 
 It's pretty mindblowing that these frameworks allow a user to create an interactive book with complex javascript, HTML, CSS, TeX, etc\ldots{} from scratch, deploy it to an https secured website and create an automated process around it, all in less than 10 minutes with minimal code involved. What's even more mindblowing, is that the same methodologies can be applied to make other interfaces, like making a blogdown website, and I can't speak highly enough of all the work Yihui blessed us all with.
+
+I have also done a lot of automation work for \href{https://www.google.com/search?q=vail+resorts+stock}{Vail Resorts} using a tool called \href{https://www.alteryx.com/}{Alteryx} to create fully automated processes with the main purpose of refreshing Tableau dashboards offering refreshed datasets relating to ski pass sales. You can find an example of an automated Alteryx process I created for a personal project doing automated trading on the cryptocurrency markets using my own database, SQL, R and Python here: \url{https://community.alteryx.com/t5/Alteryx-Use-Cases/Predicting-and-Trading-on-the-Cryptocurrency-Markets-using/ta-p/494058}
 
 \hypertarget{rstudio}{%
 \section{Fit Within the Company}\label{rstudio}}
@@ -250,14 +252,6 @@ Next let's import the \texttt{googlesheets4} and read a spreadsheet I made for t
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Using an auto-discovered, cached token.
-## To suppress this message, modify your code or options to clearly consent to the use of a cached token.
-## See gargle's "Non-interactive auth" vignette for more details:
-## https://gargle.r-lib.org/articles/non-interactive-auth.html
-## The googlesheets4 package is using a cached token for ries9112@colorado.edu.
-\end{verbatim}
-
 Let's take a peek at the \texttt{datatable()} using \texttt{DT} \citep{R-DT}
 
 \begin{Shaded}
@@ -289,10 +283,13 @@ Let's take a peek at the \texttt{datatable()} using \texttt{DT} \citep{R-DT}
 \includegraphics{images/coinmetrics_datadictionary7.png}
 \includegraphics{images/coinmetrics_datadictionary8.png}
 
-\hypertarget{predictive-model---data-prep}{%
-\subsection{Predictive Model - Data Prep}\label{predictive-model---data-prep}}
+\hypertarget{build-interactive-learnr-tutorials-for-tidymodels}{%
+\section{Build interactive learnr tutorials for tidymodels}\label{build-interactive-learnr-tutorials-for-tidymodels}}
 
-Using the data from coinmetrics, I will create a predictive model to forecast the percentage change in price over time in order to show that I would be a good fit for the first two projects listed.
+\hypertarget{data-prep}{%
+\subsection{Data Prep}\label{data-prep}}
+
+Using the data from coinmetrics, I will create a predictive model to forecast the percentage change in price over time.
 
 First, I will import a package that I am making that is \textbf{still in development} \texttt{PredictCrypto}:
 
@@ -433,8 +430,8 @@ Let's also scale the variables
 
 ADD FEATURE SCALING HERE
 
-\hypertarget{build-interactive-learnr-tutorials-for-tidymodels}{%
-\section{Build interactive learnr tutorials for tidymodels}\label{build-interactive-learnr-tutorials-for-tidymodels}}
+\hypertarget{predictive-modeling}{%
+\subsection{Predictive Modeling}\label{predictive-modeling}}
 
 \url{https://education.rstudio.com/blog/2020/02/conf20-intro-ml/}
 
@@ -442,8 +439,7 @@ ADD FEATURE SCALING HERE
 
 \textbf{\emph{Disclaimer}}:\textbf{Most of the code to follow was built using the content made available by Allison Hill from the RStudio::conf2020 intro to machine learning workshop and was not code I was familiar with before writing it for this internship application.}
 
-\hypertarget{create-the-parsnip-r-parsnip-model}{%
-\subsection{\texorpdfstring{Create the \texttt{parsnip} \citep{R-parsnip} model}{Create the parsnip {[}@R-parsnip{]} model}}\label{create-the-parsnip-r-parsnip-model}}
+Create the \texttt{parsnip} \citep{R-parsnip} model
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -530,42 +526,6 @@ Use the trained model to make predictions on test data:
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(tidymodels)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## -- Attaching packages ------------------------------------------------------ tidymodels 0.1.0 --
-\end{verbatim}
-
-\begin{verbatim}
-## v broom     0.5.4     v tune      0.0.1
-## v dials     0.0.4     v workflows 0.1.0
-## v infer     0.5.1     v yardstick 0.0.5
-## v recipes   0.1.9
-\end{verbatim}
-
-\begin{verbatim}
-## -- Conflicts --------------------------------------------------------- tidymodels_conflicts() --
-## x data.table::between()   masks dplyr::between()
-## x broom::bootstrap()      masks modelr::bootstrap()
-## x scales::discard()       masks purrr::discard()
-## x dplyr::filter()         masks plotly::filter(), stats::filter()
-## x data.table::first()     masks dplyr::first()
-## x recipes::fixed()        masks stringr::fixed()
-## x dplyr::lag()            masks stats::lag()
-## x data.table::last()      masks dplyr::last()
-## x yardstick::mae()        masks modelr::mae()
-## x yardstick::mape()       masks modelr::mape()
-## x dials::margin()         masks ggplot2::margin()
-## x yardstick::rmse()       masks modelr::rmse()
-## x yardstick::spec()       masks readr::spec()
-## x recipes::step()         masks stats::step()
-## x data.table::transpose() masks purrr::transpose()
-## x recipes::yj_trans()     masks scales::yj_trans()
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{lm_predictions <-}\StringTok{ }\NormalTok{lm_fitted }\OperatorTok{%>%}\StringTok{ }\KeywordTok{predict}\NormalTok{(crypto_test)}
 \end{Highlighting}
 \end{Shaded}
@@ -790,10 +750,277 @@ Mention experience/courses taken in Python and how it's never clicked with me ve
 \hypertarget{about-me}{%
 \chapter{About Me}\label{about-me}}
 
+My formal education is more oriented towards business, but during my time in college I tried to focus on learning tangible skills as much as possible, and computer science/programming started becoming more my niche over time vs.~business. I am working towards a Master's in Data Science at the University of Denver and I live in Boulder, Colorado.
+
+I was born and raised in Milan, Italy and moved to the middle of Manhattan with my American mom when I was 16 where I finished highschool. I ended up coming to Boulder after reading a \href{http://www.scottjurek.com/eat-run}{book about ultra marathon running} and I could really see myself living in Boulder running with a husky dog training for ultra marathons, so that's what I did:
+
+\includegraphics{images/sakura_option1.jpg}
+
+My girlfriend and I also have an adorable little ferret called Percy:
+
+Is Sakura picture option 2 better?
+\includegraphics{images/sakura_option2.jpg}
+
+I spent my time as an undergrad at the University of Colorado, Boulder studying information management and being a part of the \href{https://www.cutriathlon.com/}{CU Triathlon club team}. As a Junior at CU I was one of the TA's for MGMT 3200 (Business Analytics) after \textbf{\emph{really}} enjoying the course, which used Alteryx for doing ETL work, and a tool called \href{https://www.datarobot.com/}{DataRobot} for making predictions. The grade obtained by students in the class was strongly impacted by their team's percentile ranking on the leaderboards of real \href{https://www.kaggle.com/}{Kaggle} competitions that were going on at the time, and I found myself really loving working with data and I have been trying to learn as much as I can about anything and everything relating to data science since then. I spent multiple summers locking myself 40+ hours a week in my office working on just that.
+
+Here are some of the online courses I worked my way through:
+\href{https://resclapon.com/udemy-certificates}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-27-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_url}\NormalTok{(}\StringTok{"https://resclapon.com/datacamp-certificates"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\href{https://resclapon.com/datacamp-certificates}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-28-1.pdf}}
+
+Here is my resume with the same online learning certificates added:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_url}\NormalTok{(}\StringTok{"https://ricky-cv.netlify.com/"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\href{https://ricky-cv.netlify.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-29-1.pdf}}
+
+In my senior year at CU Boulder, I did a business analytics internship with the Pricing Analytics team at Vail Resorts, which turned out to be a lot of manual work that should have been automated, so that's what I did. After graduating from CU Boulder I spent some time applying the things I learned around automation and web scraping to setup a project to collect data relating to the cryptocurrency markets from several sources because I had been trading on them since early 2014 and I saw an opportunity for some automated trading, and I wanted to have a personal project that I could work on over a longer period of time and use to get more comfortable in tools like SQL, R and Python with the prospect of making some money in the end. After a year and a half of working on this, I realized that I was actually better off opening up my project to others more and using it as a tool to teach others to program and that could be really valuable in my career progression towards eventually being a competent data scientist rather than spending all of my energy trying to make short-term trades, which doesn't really teach any tangible or useful skills outside of its own domain. The tutorials and lessons I am building specifically around this project can be found on \url{https://predictcrypto.org/}.
+
+Today I am working towards a master's in Data Science part-time online and working on creating more research (including a more legitimate research paper with two professors) around the \emph{PredictCrypto} project, and working on putting out more \href{https://www.youtube.com/channel/UCZKbm8LERZBe_hwJNwroCPg?view_as=subscriber}{tutorials and content through a YouTube channel}. My master's program allows me to take one course at a time, be a full-time student, or do anything in between, so that flexibility allows me to work full-time without having an overwhelming schedule.
+
 \hypertarget{ideal-tutorial}{%
 \chapter{Ideal Tutorial}\label{ideal-tutorial}}
 
+\hypertarget{overview-1}{%
+\section{Overview}\label{overview-1}}
+
 \includegraphics{images/idealTutorial.png}
+
+I don't see this question on the last post regarding the RStudio internship applications being open through March 6th, but I have been thinking about this question since I saw it \href{https://education.rstudio.com/blog/2019/11/rstudio-internships-2020-preview/}{originally posted here in November}, so I wanted to include this answer in my application.
+
+Ultimately I think analyzing cryptocurrencies is fun and interesting and a good way to get people's attention, but I have been thinking that a much more useful application of these ideas would be to be able to do a very similar thing but to create live data feeds from sensors out in the real world. This data could then be used to provide highly interactive programming tutorials, where the outcomes of the analysis would change based on the most recent data that was collected. To give a practical example of what that could look like, if there was a live data feed of sensors across Australia giving live information around particulates, carbon monoxide, ozone, carbon dioxide as well as other factors like informaton about the wind, etc.. it seems to me that this could empower things like early detection and much better prevention in general through predictive modeling and being able to triangulate the location of fires as they start or to figure out how to spread the limited resources across the different fires, and I just love the idea of the possibility of moving the needle on a problem through programming tutorials rather than working with uninteresting old data. Creating a system that allows people to actually contribute towards solving real problems might be wishful thinking, but I do believe that the best to teach someone these concepts is to give them data they care about and give them a realistic path forward to apply their existing intuition to answer questions they care about. The \texttt{mtcars} and \texttt{iris} datasets are great, but data feeds that change over time would be better in \textbf{\emph{some}} cases in terms of getting a person invested in the actual analysis being done.
+
+\hypertarget{tutorials-planned}{%
+\section{Tutorials I Have Planned}\label{tutorials-planned}}
+
+As I was thinking through this question, I realized that beyond doing cool work around the data being used itself, I have a pretty lengthy list of topics that I feel are not always expressed as concisely as they should be. These topics \emph{have} been covered by others in the past, but if I had a 5-10 minute video outlining things the way I plan on doing it, it would have saved me a lot of time, so hopefully even if I only reach a couple of people I will have saved them a lot of time, as well as myself whenever I want to go back to using \textbf{any of these tools:}
+
+\begin{itemize}
+\item
+  Creating a website with bookdown, GitHub and Netlify.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Conceptually speaking this is amazingly simple to implement if you just know where to click in GitHub + RStudio and does things that would be pretty difficult to achieve with older tools.
+  \end{itemize}
+\item
+  GitHub actions for automation
+
+  \begin{itemize}
+  \item
+    This is a pretty new topic because GitHub Actions have been very recently introduced and most resources online make this way overcomplicated and/or they are not usually specific to R. It's actually not that difficult though and it makes a ton of sense conceptually, especially when using \texttt{devtools::check()}, and is a general tool that can be used for all sorts of automation. In fact, it would be a terrible experience, but you could program in R without needing your own computer by using GitHub actions.
+  \item
+    I was running into an issue I did not understand when using GitHub actions with bookdown files because of the default argument \texttt{clean\_envir=FALSE} when running \texttt{render\_book()}, and I documented the issue here: \url{https://community.rstudio.com/t/github-actions-object-from-secrets-not-found/54519/5}
+  \item
+    After making a video tutorial around making a website with bookdown, I plan on using that project to explain github actions in another video.
+  \end{itemize}
+\item
+  Using blogdown and pagedown
+\item
+  Making an R package
+\item
+  Creating tests to go along with an R package
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Including code coverage and having the custom badge on the GitHub page refreshed through GitHub actions
+  \end{itemize}
+\item
+  General overview of how to use GitHub with RStudio
+
+  \begin{itemize}
+  \tightlist
+  \item
+    In companies you would have a development space and a \textbf{production} environment and I see my personal use of GitHub + RStudio as being very similar to that. When you make changes locally it's conceptually similar to a dev environment, and when you push things to GitHub those changes are published to the production environment where it has downstream effects, for example triggering a new build for a website.
+  \end{itemize}
+\item
+  Setting up R + RStudio + GitHub
+
+  \begin{itemize}
+  \item
+    Downloading R
+  \item
+    Downloading RStudio
+  \item
+    Downloading GitHub and pointing the global options within RStudio to point to git.exe to prompt RStudio to ask for login and create the \textbf{Git} tab in the IDE
+  \end{itemize}
+\item
+  Flexdashboards
+\item
+  Web Scraping
+\item
+  Using RStudio Add-Ins and coolest ones
+\item
+  Awesome ggplot2 extensions
+
+  \begin{itemize}
+  \item
+    trelliscope
+  \item
+    rayshader + rayrender
+  \item
+    ggmap
+  \item
+    gganimate
+  \item
+    gghighlight
+  \item
+    \ldots{} LOTS more
+  \end{itemize}
+\item
+  Understanding the tidyverse. Here's a quick example of the things I would really drive home in a tutorial around the tidyverse and when/why you would want to use the pipe operator:
+\end{itemize}
+
+Take the following example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(}\DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+Here it is easy enough to keep track of what is happening. We are taking the square root of 25 and nothing more. But let's say we have a more complex operation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{abs}\NormalTok{(}\KeywordTok{exp}\NormalTok{(}\KeywordTok{sqrt}\NormalTok{(}\DecValTok{25}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 148.4132
+\end{verbatim}
+
+As the code gets more complicated, it gets more difficult to read the code. What order do the operations run? Things can get pretty out of hand, this is not a particularly extreme example.
+
+In comes the pipe operator! Using the \%\textgreater\% we \textbf{start} with the value being manipulated, and apply each operation one step at a time:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{25} \OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{sqrt}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{exp}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{abs}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 148.4132
+\end{verbatim}
+
+Now it becomes much clearer that our code starts with the value 25 and the functions are applied in the order \texttt{sqrt()}, \texttt{exp()}, \texttt{abs()}.
+
+When we work with a full dataset, this will also work much better because it will be much easier to distinguish between the data we want to apply a transformation to and the actual transformation. Let's walk through one more example to illustrate this idea.
+
+Let's make a very simple example dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\StringTok{"numbers"}\NormalTok{=}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{))}
+\NormalTok{data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   numbers
+## 1       3
+## 2       7
+## 3       9
+\end{verbatim}
+
+Without using the pipe operator, this is what the usage of the \texttt{filter()} function would look like:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{filter}\NormalTok{(data, numbers }\OperatorTok{>}\StringTok{ }\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   numbers
+## 1       9
+\end{verbatim}
+
+Treating the object \texttt{data} within the \texttt{filter()} function is not clear.
+Using the pipe operator, this operation becomes more clear:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OperatorTok{%>%}\StringTok{ }\KeywordTok{filter}\NormalTok{(numbers }\OperatorTok{>}\StringTok{ }\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   numbers
+## 1       9
+\end{verbatim}
+
+To make this point clear, try to translate this code to english in your head:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{round}\NormalTok{(}\KeywordTok{log}\NormalTok{(}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{filter}\NormalTok{(data, numbers }\OperatorTok{>}\StringTok{ }\DecValTok{7}\NormalTok{))),}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   numbers
+## 1   1.099
+\end{verbatim}
+
+Not exactly straightforward right? Now try to translate this code in your head and see if it is easier at all:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(numbers }\OperatorTok{>}\StringTok{ }\DecValTok{7}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{sqrt}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{log}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   numbers
+## 1   1.099
+\end{verbatim}
+
+You could read this line by line as:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Start with the dataframe object called \texttt{data}
+\item
+  Filter the rows based on the column called \texttt{numbers} having a value larger than 7
+\item
+  Take the square root of the result
+\item
+  Take the log of the result
+\item
+  Round the result by 3 decimal places
+\end{enumerate}
+
+\hypertarget{final-notes}{%
+\section{Final notes}\label{final-notes}}
+
+I would also have a version of \protect\hyperlink{tutorials-planned}{each planned tutorial} recorded in Italian, because I am bilingual and most of this content does not currently exist in Italian as far as I can tell.
 
 \hypertarget{cool-charts}{%
 \chapter{Cool Charts}\label{cool-charts}}
