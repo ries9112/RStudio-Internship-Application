@@ -39,20 +39,20 @@ Here are some of the things I believe make me a great fit for the internship:
 
 ## I `r emo::ji("heart")` .Rmd files
 
-I was completely blown away by the R Markdown file format when I first discovered it, and I definitely felt a bit cheated by the fact that none of the courses I took in college in R mentioned it at all or the tidyverse. I have spent a lot of my time learning R Markdown and digging through books and amazing resources made available by RStudio, so here are some of my favorite formats that I would love to make more content around and teach people about:
+I was completely blown away by the R Markdown file format when I first discovered it, and I definitely felt like the courses I took in college in R should have mentioned the .Rmd format, as well as the tidyverse and the idea behind the pipe operator. I have spent a lot of my time learning R Markdown and digging through books and amazing resources made available by RStudio, so here are some of my favorite output formats that I am looking to teach people about:
 
 
 ### Learnr {#learnr}
 
 <!-- I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: https://github.com/ries9112/R-Tutorial (the apps themselves are down but the repo has some gifs illustrating the past functionality) -->
 
-I have been using learnr for about a year and a half, and recently I started to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:
+I have been using learnr [for about a year and a half](https://github.com/ries9112/R-Tutorial), and recently I started to offer programming tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:
 
-(this takes about 45 seconds to load, give it more time if it's showing up blank)
+(this takes about 30 seconds to load, give it more time if it's showing up blank)
 
-```{r, echo=F}
+```{r echo=F, fig.width=900}
 knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/",
-  height = "600px")
+  height = "612E00px")
 ```
 
 I would recommend looking at the **Visualization** section to visually see that the data is never outdated by more than 1 hour.
@@ -72,16 +72,11 @@ I was very close to paying for a monthly subscription on gitbook.com because I t
 
 This document is obviously an example of a bookdown document in itself, but here's another guide I put together using bookdown:
 
-```{r, echo=F}
+```{r echo=F, fig.width=850}
 knitr::include_url("https://predictcryptodb-quickstart.com/")
 ```
 
-This guide refreshes daily in order to show a preview of the latest data within the document [and you can look at the GitHub Actions daily runs here](https://github.com/ries9112/PredictCryptoDB/actions)
-
-How does URL itself look here (DELETE THIS:)
-```{r echo=F, fig.width=900}
-knitr::include_url("https://github.com/ries9112/PredictCryptoDB/actions")
-```
+This guide refreshes daily in order to show a preview of the latest data within the document [and you can look at the GitHub Actions daily runs here](https://github.com/ries9112/PredictCryptoDB/actions). You can also see the refreshed data in the [*useful tables* section](https://predictcryptodb-quickstart.com/useful-tables.html) of the document.
 
 I also found that documentation done in bookdown can work really great when working within a large company as well, and I put together some very thorough documentation for a project using bookdown that was very well received (but I can't show here). In my particular case it worked really well because I could send the link to the html index of the bookdown document and when opened it would behave like a website hosted on the shared folders within the secure network which ended up being particularly simple and effective.
 
@@ -99,7 +94,7 @@ Making presentations in R Markdown is what really got me working with .Rmd files
 
 Blogdown[@R-blogdown] and bookdown work very similarly, so most of what I mentioned in the [bookdown section](#bookdown) applies here. Because my website predictcrypto.com only shows the latest data based on the current date, I leverage blogdown to create weekly snapshots of the visualizations over the last 7 day period: https://predictcryptoblog.com/. 
 
-```{r, echo=F}
+```{r echo=F, fig.height=750}
 knitr::include_url("https://predictcryptoblog.com/")
 ```
 
@@ -109,7 +104,7 @@ Because all these systems work so well with automation, as I keep adding new int
 
 Pagedown[@R-pagedown] is yet another awesome way to create html outputs and I used Nick Strayer's repository https://github.com/nstrayer/cv to build my cv and resume using his template:
 
-```{r, echo=F}
+```{r echo=F, fig.width=900}
 knitr::include_url("https://ricky-cv.netlify.com/")
 ```
 
@@ -124,14 +119,13 @@ To get some practice, I converted some of the content found in [Tidy Text Mining
 knitr::include_url("https://predictcrypto.shinyapps.io/SemanticAnalysisExample/")
 ```
 
-I made the code available through RStudio Cloud here as well: https://rstudio.cloud/spaces/9369/join?access_code=pkfhGuOMRhleNIHSHH6YOQPEWstEdg0e7Pi6Ue3q
+<!-- I made the code available through RStudio Cloud here as well: https://rstudio.cloud/spaces/9369/join?access_code=pkfhGuOMRhleNIHSHH6YOQPEWstEdg0e7Pi6Ue3q -->
 
 
 ## Automation {#automation}
 
-Automation is at the center of everything I do and my one true passion. One of my big goals for RStudio::conf 2020 was to learn more about automating things through GitHub using CI since I always had a hard time figuring that out, and the things I learned about especially relating to GitHub actions and using Netlify were above my expectations in terms of the ease of use, capabilities and free tier offerings, and I am super excited to share how crazy simple automating a very complex process can be through RStudio, GitHub Actions and Netlify and I'm not sure why people make things so . 
+Automation is at the center of everything I do and my one true passion. One of my big goals for RStudio::conf 2020 was to learn more about automating things through GitHub using CI since I always had a hard time figuring that out, and the things I learned about especially relating to GitHub actions and using Netlify were above my expectations in terms of the ease of use, capabilities and free tier offerings, and I am super excited to share how crazy simple automating a very complex process can be through RStudio, GitHub Actions and Netlify. I didn't fnd a huge wealth of information on automating things in R through GitHub Actions and I'm excited to share those learnings in the months to come.
 
-The bookdown example from earlier https://predictcryptodb-quickstart.com/ for example uses those tools to refresh the guide daily in order to show the latest data in the [*useful tables* section](https://predictcryptodb-quickstart.com/useful-tables.html)
 
 It's pretty mindblowing that these frameworks allow a user to create an interactive book with complex javascript, HTML, CSS, TeX, etc... from scratch, deploy it to an https secured website and create an automated process around it, all in less than 10 minutes with minimal code involved. What's even more mindblowing, is that the same methodologies can be applied to make other interfaces, like making a blogdown website, and I can't speak highly enough of all the work Yihui blessed us all with.
 
