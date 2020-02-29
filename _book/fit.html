@@ -32,7 +32,6 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="ideal-projects.html"/>
-<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -61,26 +60,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -89,9 +87,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -141,10 +139,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Overview</a></li>
-<li class="chapter" data-level="2" data-path="fit.html"><a href="fit.html"><i class="fa fa-check"></i><b>2</b> What makes me a good fit</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="fit.html"><a href="fit.html#i-️-.rmd-files"><i class="fa fa-check"></i><b>2.1</b> I ❤️ .Rmd files</a>
-<ul>
+<li class="chapter" data-level="2" data-path="fit.html"><a href="fit.html"><i class="fa fa-check"></i><b>2</b> What makes me a good fit</a><ul>
+<li class="chapter" data-level="2.1" data-path="fit.html"><a href="fit.html#i-️-.rmd-files"><i class="fa fa-check"></i><b>2.1</b> I ❤️ .Rmd files</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="fit.html"><a href="fit.html#learnr"><i class="fa fa-check"></i><b>2.1.1</b> Learnr</a></li>
 <li class="chapter" data-level="2.1.2" data-path="fit.html"><a href="fit.html#bookdown"><i class="fa fa-check"></i><b>2.1.2</b> Bookdown</a></li>
 <li class="chapter" data-level="2.1.3" data-path="fit.html"><a href="fit.html#presentations"><i class="fa fa-check"></i><b>2.1.3</b> Presentations</a></li>
@@ -155,18 +151,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="fit.html"><a href="fit.html#automation"><i class="fa fa-check"></i><b>2.2</b> Automation</a></li>
 <li class="chapter" data-level="2.3" data-path="fit.html"><a href="fit.html#rstudio"><i class="fa fa-check"></i><b>2.3</b> Fit Within the Company</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ideal-projects.html"><a href="ideal-projects.html"><i class="fa fa-check"></i><b>3</b> Projects Well Suited For</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="ideal-projects.html"><a href="ideal-projects.html#create-resources-for-people-working-with-spreadsheets-in-r"><i class="fa fa-check"></i><b>3.1</b> Create resources for people working with spreadsheets in R</a>
-<ul>
+<li class="chapter" data-level="3" data-path="ideal-projects.html"><a href="ideal-projects.html"><i class="fa fa-check"></i><b>3</b> Projects Well Suited For</a><ul>
+<li class="chapter" data-level="3.1" data-path="ideal-projects.html"><a href="ideal-projects.html#create-resources-for-people-working-with-spreadsheets-in-r"><i class="fa fa-check"></i><b>3.1</b> Create resources for people working with spreadsheets in R</a><ul>
 <li class="chapter" data-level="3.1.1" data-path="ideal-projects.html"><a href="ideal-projects.html#predictive-model---data-prep"><i class="fa fa-check"></i><b>3.1.1</b> Predictive Model - Data Prep</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="ideal-projects.html"><a href="ideal-projects.html#build-interactive-learnr-tutorials-for-tidymodels"><i class="fa fa-check"></i><b>3.2</b> Build interactive learnr tutorials for tidymodels</a>
-<ul>
+<li class="chapter" data-level="3.2" data-path="ideal-projects.html"><a href="ideal-projects.html#build-interactive-learnr-tutorials-for-tidymodels"><i class="fa fa-check"></i><b>3.2</b> Build interactive learnr tutorials for tidymodels</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="ideal-projects.html"><a href="ideal-projects.html#create-the-parsnip-r-parsnip-model"><i class="fa fa-check"></i><b>3.2.1</b> Create the <code>parsnip</code> <span class="citation">(Kuhn and Vaughan <span>2020</span>)</span> model</a></li>
 <li class="chapter" data-level="3.2.2" data-path="ideal-projects.html"><a href="ideal-projects.html#trainfit-the-model"><i class="fa fa-check"></i><b>3.2.2</b> Train/fit the model:</a></li>
 <li class="chapter" data-level="3.2.3" data-path="ideal-projects.html"><a href="ideal-projects.html#now-make-one-model-for-each-cryptocurrency."><i class="fa fa-check"></i><b>3.2.3</b> Now make one model for each cryptocurrency.</a></li>
-<li class="chapter" data-level="3.2.4" data-path="ideal-projects.html"><a href="ideal-projects.html#add-error-metrics-using-broom-r-broom"><i class="fa fa-check"></i><b>3.2.4</b> Add error metrics using <code>broom</code> <span class="citation">(<span class="citeproc-not-found" data-reference-id="R-broom"><strong>???</strong></span>)</span>:</a></li>
+<li class="chapter" data-level="3.2.4" data-path="ideal-projects.html"><a href="ideal-projects.html#add-error-metrics-using-broom-r-broom"><i class="fa fa-check"></i><b>3.2.4</b> Add error metrics using <code>broom</code> <span class="citation">(Robinson and Hayes <span>2020</span>)</span>:</a></li>
 <li class="chapter" data-level="3.2.5" data-path="ideal-projects.html"><a href="ideal-projects.html#how-much-better-do-the-models-get-if-we-add-more-variables"><i class="fa fa-check"></i><b>3.2.5</b> How much better do the models get if we add more variables?</a></li>
 <li class="chapter" data-level="3.2.6" data-path="ideal-projects.html"><a href="ideal-projects.html#next-steps"><i class="fa fa-check"></i><b>3.2.6</b> Next Steps:</a></li>
 </ul></li>
@@ -174,8 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="about-me.html"><a href="about-me.html"><i class="fa fa-check"></i><b>4</b> About Me</a></li>
 <li class="chapter" data-level="5" data-path="ideal-tutorial.html"><a href="ideal-tutorial.html"><i class="fa fa-check"></i><b>5</b> Ideal Tutorial</a></li>
-<li class="chapter" data-level="6" data-path="cool-charts.html"><a href="cool-charts.html"><i class="fa fa-check"></i><b>6</b> Cool Charts</a>
-<ul>
+<li class="chapter" data-level="6" data-path="cool-charts.html"><a href="cool-charts.html"><i class="fa fa-check"></i><b>6</b> Cool Charts</a><ul>
 <li class="chapter" data-level="6.1" data-path="cool-charts.html"><a href="cool-charts.html#disable-while-working-on-bookdown-takes-too-long-to-render"><i class="fa fa-check"></i><b>6.1</b> Disable while working on bookdown, takes too long to render!</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -199,67 +191,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="fit" class="section level1" number="2">
+<div id="fit" class="section level1">
 <h1><span class="header-section-number">2</span> What makes me a good fit</h1>
 <p>Here are some of the things I believe make me a great fit for the internship:</p>
-<div id="i-️-.rmd-files" class="section level2" number="2.1">
+<div id="i-️-.rmd-files" class="section level2">
 <h2><span class="header-section-number">2.1</span> I ❤️ .Rmd files</h2>
-<p>I was completely blown away by the R Markdown file format when I first discovered it, and I definitely felt a bit cheated by the fact that none of the courses I took during my undergrad in R mentioned it at all or the tidyverse. I have spent a lot of my time learning R Markdown and digging through books and amazing resources made available by RStudio, so here are some of my favorite formats that I would love to make more content around and teach people about:</p>
-<div id="learnr" class="section level3" number="2.1.1">
+<p>I was completely blown away by the R Markdown file format when I first discovered it, and I definitely felt a bit cheated by the fact that none of the courses I took in college in R mentioned it at all or the tidyverse. I have spent a lot of my time learning R Markdown and digging through books and amazing resources made available by RStudio, so here are some of my favorite formats that I would love to make more content around and teach people about:</p>
+<div id="learnr" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Learnr</h3>
 <!-- I first discovered the ***learnr*** [@R-learnr] package in late 2018 and was really impressed by the functionality it provides. My first real project using learnr was centered around teaching my young Italian cousins to program in R by allowing them to compare their Fortnite stats in real time to each other and the best players in the world, and be able to learn more about the game through working with data, for example finding the best weapon based on their damage and range. The GitHub repository associated with that project can be found here: https://github.com/ries9112/R-Tutorial (the apps themselves are down but the repo has some gifs illustrating the past functionality) -->
-<p><strong>I have been using learnr for about a year and a half, and recently I started to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:</strong></p>
+<p>I have been using learnr for about a year and a half, and recently I started to offer tutorials on my website using learnr where every time the tutorial is opened, users learn to program in R using data from the cryptocurrency markets that is never outdated by more than 1 hour:</p>
 <p>(this takes about 45 seconds to load, give it more time if it’s showing up blank)</p>
 <iframe src="https://predictcrypto.shinyapps.io/R_Basics/?showcase=0" width="672" height="600px">
 </iframe>
+<p>I would recommend looking at the <strong>Visualization</strong> section to visually see that the data is never outdated by more than 1 hour.</p>
 <p>I post these on my website:
 <iframe src="https://predictcrypto.com/tutorials" width="672" height="600px"></iframe></p>
 <p>I’m loving the integrated tutorials tab within RStudio in the 1.3 preview and I am working towards including these with my <code>PredictCrypto</code> package, which I talk more about and use in the <a href="ideal-projects.html#ideal-projects">next section</a> of this document.</p>
 </div>
-<div id="bookdown" class="section level3" number="2.1.2">
+<div id="bookdown" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Bookdown</h3>
-<p>At one point I was very close to paying for a monthly subscription on gitbook.com because I thought it was such an amazing format to provide documentation through, so I was particularly impressed by and grateful for the bookdown <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span> package, and these days it’s my go to for organizing most things I work on, so why not my application?</p>
+<p>I was very close to paying for a monthly subscription on gitbook.com because I thought it was such an amazing format to provide documentation through, so I was particularly impressed by and grateful for the bookdown <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span> package, and these days it’s my go to for organizing most things I work on, so why not my application?</p>
 <p>This document is obviously an example of a bookdown document in itself, but here’s another guide I put together using bookdown:</p>
 <iframe src="https://predictcryptodb-quickstart.com/" width="672" height="400px">
 </iframe>
-<p><em>MAKE SURE THIS ACTUALLY REFRESHES WITH GITHUB ACTIONS BEFORE APPLYING</em></p>
+<p>This guide refreshes daily in order to show a preview of the latest data within the document <a href="https://github.com/ries9112/PredictCryptoDB/actions">and you can look at the GitHub Actions daily runs here</a></p>
+<p>How does URL itself look here (DELETE THIS:)
+<iframe src="https://github.com/ries9112/PredictCryptoDB/actions" width="86400" height="400px"></iframe></p>
 <p>I also found that documentation done in bookdown can work really great when working within a large company as well, and I put together some very thorough documentation for a project using bookdown that was very well received (but I can’t show here). In my particular case it worked really well because I could send the link to the html index of the bookdown document and when opened it would behave like a website hosted on the shared folders within the secure network which ended up being particularly simple and effective.</p>
 </div>
-<div id="presentations" class="section level3" number="2.1.3">
+<div id="presentations" class="section level3">
 <h3><span class="header-section-number">2.1.3</span> Presentations</h3>
 <p>I am a <strong>big</strong> fan of ioslides and revealjs in particular as R Markdown outputs. I find the revealjs output to be incredibly cool with the rotating cube animation, and the ability to not only move forward but move downward adds a surprisingly useful tool to break down topics; ioslides is just really clean, well made and easy to use and looks great with widescreen enabled. I aspire to be an expert in Xaringan one day but am not currently.</p>
 <p>Making presentations in R Markdown is what really got me working with .Rmd files, because I started working towards a very specific project using an idea I haven’t really seen elsewhere of creating presentations that give the user options and as they make their way through the slides, those options affect not only what they see in the slides that come afterwards, but also the options they are given. For example, the user could choose to do an analysis for a particular asset, then choose the main category of the analysis to perform, then the sub-category of the analysis and so on, until by the end of the presentation the user has performed an analysis that was completely unique and tailored to their preferences and interests. See the gif below for an example of what this looks like:</p>
-<p><img src="images/dynamic_presentation.gif" /></p>
+<!-- ![](images/dynamic_presentation.gif) -->
 </div>
-<div id="blogdown" class="section level3" number="2.1.4">
+<div id="blogdown" class="section level3">
 <h3><span class="header-section-number">2.1.4</span> Blogdown</h3>
 <p>Blogdown<span class="citation">(Xie <a href="#ref-R-blogdown" role="doc-biblioref">2019</a>)</span> and bookdown work very similarly, so most of what I mentioned in the <a href="fit.html#bookdown">bookdown section</a> applies here. Because my website predictcrypto.com only shows the latest data based on the current date, I leverage blogdown to create weekly snapshots of the visualizations over the last 7 day period: <a href="https://predictcryptoblog.com/" class="uri">https://predictcryptoblog.com/</a>.</p>
 <iframe src="https://predictcryptoblog.com/" width="672" height="400px">
 </iframe>
 <p>Because all these systems work so well with automation, as I keep adding new interesting content to my website I can also add archives of that content using blogdown.</p>
 </div>
-<div id="pagedown" class="section level3" number="2.1.5">
+<div id="pagedown" class="section level3">
 <h3><span class="header-section-number">2.1.5</span> Pagedown</h3>
 <p>Pagedown<span class="citation">(Xie, Lesur, and Thorne <a href="#ref-R-pagedown" role="doc-biblioref">2020</a>)</span> is yet another awesome way to create html outputs and I used Nick Strayer’s repository <a href="https://github.com/nstrayer/cv" class="uri">https://github.com/nstrayer/cv</a> to build my cv and resume using his template:</p>
 <iframe src="https://ricky-cv.netlify.com/" width="672" height="400px">
 </iframe>
 </div>
-<div id="flexdashboard" class="section level3" number="2.1.6">
+<div id="flexdashboard" class="section level3">
 <h3><span class="header-section-number">2.1.6</span> Flexdashboard</h3>
 <p>Flexdashboards<span class="citation">(Iannone, Allaire, and Borges <a href="#ref-R-flexdashboard" role="doc-biblioref">2018</a>)</span> were my first introduction to shiny apps and I was completely blown away by that framework and have used it for several projects and is one of my absolute favorite tools.</p>
-<p>To get some practice, I converted some of the content found in <a href="https://www.tidytextmining.com/">Tidy Text Mining by Julia Silge and David Robinson</a> and made it into a flexdashboard. I made no changes to the code found within the book, this was simply an experiment to learn more about flexdashboards and semantic analysis:</p>
+<p>To get some practice, I converted some of the content found in <a href="https://www.tidytextmining.com/">Tidy Text Mining by Julia Silge and David Robinson</a> and made it into a flexdashboard. <strong>I made no changes to the code found within the book</strong>, this was simply an experiment to learn more about flexdashboards and semantic analysis:</p>
 <iframe src="https://predictcrypto.shinyapps.io/SemanticAnalysisExample/" width="672" height="400px">
 </iframe>
 <p>I made the code available through RStudio Cloud here as well: <a href="https://rstudio.cloud/spaces/9369/join?access_code=pkfhGuOMRhleNIHSHH6YOQPEWstEdg0e7Pi6Ue3q" class="uri">https://rstudio.cloud/spaces/9369/join?access_code=pkfhGuOMRhleNIHSHH6YOQPEWstEdg0e7Pi6Ue3q</a></p>
 </div>
 </div>
-<div id="automation" class="section level2" number="2.2">
+<div id="automation" class="section level2">
 <h2><span class="header-section-number">2.2</span> Automation</h2>
-<p>Automation is at the center of everything I do and my one true passion. One of my big goals for RStudio::conf 2020 was to learn more about automating things through GitHub using CI since I always had a hard time figuring that out, and the things I learned about especially relating to GitHub actions and using Netlify were above my expectations in terms of the ease of use, capabilities and free tier offerings, and I am super excited to share how crazy simple automating a very complex process can be through RStudio, GitHub Actions and Netlify.</p>
+<p>Automation is at the center of everything I do and my one true passion. One of my big goals for RStudio::conf 2020 was to learn more about automating things through GitHub using CI since I always had a hard time figuring that out, and the things I learned about especially relating to GitHub actions and using Netlify were above my expectations in terms of the ease of use, capabilities and free tier offerings, and I am super excited to share how crazy simple automating a very complex process can be through RStudio, GitHub Actions and Netlify and I’m not sure why people make things so .</p>
 <p>The bookdown example from earlier <a href="https://predictcryptodb-quickstart.com/" class="uri">https://predictcryptodb-quickstart.com/</a> for example uses those tools to refresh the guide daily in order to show the latest data in the <a href="https://predictcryptodb-quickstart.com/useful-tables.html"><em>useful tables</em> section</a></p>
 <p>It’s pretty mindblowing that these frameworks allow a user to create an interactive book with complex javascript, HTML, CSS, TeX, etc… from scratch, deploy it to an https secured website and create an automated process around it, all in less than 10 minutes with minimal code involved. What’s even more mindblowing, is that the same methodologies can be applied to make other interfaces, like making a blogdown website, and I can’t speak highly enough of all the work Yihui blessed us all with.</p>
 </div>
-<div id="rstudio" class="section level2" number="2.3">
+<div id="rstudio" class="section level2">
 <h2><span class="header-section-number">2.3</span> Fit Within the Company</h2>
 <p>I really wanted to go to RStudio::conf 2019 but was not able to make it out and after all the videos got posted I watched most of them and immediately knew I had to come to RStudio::conf 2020 and it was a truly incredible experience.</p>
 <p>JJ’s talk and BCorp announcement really resonated with me and there is no other company who’s mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I love the values that RStudio holds dear as a company and there is really no other company that I want to work for more than RStudio.</p>
