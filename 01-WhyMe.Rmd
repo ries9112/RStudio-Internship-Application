@@ -59,7 +59,7 @@ Making presentations in R Markdown is what really got me working with .Rmd files
 
 Blogdown[@R-blogdown] and bookdown work very similarly, so most of what I mentioned in the [bookdown section](#bookdown) applies here. Because my website predictcrypto.com only shows the latest data based on the current date, I leverage blogdown to create weekly snapshots of the visualizations over the last 7 day period: https://predictcryptoblog.com/. 
 
-```{r echo=F}
+```{r show_blog, echo=F}
 knitr::include_url("https://predictcryptoblog.com/")
 ```
 
@@ -69,14 +69,15 @@ Because all these systems work so well with automation, as I keep adding new int
 
 Pagedown[@R-pagedown] is yet another awesome way to create html outputs and I used Nick Strayer's repository https://github.com/nstrayer/cv to build my cv and resume using his template:
 
-```{r echo=F}
+```{r show_resume, echo=F}
 knitr::include_url("https://ricky-cv.netlify.com/resume")
 ```
 
+*[Big thanks to Nick Strayer for the awesome template!](https://github.com/nstrayer/cv)*
 
 ### Flexdashboard {#flexdashboard}
 
-Flexdashboards[@R-flexdashboard] were my first introduction to shiny apps and I was completely blown away by that framework and have used it for several projects and is one of my absolute favorite tools.
+Flexdashboards [@R-flexdashboard] were my first introduction to shiny apps and I was completely blown away by that framework and have used it for several projects and is one of my absolute favorite tools.
 
 To get some practice, I converted some of the content found in [Tidy Text Mining by Julia Silge and David Robinson](https://www.tidytextmining.com/) and made it into a flexdashboard. **I made no changes to the code found within the book**, this was simply an experiment to learn more about flexdashboards and semantic analysis:
 
@@ -91,7 +92,7 @@ knitr::include_url("https://predictcrypto.shinyapps.io/SemanticAnalysisExample/"
 
 Automation is at the center of everything I do and my one true passion. One of my big goals for RStudio::conf 2020 was to learn more about automating things through GitHub using CI since I always had a hard time figuring that out, and the things I learned about especially relating to GitHub actions and using Netlify were above my expectations in terms of the ease of use, capabilities and free tier offerings, and I am super excited to share how crazy simple automating a very complex process can be through RStudio, GitHub Actions and Netlify. I didn't fnd a huge wealth of information on automating things in R through GitHub Actions and I'm excited to share those learnings in the months to come.
 
-It's pretty mindblowing that these frameworks allow a user to create an interactive book with complex javascript, HTML, CSS, TeX, etc... from scratch, deploy it to an https secured website and create an automated process around it, all in less than 10 minutes with minimal code involved. What's even more mindblowing, is that the same methodologies can be applied to make other interfaces, like making a blogdown website, and I can't speak highly enough of all the work Yihui blessed us all with.
+It's pretty mindblowing that these frameworks allow a user to create an interactive book with complex javascript, HTML, CSS, TeX, etc... from scratch, deploy it to an https secured website and create an automated process around it, all in less than 10 minutes with minimal code involved. What's even more powerful, is that the same methodologies can be applied to make other interfaces and outputs, like making a blogdown website, and I can't speak highly enough of all the work Yihui blessed us all with.
 
 I have also done a lot of automation work for [Vail Resorts](https://www.google.com/search?q=vail+resorts+stock) using a tool called [Alteryx](https://www.alteryx.com/) to create fully automated processes with the main purpose of refreshing Tableau dashboards offering refreshed datasets relating to ski pass sales. You can find an example of an automated Alteryx process I created for a personal project doing automated trading on the cryptocurrency markets using my own database, SQL, R and Python here: https://community.alteryx.com/t5/Alteryx-Use-Cases/Predicting-and-Trading-on-the-Cryptocurrency-Markets-using/ta-p/494058
 
@@ -100,9 +101,12 @@ I have also done a lot of automation work for [Vail Resorts](https://www.google.
 
 I really wanted to go to RStudio::conf 2019 but was not able to make it out and after all the videos got posted I watched most of them and immediately knew I had to come to RStudio::conf 2020 and it was a truly incredible experience.
 
-JJ's talk and BCorp announcement really resonated with me and there is no other company who's mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I love the values that RStudio holds dear as a company and there is really no other company that I want to work for more than RStudio.
+JJ's talk and BCorp announcement really resonated with me and there is no other company who's mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I share the values that RStudio holds dear as a company and there is really no other company that I want to work for more than RStudio. At the conference one of the things I was really impressed with for example was the focus and clarity around why everything should always be reproducible and how not making your work publicly available can often be very costly in many different ways. RStudio has done an **incredible** job at making incredible powerful and complex frameworks easy for anyone to use, and there's nothing I would rather do more than contribute to making easy to follow and informative content to help other *"fellow self-taught programmers who were told they weren't good enough but are too driven and excited to care"* [@gans2020] in the same spirit of former superstar interns like Maya.
 
-I also work my best remotely and I have a dedicated office to do my work in with a powerful desktop PC and two screens.
+
+
+
+I also work my best remotely, I have a dedicated office to do my work in with a powerful desktop PC and two monitors. I also have experience working remotely and keeping myself accountable without someone looking over my shoulder.
 
 
 

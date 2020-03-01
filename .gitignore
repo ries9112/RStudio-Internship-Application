@@ -4,3 +4,7 @@
 .Ruserdata
 login_info.R
 cryptoData.csv
+upload_data.csv
+upload_data_sheets.csv
+uploaded_from_r_to_sheets.csv
+*.csv

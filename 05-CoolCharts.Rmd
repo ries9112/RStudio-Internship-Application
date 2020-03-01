@@ -2,7 +2,7 @@
 
 ## Disable while working on bookdown, takes too long to render!
 
-Here are some examples of charts, which refresh daily using GitHub actions and Netlify for automation.
+Since we already imported the cryptocurrency data in the [earlier section]() of this bookdown document, might as well make some cool charts!
 
 
 ```{r setup, message=F, echo=F, include=FALSE}

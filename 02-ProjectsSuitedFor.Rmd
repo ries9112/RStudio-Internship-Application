@@ -14,29 +14,60 @@ library(tidyverse)
 ```
 
 We will be importing the following spreadsheet:
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR7fM5r89Jdxn3K-oLYTCWg2BsxQ_afQ21HNIJQIQIn7RqIJKJ_VLslSh1a4A4D2BBpPt2QYxSNiFdl/pubhtml?widget=true&amp;headers=false"></iframe>
+
+```{r echo=F}
+knitr::include_url("https://docs.google.com/spreadsheets/d/e/2PACX-1vR7fM5r89Jdxn3K-oLYTCWg2BsxQ_afQ21HNIJQIQIn7RqIJKJ_VLslSh1a4A4D2BBpPt2QYxSNiFdl/pubhtml?gid=1164062226&single=true")
+```
 
 ```{r spreadsheet_url}
 spreadsheet_url <- "https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit?usp=sharing"
 ```
 
+Before importing the data, let's use `tictoc` [@R-tictoc] to measure how long each step takes. I am using `tic()` to start the time for both the total execution time and for the step reading the data in. After importing the data we will run `toc()` to get the execution time for that step.
 
-
-Next let's import the `googlesheets4` and read a spreadsheet I made for this internship application, specifying the sheet called *coinmetrics_btc_eth* inside the function `read_sheet()`:
-
-```{r import_coinmetrics_btc_eth, message=FALSE, warning=FALSE}
-library(googlesheets4)
-googlesheets_data <- read_sheet(spreadsheet_url, sheet = 'coinmetrics_btc_eth') %>% as.data.frame()
+```{r tic_start}
+library(tictoc)
+tic('Total runtime')
+tic('Read googlesheets data')
 ```
 
-Let's take a peek at the `datatable()` using `DT` [@R-DT]
+
+Now let's import the `googlesheets4` and read a spreadsheet I made for this internship application, specifying the sheet called *coinmetrics_full* inside the function `read_sheet()`:
+
+```{r import_coinmetrics_full, message=FALSE, warning=FALSE}
+library(googlesheets4)
+googlesheets_data <- read_sheet(spreadsheet_url, sheet = 'coinmetrics_full') %>% as.data.frame()
+```
+
+
+```{r tic_sheets_end}
+toc()
+```
+
+
+<!-- ```{r show_import_coinmetrics_full, echo=F, message=FALSE, warning=FALSE} -->
+<!-- library(flair) -->
+<!-- decorate('import_coinmetrics_full') %>% -->
+<!--   flair("coinmetrics_full") -->
+<!-- ``` -->
+
+<!-- *Using the `flair` [@R-flair] package for highlighting* -->
+
+
+Let's take a peek at the first 1,000 rows using `DT::datatable()` [@R-DT]
 ```{r show_googlesheets_data, message=FALSE, warning=FALSE}
 library(DT)
-datatable(googlesheets_data,  style = "default", 
+datatable(head(googlesheets_data,1000),  style = "default", 
           options = list(scrollX = TRUE, pageLength=5,dom='t'), rownames = F)
 ```
 
 **This data is sourced from the website [coinmetrics.io](https://coinmetrics.io/community-network-data/#comm-files)**
+
+How many rows in the dataset?
+```{r count_rows}
+nrow(googlesheets_data)
+```
+
 
 [Coinmetrics also provides a data dictionary to go along with the data:](https://coinmetrics.io/community-data-dictionary/)
 
@@ -154,24 +185,24 @@ For feature scaling, we need to do two things:
 2. ***Scale*** the data in every column to have a standard deviation of one
 
 
-The `recipes` [@R-recipes] package is a very useful package for pre-processing data before doing predictive modeling, and it allows us to center the way we do our data engineering around the independent variable we are looking to predict, which in our case is the `target_percent_change`. We can make a recipe which centers all numeric fields in the data using `step_center()` and then scale them using `step_scale()`:
+The `recipes` [@R-recipes] package is a very useful package for pre-processing data before doing predictive modeling, and it allows us to center the way we do our data engineering around the independent variable we are looking to predict, which in our case is the `target_percent_change`. We can make a recipe which centers all numeric fields in the data using `step_center()` and then scale them using `step_scale()`. We will also remove the symbol column from the recipe using `step_rm()` because we don't want to use it for the predictions but we don't want to remove it from the dataset either:
 
 ```{r create_recipe, message=FALSE, warning=FALSE}
 library(recipes)
 scaling_recipe <- recipe(target_percent_change ~ ., data = exercise_data) %>%
+  step_rm('symbol') %>% 
   step_center(all_numeric()) %>% 
   step_scale(all_numeric())
 ```
 
-<!-- Commented out because vector becomes too large in terms of Gb -->
-<!-- We can also take this as an opportunity to make some more adjustments that we will need later on. First we convert nominal data to numeric dummy variables using `step_dummy()`. Then we use `step_novel()`, which adds a catch-all level to factors to avoid an error we could run into predicting new levels in the test set (if a factor level has not been seen our code would fail otherwise). The final adjustment we will have in our recipe will use `step_zv()` to intelligently handle cases where a variable only contains a single value, which could also cause some issues in the later steps. -->
+We can also take this as an opportunity to make some more adjustments that we will need later on. First we convert nominal data to numeric dummy variables using `step_dummy()`. Then we use `step_novel()`, which adds a catch-all level to factors to avoid an error we could run into predicting new levels in the test set (if a factor level has not been seen our code would fail otherwise). The final adjustment we will have in our recipe will use `step_zv()` to intelligently handle cases where a variable only contains a single value, which could also cause some issues in the later steps.
 
-<!-- ```{r add_to_recipe} -->
-<!-- scaling_recipe <- scaling_recipe %>% -->
-<!--   step_novel(all_nominal()) %>% -->
-<!--   step_dummy(all_nominal()) %>% -->
-<!--   step_zv(all_predictors()) -->
-<!-- ``` -->
+```{r add_to_recipe}
+scaling_recipe <- scaling_recipe %>%
+  step_novel(all_nominal()) %>%
+  step_dummy(all_nominal()) %>%
+  step_zv(all_predictors())
+```
 
 
 
@@ -219,14 +250,14 @@ lm_model <- linear_reg() %>%
 List of models to refer to: https://tidymodels.github.io/parsnip/articles/articles/Models.html
 
 Random Forest:
-```{r}
+```{r random_forest_parsnip}
 random_forest_model <- rand_forest(trees = 100, mode = "regression") %>%
   set_engine("randomForest") 
 ```
 
 
 XGBoost:
-```{r}
+```{r xgboost_parsnip}
 xgboost_model <- xgboost_parsnip <- boost_tree() %>% 
   set_engine("xgboost") %>%             
   set_mode("regression")
@@ -234,7 +265,7 @@ xgboost_model <- xgboost_parsnip <- boost_tree() %>%
 
 Remove fields not used for models (NOTE: REMOVE price_usd_x_daysLater AND date_time_x_days_Later FROM BEING GENERATED INSIDE THE FUNCTION)
 
-```{r}
+```{r remove_fields}
 exercise_data <- select(exercise_data, -date_time_utc, -date_time, -pkDummy, -pkey, -price_usd_x_daysLater, -date_time_x_daysLater)
 ```
 
@@ -242,7 +273,7 @@ exercise_data <- select(exercise_data, -date_time_utc, -date_time, -pkDummy, -pk
 Create train/test split using `rsample`[@R-rsample]:
 
 (should I do 10-fold cross validation?)
-```{r}
+```{r train_test_split}
 library(rsample)
 
 set.seed(250)
@@ -256,20 +287,20 @@ crypto_test  <-  testing(crypto_data)
 
 ```{r}
 library(modelr)
-lm_fitted <- lm_model %>% fit(price_usd ~ ., data=crypto_train)
+lm_fitted <- lm_model %>% fit(target_percent_change ~ . -symbol, data=crypto_train) # fit price_usd to all variables except for the symbol
 ```
 
 Random Forest:
 ```{r}
 random_forest_fitted <- random_forest_model %>%
-  fit(target_percent_change ~ ., data = exercise_data)
+  fit(target_percent_change ~ . -symbol, data = crypto_train)
 ```
 
 
 XGBoost:
 
 ```{r}
-xgboost_fitted <- xgboost_model %>% fit(price_usd ~ ., data=crypto_train)
+xgboost_fitted <- xgboost_model %>% fit(price_usd ~ . -symbol, data=crypto_train)
 ```
 
 
@@ -277,7 +308,8 @@ Use the trained model to make predictions on test data:
 
 ```{r}
 library(tidymodels)
-lm_predictions <- lm_fitted %>% predict(crypto_test)
+#crypto_test <- crypto_test %>% select(-symbol)
+lm_predictions <- predict(lm_fitted, crypto_test)
 ```
 
 <!-- ```{r} -->
@@ -321,7 +353,7 @@ crypto_data_grouped <- exercise_data %>% group_by(symbol) %>% nest()
 crypto_data_grouped
 ```
 
-Make a helper function with the model:
+Make a helper function with the model so I can make the `lm()` model using `purrr`:
 
 ```{r modelFunction}
 grouped_linear_model <- function(df) {
@@ -393,6 +425,8 @@ I won't go further than this here, but as my next steps, here is what I would do
 3. Visualize the best model before and after parameter tuning and then do the same with the worst performing model
 
 
+^Change to "if I were to keep going" and add note about doing cross validation
+
 
 <!-- Could also use `yardstick` [@R-yardstick] for metrics: https://tidymodels.github.io/yardstick/ -->
 
@@ -437,6 +471,14 @@ library(reticulate)
 ```
 
 
+
+
+Return the total runtime of all of the examples above:
+
+
+```{r tic_all_exercises_end}
+toc()
+```
 
 
 
