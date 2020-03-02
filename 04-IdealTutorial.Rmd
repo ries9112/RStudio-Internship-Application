@@ -13,12 +13,12 @@ Ultimately I think analyzing cryptocurrencies is fun and interesting and a good 
 
 As I was thinking through this question, I realized that beyond doing cool work around the data being used itself, I have a pretty lengthy list of topics that I feel are not always expressed as concisely as they should be. These topics *have* been covered by others in the past, but if I had a 5-10 minute video outlining things the way I plan on doing it, it would have saved me a lot of time, so hopefully even if I only reach a couple of people I will have saved them a lot of time, as well as myself whenever I want to go back to using **any of these tools:**
 
-* Creating a website with bookdown, GitHub and Netlify.
+* Creating a website with bookdown, GitHub and Netlify:
 
     - Conceptually speaking this is amazingly simple to implement if you just know where to click in GitHub + RStudio and does things that would be pretty difficult to achieve with older tools.
     
 
-* GitHub actions for automation
+* GitHub actions for automation:
 
     - This is a pretty new topic because GitHub Actions have been very recently introduced and most resources online make this way overcomplicated and/or they are not usually specific to R. It's actually not that difficult though and it makes a ton of sense conceptually, especially when using `devtools::check()`, and is a general tool that can be used for all sorts of automation. In fact, it would be a terrible experience, but you could program in R without needing your own computer by using GitHub actions.
     
@@ -30,15 +30,15 @@ As I was thinking through this question, I realized that beyond doing cool work 
 
 * Making an R package
 
-* Creating tests to go along with an R package
+* Creating tests to go along with an R package:
 
     - Including code coverage and having the custom badge on the GitHub page refreshed through GitHub actions
     
-* General overview of how to use GitHub with RStudio
+* General overview of how to use GitHub with RStudio:
 
     - In companies you would have a development space and a **production** environment and I see my personal use of GitHub + RStudio as being very similar to that. When you make changes locally it's conceptually similar to a dev environment, and when you push things to GitHub those changes are published to the production environment where it has downstream effects, for example triggering a new build for a website.
 
-* Setting up R + RStudio + GitHub
+* Setting up R + RStudio + GitHub:
 
     - Downloading R
     
@@ -56,7 +56,7 @@ As I was thinking through this question, I realized that beyond doing cool work 
 * Using RStudio Add-Ins and coolest ones
 
 
-* Awesome ggplot2 extensions
+* Awesome ggplot2 extensions:
 
     - trelliscope
     

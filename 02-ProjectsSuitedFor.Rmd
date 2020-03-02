@@ -16,7 +16,7 @@ library(tidyverse)
 We will be importing the following spreadsheet:
 
 ```{r echo=F}
-knitr::include_url("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit?usp=sharing")
+knitr::include_url("https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit#gid=395468559")
 ```
 
 ```{r spreadsheet_url}
@@ -36,9 +36,12 @@ Now let's import the `googlesheets4` and read a spreadsheet I made for this inte
 
 ```{r import_coinmetrics_preview, message=FALSE, warning=FALSE}
 library(googlesheets4)
-# googlesheets_data <- read_sheet(spreadsheet_url, sheet = 'coinmetrics_preview') %>% as.data.frame() # won't work on Github Actions
-googlesheets_data <- read.csv('unioned_data_upload.csv', stringsAsFactors = F)
+googlesheets_data <- read_sheet(spreadsheet_url, sheet = 'coinmetrics_preview') %>% as.data.frame() # won't work with Github Actions
 ```
+
+<!-- ```{r} -->
+<!-- googlesheets_data <- googlesheets_data %>% filter(Symbol) -->
+<!-- ``` -->
 
 
 ```{r tic_sheets_end}
@@ -168,13 +171,17 @@ https://conf20-intro-ml.netlify.com/materials/01-predicting/
 
 ### Feature scaling
 
+```{r tic_scaling}
+tic('Feature scaling')
+```
+
 Before getting started on the predictive modeling section, it's a good idea for us to scale the numeric data in our dataset. Some of the fields in the dataset are bound to have dramatically different ranges in their values:
 ```{r mean_roi_30_days}
-mean(exercise_data$roi_30_days)
+mean(exercise_data$roi30d, na.rm=T)
 ```
 
 ```{r mean_supply_current}
-mean(exercise_data$supply_current)
+mean(exercise_data$cap_mrkt_cur_usd)
 ```
 
 This can be problematic for some models (not every model has this issue), and the difference in the magnitude of the numbers could unfairly influence the model to think that the variable with the larger numbers is more statistically important than the one with the lesser values when that might not actually be true.
@@ -188,27 +195,23 @@ For feature scaling, we need to do two things:
 
 The `recipes` [@R-recipes] package is a very useful package for pre-processing data before doing predictive modeling, and it allows us to center the way we do our data engineering around the independent variable we are looking to predict, which in our case is the `target_percent_change`. We can make a recipe which centers all numeric fields in the data using `step_center()` and then scale them using `step_scale()`. We will also remove the symbol column from the recipe using `step_rm()` because we don't want to use it for the predictions but we don't want to remove it from the dataset either:
 
-```{r tic_scaling}
-tic('Scaling')
-```
-
 
 ```{r create_recipe, message=FALSE, warning=FALSE}
 library(recipes)
 scaling_recipe <- recipe(target_percent_change ~ ., data = exercise_data) %>%
-  step_rm('symbol') %>% 
   step_center(all_numeric()) %>% 
   step_scale(all_numeric())
 ```
 
-We can also take this as an opportunity to make some more adjustments that we will need later on. First we convert nominal data to numeric dummy variables using `step_dummy()`. Then we use `step_novel()`, which adds a catch-all level to factors to avoid an error we could run into predicting new levels in the test set (if a factor level has not been seen our code would fail otherwise). The final adjustment we will have in our recipe will use `step_zv()` to intelligently handle cases where a variable only contains a single value, which could also cause some issues in the later steps.
+Commented out `step_novel(all_nominal())`, `step_dummy(all_nominal())`, `step_nz(all_predictors())` because size too large and won't run on PC or GitHub Actions.
+<!-- We can also take this as an opportunity to make some more adjustments that we will need later on. First we convert nominal data to numeric dummy variables using `step_dummy()`. Then we use `step_novel()`, which adds a catch-all level to factors to avoid an error we could run into predicting new levels in the test set (if a factor level has not been seen our code would fail otherwise). The final adjustment we will have in our recipe will use `step_zv()` to intelligently handle cases where a variable only contains a single value, which could also cause some issues in the later steps. -->
 
-```{r add_to_recipe}
-scaling_recipe <- scaling_recipe %>%
-  step_novel(all_nominal()) %>%
-  step_dummy(all_nominal()) %>%
-  step_zv(all_predictors())
-```
+<!-- ```{r add_to_recipe} -->
+<!-- scaling_recipe <- scaling_recipe %>% -->
+<!--   step_novel(all_nominal()) %>% -->
+<!--   step_dummy(all_nominal()) %>% -->
+<!--   step_zv(all_predictors()) -->
+<!-- ``` -->
 
 
 Now that we have made a data pre-processing *recipe*, let's map it to the `exercise_data` dataset:
@@ -224,21 +227,17 @@ crypto_data_scaled <- crypto_data_scaled %>% bake(exercise_data)
 
 Now the values are scaled:
 ```{r active_addresses_preview}
-head(crypto_data_scaled$active_addresses,5)
+head(crypto_data_scaled$cap_mrkt_cur_usd,5)  
 ```
-
 
 You can see the difference from the previous values:
 ```{r scaled_active_addresses_preview}
-head(exercise_data$active_addresses,5)
+head(exercise_data$cap_mrkt_cur_usd,5)
 ```
-
 
 ```{r toc_scaling}
-toc('Scaling')
+toc()
 ```
-
-
 
 
 ### Predictive Modeling
@@ -249,12 +248,12 @@ tic('Predictive Modeling')
 
 
 
-Create the `parsnip` [@R-parsnip] model
+We can create models using `parsnip` [@R-parsnip], which is particularly nice because it gives a very standardized structure for a variety of models. Here's the slightly over-complicated `lm()` linear regression model using `parsnip`:
 
 ```{r parsnip models}
 library(parsnip)
-lm_model <- linear_reg() %>%              
-  set_engine("lm") %>%             
+lm_model <- linear_reg() %>%
+  set_engine("lm") %>%
   set_mode("regression")
 ```
 
@@ -263,27 +262,25 @@ List of models to refer to: https://tidymodels.github.io/parsnip/articles/articl
 Random Forest:
 ```{r random_forest_parsnip}
 random_forest_model <- rand_forest(trees = 100, mode = "regression") %>%
-  set_engine("randomForest") 
+  set_engine("randomForest")
 ```
-
 
 XGBoost:
 ```{r xgboost_parsnip}
-xgboost_model <- xgboost_parsnip <- boost_tree() %>% 
-  set_engine("xgboost") %>%             
+xgboost_model <- xgboost_parsnip <- boost_tree() %>%
+  set_engine("xgboost") %>%
   set_mode("regression")
 ```
 
 Remove fields not used for models (NOTE: REMOVE price_usd_x_daysLater AND date_time_x_days_Later FROM BEING GENERATED INSIDE THE FUNCTION)
 
 ```{r remove_fields}
-exercise_data <- select(exercise_data, -date_time_utc, -date_time, -pkDummy, -pkey, -price_usd_x_daysLater, -date_time_x_daysLater)
+exercise_data <- select(exercise_data, -date_time_utc, -date_time, -pkDummy, -pkey, -price_usd_x_daysLater, -date_time_x_daysLater, -cap_real_usd, -cap_mvrv_cur)
 ```
 
 
-Create train/test split using `rsample`[@R-rsample]:
+Before we can start fitting a predictive model, we need to create a train/test split, we can use `rsample`[@R-rsample] to put 80% of the data into `crypto_train` and 20% of the data in `crypto_test`:
 
-(should I do 10-fold cross validation?)
 ```{r train_test_split}
 library(rsample)
 
@@ -293,13 +290,20 @@ crypto_train <- training(crypto_data)
 crypto_test  <-  testing(crypto_data)
 ```
 
+Compare the number of rows:
+```{r compare_rows_train_test}
+nrow(crypto_train) # 80% of rows
+nrow(crypto_test) # 20% of rows
+```
+
 
 ### Train/fit the model:
 
+Now we can go ahead and fit the models to the data:
 
 ```{r}
 library(modelr)
-lm_fitted <- lm_model %>% fit(target_percent_change ~ . -symbol, data=crypto_train) # fit price_usd to all variables except for the symbol
+lm_fitted <- lm_model %>% fit(target_percent_change ~ ., data=crypto_train)
 ```
 
 Random Forest:
@@ -310,11 +314,11 @@ tic('Random Forest')
 
 ```{r}
 random_forest_fitted <- random_forest_model %>%
-  fit(target_percent_change ~ . -symbol, data = crypto_train)
+  fit(target_percent_change ~ ., data = crypto_train)
 ```
 
 ```{r toc_random_forest}
-toc('Random Forest')
+toc()
 ```
 
 XGBoost:
@@ -324,18 +328,17 @@ tic('XGBoost')
 ```
 
 ```{r}
-xgboost_fitted <- xgboost_model %>% fit(price_usd ~ . -symbol, data=crypto_train)
+xgboost_fitted <- xgboost_model %>% fit(price_usd ~ ., data=crypto_train)
 ```
 
 ```{r toc_xgboost}
-toc('XGBoost')
+toc()
 ```
 
 Use the trained model to make predictions on test data:
 
 ```{r}
 library(tidymodels)
-#crypto_test <- crypto_test %>% select(-symbol)
 lm_predictions <- predict(lm_fitted, crypto_test)
 ```
 
@@ -368,9 +371,9 @@ xgboost_predictions %>%
 
 ### Now make one model for each cryptocurrency. 
 
-***Code adapted from: https://r4ds.had.co.nz/many-models.html***
+***Lots of code adapted from: https://r4ds.had.co.nz/many-models.html***
 
-First I group the data
+First I group the data by the cryptocurrency symbol:
 
 ```{r group_nest_data}
 crypto_data_grouped <- exercise_data %>% group_by(symbol) %>% nest()
@@ -380,13 +383,14 @@ crypto_data_grouped <- exercise_data %>% group_by(symbol) %>% nest()
 crypto_data_grouped
 ```
 
-Make a helper function with the model so I can make the `lm()` model using `purrr`:
+Make a helper function with the model so I can make the `lm()` model to apply to each cryptocurrency using `purrr`:
 
 ```{r modelFunction}
 grouped_linear_model <- function(df) {
   lm(target_percent_change ~ ., data = df)
 }
 ```
+**I could have made a more complex model here, but decided to keep things a bit simpler with linear regression**
 
 Now we can use `purrr`[@R-purrr] to apply the model to each element of the grouped dataframe:
 ```{r}
@@ -422,43 +426,55 @@ resids %>%
     facet_wrap(~symbol)
 ```
 
-### Add error metrics using `broom` [@R-broom]:
+### Add Metrics
+
+Now we can use `broom` [@R-broom] to get all sorts of metrics back on the models:
 
 ```{r broom_metrics_all}
 crypto_models_metrics <- crypto_data_grouped %>% mutate(metrics=map(model,broom::glance)) %>% unnest(metrics)
 ```
 
-
-Sort by the best scores:
-```{r}
+Sort the new tibble by the best r squared values:
+```{r sort_tibble_r_squared}
 crypto_models_metrics %>% arrange(-r.squared)
 ```
 
-
-
-```{r toc_predictive_modeling}
-toc('Predictive Modeling')
+Here is a list of metrics supported by `broom`:
+```{r list_metrics}
+list_metrics()
 ```
 
 
-### How much better do the models get if we add more variables?
+```{r toc_predictive_modeling}
+toc()
+```
 
-Add MA, EMA, etc...
+### Plot Variable Importance
+
+Now I can use the `vip` [@R-vip] package to plot the variable importance:
+
+```{r vip_plots_loop}
+library(vip)
+for (i in 1:length(crypto_models_metrics$symbol)){
+  print(paste("Now showing", crypto_models_metrics$symbol[[i]], "variable importance:"))
+  print(vip(crypto_models_metrics$model[[i]]))
+}
+```
 
 
+### If I were to keep going...
 
-### Next Steps:
+**Here are some of the next steps I would take if I were to keep going with this analysis:**
 
-I won't go further than this here, but as my next steps, here is what I would do:
+1. How much better do the models get if we add more variables? Adding timeseries components like Moving Averages.
 
-1. Use parsnip + purrr to iterate through lots of predictive models
+2. Use parsnip + purrr to iterate through lots of predictive models rather than just applying a simple `lm()` model to each.
 
-2. How much better do the models get with hyperparameter tuning?
+3. How much better do the models get with hyperparameter tuning? I would use [dials since it's a part of tidymodels](https://tidymodels.github.io/dials/).
 
-3. Visualize the best model before and after parameter tuning and then do the same with the worst performing model
+4. Visualize the best model before and after parameter tuning and then do the same with the worst performing model.
 
-
-^Change to "if I were to keep going" and add note about doing cross validation
+5. I would also go back to the train/test split and use 10-fold cross validation instead.
 
 
 <!-- Could also use `yardstick` [@R-yardstick] for metrics: https://tidymodels.github.io/yardstick/ -->
