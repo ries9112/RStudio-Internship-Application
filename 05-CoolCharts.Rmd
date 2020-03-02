@@ -106,12 +106,14 @@ ethereumData <- filter(cryptoData, Name == 'Ethereum')
 ```
 
 
-
+Remember to add tictoc code here as well
 
 <!-- ## Previous 24h % Change - Global Market - Hex Bins -->
 
 <!-- The y-axis in the chart below is limited to a range of -25% to 25% -->
 
+
+For rayshader separate camera settings and just write a line explaining it's just camera settings. So first make normal chart, then import rayshader, set filename_movie name and all camera settings
 <!-- ```{r rayshader, echo=FALSE, message=FALSE, warning=FALSE} -->
 <!-- filename_movie = 'rayshader.mp4' -->
 <!-- phivechalf = 30 + 60 * 1/(1 + exp(seq(-7, 20, length.out = 180)/2)) -->

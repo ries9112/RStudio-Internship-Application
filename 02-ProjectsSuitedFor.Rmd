@@ -261,13 +261,13 @@ List of models to refer to: https://tidymodels.github.io/parsnip/articles/articl
 
 Random Forest:
 ```{r random_forest_parsnip}
-random_forest_model <- rand_forest(trees = 100, mode = "regression") %>%
+random_forest_model <- rand_forest(trees = 1000, mode = "regression") %>%
   set_engine("randomForest")
 ```
 
 XGBoost:
 ```{r xgboost_parsnip}
-xgboost_model <- xgboost_parsnip <- boost_tree() %>%
+xgboost_model <- xgboost_parsnip <- boost_tree(trees=1000, tree_depth = 8) %>%
   set_engine("xgboost") %>%
   set_mode("regression")
 ```
