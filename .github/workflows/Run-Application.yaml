@@ -25,6 +25,7 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck", 'bookdown','DBI','RMySQL','data.table','knitr','rmarkdown','DT','webshot','PhantomJS', 'bibtex','googlesheets4','tictoc','devtools','janitor','anytime','recipes','parsnip','rsample','modelr','tidymodels','tidyverse','emo'))
+          devtools::install_github('hadley/emo')
           devtools::install_github('ries9112/PredictCrypto')
         shell: Rscript {0}
       - name: Refresh book
