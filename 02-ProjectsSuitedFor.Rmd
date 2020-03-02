@@ -36,7 +36,8 @@ Now let's import the `googlesheets4` and read a spreadsheet I made for this inte
 
 ```{r import_coinmetrics_preview, message=FALSE, warning=FALSE}
 library(googlesheets4)
-googlesheets_data <- read_sheet(spreadsheet_url, sheet = 'coinmetrics_preview') %>% as.data.frame()
+# googlesheets_data <- read_sheet(spreadsheet_url, sheet = 'coinmetrics_preview') %>% as.data.frame() # won't work on Github Actions
+googlesheets_data <- read.csv('unioned_data_upload.csv', stringsAsFactors = F)
 ```
 
 
