@@ -30,7 +30,7 @@ library(bibtex)
 # options(repos = BiocManager::repositories())
 # options(repos = BiocInstaller::biocinstallRepos())
 ############# SQL CONNECTION ###############
-source("login_info.R")
+# source("login_info.R")
 getSqlConnection <- function(){
   con <-
     dbConnect(

@@ -1,3 +1,15 @@
+```{r import_final_libraries, message=FALSE, warning=FALSE}
+# import libraries not captured imported earlier that are referenced
+library(bookdown)
+library(blogdown)
+library(pagedown)
+library(flexdashboard)
+```
+
+```{r write_bib_packages, message=FALSE, warning=FALSE}
+knitr::write_bib(c(.packages()), "packages.bib")
+```
+
 `r if (knitr::is_html_output()) '
 # References {-}
 '`
