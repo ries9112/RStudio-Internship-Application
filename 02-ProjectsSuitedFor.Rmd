@@ -27,7 +27,7 @@ Before importing the data, let's use `tictoc` [@R-tictoc] to measure how long ea
 
 ```{r tic_start}
 library(tictoc)
-tic('Total runtime')
+tic('Total section 3 runtime')
 tic('Read googlesheets data')
 ```
 
@@ -297,9 +297,9 @@ nrow(crypto_test) # 20% of rows
 ```
 
 
-### Train/fit the model:
+### Fit the model:
 
-Now we can go ahead and fit the models to the data:
+Now we can go ahead and train/fit the models to the data:
 
 ```{r}
 library(modelr)
@@ -431,6 +431,7 @@ resids %>%
 Now we can use `broom` [@R-broom] to get all sorts of metrics back on the models:
 
 ```{r broom_metrics_all}
+library(broom)
 crypto_models_metrics <- crypto_data_grouped %>% mutate(metrics=map(model,broom::glance)) %>% unnest(metrics)
 ```
 
@@ -439,10 +440,10 @@ Sort the new tibble by the best r squared values:
 crypto_models_metrics %>% arrange(-r.squared)
 ```
 
-Here is a list of metrics supported by `broom`:
-```{r list_metrics}
-list_metrics()
-```
+<!-- Here is a list of metrics supported by `broom`: -->
+<!-- ```{r list_metrics} -->
+<!-- list_metrics() -->
+<!-- ``` -->
 
 
 ```{r toc_predictive_modeling}
@@ -466,7 +467,7 @@ for (i in 1:length(crypto_models_metrics$symbol)){
 
 **Here are some of the next steps I would take if I were to keep going with this analysis:**
 
-1. How much better do the models get if we add more variables? Adding timeseries components like Moving Averages.
+1. How much better do the models get if we add timeseries components like Moving Averages?
 
 2. Use parsnip + purrr to iterate through lots of predictive models rather than just applying a simple `lm()` model to each.
 
@@ -492,18 +493,12 @@ I think I could be a great fit for the third project listed related to creating 
 
 I am very familiar with the `reticulate` package and I have used it in the past in an RMarkdown file to make automated cryptocurrency trades through a Python package `shrimpy-python`, which worked really well: https://github.com/shrimpy-dev/shrimpy-python
 
-Since I have already demonstrated my familiarity with learnr tutorials **[in the previous section](#learnr)**, I will keep going with the code from the tidymodels project example I just finished and use Python for ... ADD GOAL HERE ...
+Since I have already demonstrated my familiarity with learnr tutorials **[in the previous section](#learnr)**, I did not make a very extensive example here, but instead created a learnr tutorial with a Python code chunk instead
 
 
-
-
-DEV:
-
-Replace this with the Python one:
-
-<!-- ```{r} -->
-<!-- knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/") -->
-<!-- ``` -->
+```{r}
+knitr::include_app("https://predictcrypto.shinyapps.io/python_project3_example/")
+```
 
 Could make a very simple xgboost model maybe?
 

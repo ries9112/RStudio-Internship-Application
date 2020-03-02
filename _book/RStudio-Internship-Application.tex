@@ -263,7 +263,7 @@ Before importing the data, let's use \texttt{tictoc} \citep{R-tictoc} to measure
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(tictoc)}
-\KeywordTok{tic}\NormalTok{(}\StringTok{'Total runtime'}\NormalTok{)}
+\KeywordTok{tic}\NormalTok{(}\StringTok{'Total section 3 runtime'}\NormalTok{)}
 \KeywordTok{tic}\NormalTok{(}\StringTok{'Read googlesheets data'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -284,7 +284,7 @@ Now let's import the \texttt{googlesheets4} and read a spreadsheet I made for th
 \end{Shaded}
 
 \begin{verbatim}
-## Read googlesheets data: 38.2 sec elapsed
+## Read googlesheets data: 36.58 sec elapsed
 \end{verbatim}
 
 Let's take a peek at the first 1,000 rows using \texttt{DT::datatable()} \citep{R-DT}
@@ -477,6 +477,12 @@ Or a 24 hour period:
 \hypertarget{feature-scaling}{%
 \subsection{Feature scaling}\label{feature-scaling}}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tic}\NormalTok{(}\StringTok{'Feature scaling'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 Before getting started on the predictive modeling section, it's a good idea for us to scale the numeric data in our dataset. Some of the fields in the dataset are bound to have dramatically different ranges in their values:
 
 \begin{Shaded}
@@ -512,12 +518,6 @@ For feature scaling, we need to do two things:
 \end{enumerate}
 
 The \texttt{recipes} \citep{R-recipes} package is a very useful package for pre-processing data before doing predictive modeling, and it allows us to center the way we do our data engineering around the independent variable we are looking to predict, which in our case is the \texttt{target\_percent\_change}. We can make a recipe which centers all numeric fields in the data using \texttt{step\_center()} and then scale them using \texttt{step\_scale()}. We will also remove the symbol column from the recipe using \texttt{step\_rm()} because we don't want to use it for the predictions but we don't want to remove it from the dataset either:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{tic}\NormalTok{(}\StringTok{'Scaling'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -595,7 +595,7 @@ You can see the difference from the previous values:
 \end{Shaded}
 
 \begin{verbatim}
-## Scaling: 0.17 sec elapsed
+## Feature scaling: 0.19 sec elapsed
 \end{verbatim}
 
 \hypertarget{predictive-modeling}{%
@@ -607,13 +607,13 @@ You can see the difference from the previous values:
 \end{Highlighting}
 \end{Shaded}
 
-Create the \texttt{parsnip} \citep{R-parsnip} model
+We can create models using \texttt{parsnip} \citep{R-parsnip}, which is particularly nice because it gives a very standardized structure for a variety of models. Here's the slightly over-complicated \texttt{lm()} linear regression model using \texttt{parsnip}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(parsnip)}
-\NormalTok{lm_model <-}\StringTok{ }\KeywordTok{linear_reg}\NormalTok{() }\OperatorTok{%>%}\StringTok{              }
-\StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"lm"}\NormalTok{) }\OperatorTok{%>%}\StringTok{             }
+\NormalTok{lm_model <-}\StringTok{ }\KeywordTok{linear_reg}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"lm"}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{set_mode}\NormalTok{(}\StringTok{"regression"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -625,7 +625,7 @@ Random Forest:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{random_forest_model <-}\StringTok{ }\KeywordTok{rand_forest}\NormalTok{(}\DataTypeTok{trees =} \DecValTok{100}\NormalTok{, }\DataTypeTok{mode =} \StringTok{"regression"}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"randomForest"}\NormalTok{) }
+\StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"randomForest"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -633,8 +633,8 @@ XGBoost:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{xgboost_model <-}\StringTok{ }\NormalTok{xgboost_parsnip <-}\StringTok{ }\KeywordTok{boost_tree}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"xgboost"}\NormalTok{) }\OperatorTok{%>%}\StringTok{             }
+\NormalTok{xgboost_model <-}\StringTok{ }\NormalTok{xgboost_parsnip <-}\StringTok{ }\KeywordTok{boost_tree}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"xgboost"}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{set_mode}\NormalTok{(}\StringTok{"regression"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -647,7 +647,7 @@ Remove fields not used for models (NOTE: REMOVE price\_usd\_x\_daysLater AND dat
 \end{Highlighting}
 \end{Shaded}
 
-Create train/test split using \texttt{rsample}\citep{R-rsample}:
+Before we can start fitting a predictive model, we need to create a train/test split, we can use \texttt{rsample}\citep{R-rsample} to put 80\% of the data into \texttt{crypto\_train} and 20\% of the data in \texttt{crypto\_test}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -664,7 +664,7 @@ Compare the number of rows:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{nrow}\NormalTok{(crypto_train)}
+\KeywordTok{nrow}\NormalTok{(crypto_train) }\CommentTok{# 80% of rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -674,7 +674,7 @@ Compare the number of rows:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{nrow}\NormalTok{(crypto_test)}
+\KeywordTok{nrow}\NormalTok{(crypto_test) }\CommentTok{# 20% of rows}
 \end{Highlighting}
 \end{Shaded}
 
@@ -685,10 +685,12 @@ Compare the number of rows:
 \hypertarget{trainfit-the-model}{%
 \subsection{Train/fit the model:}\label{trainfit-the-model}}
 
+Now we can go ahead and fit the models to the data:
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(modelr)}
-\NormalTok{lm_fitted <-}\StringTok{ }\NormalTok{lm_model }\OperatorTok{%>%}\StringTok{ }\KeywordTok{fit}\NormalTok{(target_percent_change }\OperatorTok{~}\StringTok{ }\NormalTok{., }\DataTypeTok{data=}\NormalTok{crypto_train) }\CommentTok{# fit price_usd to all variables except for the symbol}
+\NormalTok{lm_fitted <-}\StringTok{ }\NormalTok{lm_model }\OperatorTok{%>%}\StringTok{ }\KeywordTok{fit}\NormalTok{(target_percent_change }\OperatorTok{~}\StringTok{ }\NormalTok{., }\DataTypeTok{data=}\NormalTok{crypto_train)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -714,7 +716,7 @@ Random Forest:
 \end{Shaded}
 
 \begin{verbatim}
-## Random Forest: 15.02 sec elapsed
+## Random Forest: 14.57 sec elapsed
 \end{verbatim}
 
 XGBoost:
@@ -738,7 +740,7 @@ XGBoost:
 \end{Shaded}
 
 \begin{verbatim}
-## XGBoost: 0.49 sec elapsed
+## XGBoost: 0.48 sec elapsed
 \end{verbatim}
 
 Use the trained model to make predictions on test data:
@@ -803,9 +805,9 @@ Get metrics:
 \hypertarget{now-make-one-model-for-each-cryptocurrency.}{%
 \subsection{Now make one model for each cryptocurrency.}\label{now-make-one-model-for-each-cryptocurrency.}}
 
-\textbf{\emph{Code adapted from: \url{https://r4ds.had.co.nz/many-models.html}}}
+\textbf{\emph{Lots of code adapted from: \url{https://r4ds.had.co.nz/many-models.html}}}
 
-First I group the data
+First I group the data by the cryptocurrency symbol:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -831,7 +833,7 @@ First I group the data
 ## 5 BCH    <tibble [936 x 40]>
 \end{verbatim}
 
-Make a helper function with the model so I can make the \texttt{lm()} model using \texttt{purrr}:
+Make a helper function with the model so I can make the \texttt{lm()} model to apply to each cryptocurrency using \texttt{purrr}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -840,6 +842,8 @@ Make a helper function with the model so I can make the \texttt{lm()} model usin
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
+
+\textbf{I could have made a more complex model here, but decided to keep things a bit simpler with linear regression}
 
 Now we can use \texttt{purrr}\citep{R-purrr} to apply the model to each element of the grouped dataframe:
 
@@ -900,16 +904,19 @@ Let's unnest the residuals to take a closer look:
 
 \includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-19-1.pdf}
 
-\hypertarget{add-error-metrics-using-broom-r-broom}{%
-\subsection{\texorpdfstring{Add error metrics using \texttt{broom} \citep{R-broom}:}{Add error metrics using broom {[}@R-broom{]}:}}\label{add-error-metrics-using-broom-r-broom}}
+\hypertarget{add-metrics}{%
+\subsection{Add Metrics}\label{add-metrics}}
+
+Now we can use \texttt{broom} \citep{R-broom} to get all sorts of metrics back on the models:
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(broom)}
 \NormalTok{crypto_models_metrics <-}\StringTok{ }\NormalTok{crypto_data_grouped }\OperatorTok{%>%}\StringTok{ }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{metrics=}\KeywordTok{map}\NormalTok{(model,broom}\OperatorTok{::}\NormalTok{glance)) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{unnest}\NormalTok{(metrics)}
 \end{Highlighting}
 \end{Shaded}
 
-Sort by the best scores:
+Sort the new tibble by the best r squared values:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -938,7 +945,7 @@ Sort by the best scores:
 \end{Shaded}
 
 \begin{verbatim}
-## Predictive Modeling: 16.69 sec elapsed
+## Predictive Modeling: 16.22 sec elapsed
 \end{verbatim}
 
 \hypertarget{plot-variable-importance}{%
@@ -960,53 +967,50 @@ Now I can use the \texttt{vip} \citep{R-vip} package to plot the variable import
 ## [1] "Now showing ETH variable importance:"
 \end{verbatim}
 
-\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-21-1.pdf}
+\includegraphics{RStudio-Internship-Application_files/figure-latex/vip_plots_loop-1.pdf}
 
 \begin{verbatim}
 ## [1] "Now showing BTC variable importance:"
 \end{verbatim}
 
-\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-21-2.pdf}
+\includegraphics{RStudio-Internship-Application_files/figure-latex/vip_plots_loop-2.pdf}
 
 \begin{verbatim}
 ## [1] "Now showing LTC variable importance:"
 \end{verbatim}
 
-\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-21-3.pdf}
+\includegraphics{RStudio-Internship-Application_files/figure-latex/vip_plots_loop-3.pdf}
 
 \begin{verbatim}
 ## [1] "Now showing DASH variable importance:"
 \end{verbatim}
 
-\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-21-4.pdf}
+\includegraphics{RStudio-Internship-Application_files/figure-latex/vip_plots_loop-4.pdf}
 
 \begin{verbatim}
 ## [1] "Now showing BCH variable importance:"
 \end{verbatim}
 
-\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-21-5.pdf}
+\includegraphics{RStudio-Internship-Application_files/figure-latex/vip_plots_loop-5.pdf}
 
-\hypertarget{how-much-better-do-the-models-get-if-we-add-more-variables}{%
-\subsection{How much better do the models get if we add more variables?}\label{how-much-better-do-the-models-get-if-we-add-more-variables}}
+\hypertarget{if-i-were-to-keep-going}{%
+\subsection{If I were to keep going\ldots{}}\label{if-i-were-to-keep-going}}
 
-Add MA, EMA, etc\ldots{}
-
-\hypertarget{next-steps}{%
-\subsection{Next Steps:}\label{next-steps}}
-
-I won't go further than this here, but as my next steps, here is what I would do:
+\textbf{Here are some of the next steps I would take if I were to keep going with this analysis:}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Use parsnip + purrr to iterate through lots of predictive models
+  How much better do the models get if we add timeseries components like Moving Averages?
 \item
-  How much better do the models get with hyperparameter tuning?
+  Use parsnip + purrr to iterate through lots of predictive models rather than just applying a simple \texttt{lm()} model to each.
 \item
-  Visualize the best model before and after parameter tuning and then do the same with the worst performing model
+  How much better do the models get with hyperparameter tuning? I would use \href{https://tidymodels.github.io/dials/}{dials since it's a part of tidymodels}.
+\item
+  Visualize the best model before and after parameter tuning and then do the same with the worst performing model.
+\item
+  I would also go back to the train/test split and use 10-fold cross validation instead.
 \end{enumerate}
-
-\^{}Change to ``if I were to keep going'' and add note about doing cross validation
 
 \hypertarget{build-interactive-learnr-tutorials-for-python-using-reticulate}{%
 \section{Build interactive learnr tutorials for Python using reticulate}\label{build-interactive-learnr-tutorials-for-python-using-reticulate}}
@@ -1015,11 +1019,15 @@ I think I could be a great fit for the third project listed related to creating 
 
 I am very familiar with the \texttt{reticulate} package and I have used it in the past in an RMarkdown file to make automated cryptocurrency trades through a Python package \texttt{shrimpy-python}, which worked really well: \url{https://github.com/shrimpy-dev/shrimpy-python}
 
-Since I have already demonstrated my familiarity with learnr tutorials \textbf{\protect\hyperlink{learnr}{in the previous section}}, I will keep going with the code from the tidymodels project example I just finished and use Python for \ldots{} ADD GOAL HERE \ldots{}
+Since I have already demonstrated my familiarity with learnr tutorials \textbf{\protect\hyperlink{learnr}{in the previous section}}, I did not make a very extensive example here, but instead created a learnr tutorial with a Python code chunk instead
 
-DEV:
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_app}\NormalTok{(}\StringTok{"https://predictcrypto.shinyapps.io/python_project3_example/"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-Replace this with the Python one:
+\href{https://predictcrypto.shinyapps.io/python_project3_example/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-20-1.pdf}}
 
 Could make a very simple xgboost model maybe?
 
@@ -1042,7 +1050,7 @@ Return the total runtime of all of the examples above:
 \end{Shaded}
 
 \begin{verbatim}
-## Total runtime: 62.89 sec elapsed
+## Total section 3 runtime: 64.88 sec elapsed
 \end{verbatim}
 
 \hypertarget{about-me}{%
@@ -1075,7 +1083,7 @@ Here are some of the online courses I worked my way through:
 
 Here is my resume with the same online learning certificates added to it:
 
-\href{https://ricky-cv.netlify.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-23-1.pdf}}
+\href{https://ricky-cv.netlify.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-22-1.pdf}}
 
 \emph{\href{https://github.com/nstrayer/cv}{Thanks again to Nick Strayer for the awesome template}}
 

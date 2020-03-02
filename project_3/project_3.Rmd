@@ -1,75 +1,92 @@
 ---
-title: "Project #3"
-output: learnr::tutorial
+title: "Project #3 Example"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+    theme: cosmo
 runtime: shiny_prerendered
 ---
 
-```{r setup, include=FALSE}
+```{r setup_python_project_3, include=FALSE}
 library(learnr)
-knitr::opts_chunk$set(echo = FALSE)
+library(gradethis)
+library(reticulate)
+source('login_info.R')
+# Change title of code editor boxes
+tutorial_options(exercise.cap = "Execute Your R Code Below", exercise.checker = gradethis::grade_learnr)
+# Set a max 15 second timer on executing code within code editor boxes
+exercise.timelimit=15
 ```
 
 
-## Topic 1
+## Example
 
-### Exercise 
+This is an example made by Riccardo (Ricky) Esclapon for his application to the RStudio 2020 internship. The full document to go along with this small example can be found here: http://ricky-rstudio-internship-application.org/
 
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+Below is an example using learnr with both R and Python.
 
-Write the R code required to add two plus two:
-
-```{r two-plus-two, exercise=TRUE}
-
+```{r}
+print('this is R code')
 ```
 
-### Exercise with Code
 
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
-
-Now write a function that adds any two numbers and then call it:
-
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
-}
+```{python}
+print('this is Python code')
 ```
 
-## Topic 2
+### Python Exercise
 
-### Exercise with Hint
+This feature is not a feature that is available in the normal version of `learnr` and I am watching this repository for updates, where this code was originally sourced from: https://github.com/rstudio/learnr/pull/310
 
-*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
-
-Modify the following code to limit the number of rows printed to 5:
-
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
+```{python exercise_chunk_py, exercise = TRUE}
+# if running in R, this should return 10
+# if running in Python, this should return FALSE and 5
+x = 5
+x <-10
+print(x)
 ```
 
-```{r print-limit-hint}
-head(mtcars)
+For this example of an interactive code chunk using Python I installed the forked version of learnr by user **[zoews](https://github.com/zoews)**: https://github.com/zoews/learnr
+
+Can't wait for this feature to be integrated into the [standard version of learnr](https://github.com/rstudio/learnr)!
+
+One more example hidden below, press the button to continue.
+
+### Example R exercise With Code Check
+
+Enter **4\*13** in the exercise below and press on the blue ***Submit Answer*** button:
+
+```{r exercise_example, exercise=TRUE}
+1 + 1
 ```
 
-### Quiz
+```{r exercise_example-solution}
+4 * 13
+```
 
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
-
-Some questions to verify that you understand the purposes of various base and recommended R packages:
-
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
+```{r exercise_example-check}
+grade_result(
+  pass_if(~ identical(.result, 52), "This was an example for Ricky's RStudio Internship."),
+  fail_if(~ identical(.result, 2), "Remember to replace 1 + 1 with 4 * 13 before submitting the answer.")
 )
 ```
+
+
+
+## More examples
+
+### More Python:
+
+```{python}
+import shrimpy
+
+public_key = r.shrimpy_public
+secret_key = r.shrimpy_secret
+client = shrimpy.ShrimpyApiClient(public_key, secret_key)
+ticker = client.get_ticker('binance')
+print(ticker)
+```
+
+
 

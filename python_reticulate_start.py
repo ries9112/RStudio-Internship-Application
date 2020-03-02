@@ -1,6 +1,6 @@
 import shrimpy
 
-public_key = secret_shrimpy_key
+public_key = shrimpy_public
 secret_key = shrimpy_secret
 client = shrimpy.ShrimpyApiClient(public_key, secret_key)
 ticker = client.get_ticker('binance')
