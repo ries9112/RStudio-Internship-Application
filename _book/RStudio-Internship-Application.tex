@@ -125,18 +125,6 @@
 \hypertarget{overview}{%
 \chapter{Overview}\label{overview}}
 
-Video intro here
-
-\url{https://education.rstudio.com/blog/2020/02/applications-for-2020-intern-program-are-now-open/}
-
-APPLICATIONS END ON MARCH 5TH BE SURE TO APPLY BEFORE THEN!!
-
-For video:
-
-Start off by going over the ``Why Me'' section and talk about ways I have applied the broad RMarkdown ecosystem and automation to my work. Then go to the projects suited for section to give an overview of what makes me a good fit for the first three projects specifically and examples I started to work on for each. Then give intro to about me and ideal tutorial sections. End things with a cool charts/visualizations section (or include in projects suited for section)
-
-Start off with overview of projects I am suited for showing work I did for this application specifically. Then go on to talk about ways I have applied the broad RMarkdown ecosystem and automation in my work. Then talk a bit more about myself. Talk about ideal tutorial overview and close things by mentioning cool charts/visualizations section (outline this at a high level under 2 minutes in the video at the start here)
-
 \hypertarget{fit}{%
 \chapter{What makes me a good fit}\label{fit}}
 
@@ -154,12 +142,12 @@ I have been using learnr \href{https://github.com/ries9112/R-Tutorial}{for about
 
 (this takes about 30 seconds to load, give it more time if it's showing up blank)
 
-\href{https://predictcrypto.shinyapps.io/R_Basics/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-2-1.pdf}}
+\href{https://predictcrypto.shinyapps.io/R_Basics/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/show_r_basics_tutorial-1.pdf}}
 
 I would recommend looking at the \textbf{Visualization} section to visually see that the data is never outdated by more than 1 hour.
 
 I post these on my website:
-\href{https://predictcrypto.com/tutorials}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-3-1.pdf}}
+\href{https://predictcrypto.com/tutorials}{\includegraphics{RStudio-Internship-Application_files/figure-latex/show_website-1.pdf}}
 
 I'm loving the integrated tutorials tab within RStudio in the 1.3 preview and I am working towards including these with my \texttt{PredictCrypto} package, which I talk more about and use in the \protect\hyperlink{ideal-projects}{next section} of this document.
 
@@ -170,7 +158,7 @@ I was very close to paying for a monthly subscription on gitbook.com because I t
 
 This document is obviously an example of a bookdown document in itself, but here's another guide I put together using bookdown:
 
-\href{https://predictcryptodb-quickstart.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-4-1.pdf}}
+\href{https://predictcryptodb-quickstart.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/show_bookdown-1.pdf}}
 
 This guide refreshes daily in order to show a preview of the latest data within the document \href{https://github.com/ries9112/PredictCryptoDB/actions}{and you can look at the GitHub Actions daily runs here}. You can also see the refreshed data in the \href{https://predictcryptodb-quickstart.com/useful-tables.html}{\emph{useful tables} section} of the document.
 
@@ -208,7 +196,7 @@ Flexdashboards \citep{R-flexdashboard} were my first introduction to shiny apps 
 
 To get some practice, I converted some of the content found in \href{https://www.tidytextmining.com/}{Tidy Text Mining by Julia Silge and David Robinson} and made it into a flexdashboard. \textbf{I made no changes to the code found within the book}, this was simply an experiment to learn more about flexdashboards and semantic analysis:
 
-\href{https://predictcrypto.shinyapps.io/SemanticAnalysisExample/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-5-1.pdf}}
+\href{https://predictcrypto.shinyapps.io/SemanticAnalysisExample/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/show_flexdashboard-1.pdf}}
 
 \hypertarget{automation}{%
 \section{Automation}\label{automation}}
@@ -248,7 +236,7 @@ First I will go ahead and import every package in the \texttt{tidyverse}\citep{R
 
 We will be importing the following spreadsheet:
 
-\href{https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit\#gid=395468559}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-6-1.pdf}}
+\href{https://docs.google.com/spreadsheets/d/1_zRBFrB1au7qhxuDDfDuh_bPLGd6RLrwOL5oQ3sBBX4/edit\#gid=395468559}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-2-1.pdf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -282,7 +270,7 @@ Now let's import the \texttt{googlesheets4} and read a spreadsheet I made for th
 \end{Shaded}
 
 \begin{verbatim}
-## Read googlesheets data: 38.81 sec elapsed
+## Read googlesheets data: 47.88 sec elapsed
 \end{verbatim}
 
 Let's take a peek at the first 1,000 rows using \texttt{DT::datatable()} \citep{R-DT}
@@ -715,7 +703,7 @@ Random Forest:
 \end{Shaded}
 
 \begin{verbatim}
-## Random Forest: 143.33 sec elapsed
+## Random Forest: 139.53 sec elapsed
 \end{verbatim}
 
 XGBoost:
@@ -739,7 +727,7 @@ XGBoost:
 \end{Shaded}
 
 \begin{verbatim}
-## XGBoost: 19.45 sec elapsed
+## XGBoost: 19 sec elapsed
 \end{verbatim}
 
 Use the trained model to make predictions on test data:
@@ -747,6 +735,11 @@ Use the trained model to make predictions on test data:
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(tidymodels)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{lm_predictions <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(lm_fitted, crypto_test)}
 \end{Highlighting}
 \end{Shaded}
@@ -901,7 +894,7 @@ Let's unnest the residuals to take a closer look:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-19-1.pdf}
+\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-12-1.pdf}
 
 \hypertarget{add-metrics}{%
 \subsection{Add Metrics}\label{add-metrics}}
@@ -944,7 +937,7 @@ Sort the new tibble by the best r squared values:
 \end{Shaded}
 
 \begin{verbatim}
-## Predictive Modeling: 164.08 sec elapsed
+## Predictive Modeling: 159.83 sec elapsed
 \end{verbatim}
 
 \hypertarget{plot-variable-importance}{%
@@ -1026,7 +1019,7 @@ I am very familiar with the \texttt{reticulate} package and I have used it in th
 
 Since I have already demonstrated my familiarity with learnr tutorials \textbf{\protect\hyperlink{learnr}{in the previous section}}, I did not make a very extensive example here, but instead created a learnr tutorial with a Python code chunk instead:
 
-\href{https://predictcrypto.shinyapps.io/python_project3_example/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-20-1.pdf}}
+\href{https://predictcrypto.shinyapps.io/python_project3_example/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-13-1.pdf}}
 
 Return the total runtime of all of the examples above:
 
@@ -1037,7 +1030,7 @@ Return the total runtime of all of the examples above:
 \end{Shaded}
 
 \begin{verbatim}
-## Total section 3 runtime: 216.59 sec elapsed
+## Total section 3 runtime: 219.85 sec elapsed
 \end{verbatim}
 
 \hypertarget{about-me}{%
@@ -1070,7 +1063,7 @@ Here are some of the online courses I worked my way through:
 
 Here is my resume with the same online learning certificates added to it:
 
-\href{https://ricky-cv.netlify.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-21-1.pdf}}
+\href{https://ricky-cv.netlify.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-14-1.pdf}}
 
 \emph{\href{https://github.com/nstrayer/cv}{Thanks again to Nick Strayer for the awesome template}}
 
@@ -1315,14 +1308,154 @@ I would also have a version of \protect\hyperlink{tutorials-planned}{each planne
 \hypertarget{cool-charts}{%
 \chapter{Cool Charts}\label{cool-charts}}
 
-\hypertarget{disable-while-working-on-bookdown-takes-too-long-to-render}{%
-\section{Disable while working on bookdown, takes too long to render!}\label{disable-while-working-on-bookdown-takes-too-long-to-render}}
+Some examples of using packages like \texttt{plotly} \citep{R-plotly} and \texttt{rayshader} \citep{R-rayshader} to
 
-Since we already imported the cryptocurrency data in the \href{}{earlier section} of this bookdown document, might as well make some cool charts!
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tic}\NormalTok{(}\StringTok{'Cool charts section'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-Remember to add tictoc code here as well
+\hypertarget{price-usd---last-7-days---btc}{%
+\section{Price USD - Last 7 Days - BTC}\label{price-usd---last-7-days---btc}}
 
-For rayshader separate camera settings and just write a line explaining it's just camera settings. So first make normal chart, then import rayshader, set filename\_movie name and all camera settings
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{subset}\NormalTok{(cryptoData, Name }\OperatorTok{==}\StringTok{ 'Bitcoin'}\NormalTok{), }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ DateTimeUTC, }\DataTypeTok{y =}\NormalTok{ PriceUSD)) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{alpha=}\FloatTok{0.75}\NormalTok{, }\DataTypeTok{colour=}\StringTok{'deepskyblue4'}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\KeywordTok{paste}\NormalTok{(}\StringTok{'Bitcoin'}\NormalTok{, }\StringTok{' - Price USD'}\NormalTok{),}
+       \DataTypeTok{x=}\StringTok{'DateTime MST (Colorado Time)'}\NormalTok{, }\DataTypeTok{y=}\StringTok{'% Change Vs. USD ($)'}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{colour=}\StringTok{'coral3'}\NormalTok{)  }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_economist}\NormalTok{()}
+
+\KeywordTok{ggplotly}\NormalTok{(plot)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RStudio-Internship-Application_files/figure-latex/price_usd_btc_7d-1.pdf}
+
+\hypertarget{rayshader-hex-bins---previous-24h-change---whole-market}{%
+\section{Rayshader Hex Bins - Previous 24h \% Change - Whole Market}\label{rayshader-hex-bins---previous-24h-change---whole-market}}
+
+First some camera settings for the rayshader video:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{phivechalf =}\StringTok{ }\DecValTok{30} \OperatorTok{+}\StringTok{ }\DecValTok{60} \OperatorTok{*}\StringTok{ }\DecValTok{1}\OperatorTok{/}\NormalTok{(}\DecValTok{1} \OperatorTok{+}\StringTok{ }\KeywordTok{exp}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\OperatorTok{-}\DecValTok{7}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DataTypeTok{length.out =} \DecValTok{180}\NormalTok{)}\OperatorTok{/}\DecValTok{2}\NormalTok{))}
+\NormalTok{phivecfull =}\StringTok{ }\KeywordTok{c}\NormalTok{(phivechalf, }\KeywordTok{rev}\NormalTok{(phivechalf))}
+\NormalTok{thetavec =}\StringTok{ }\DecValTok{-90} \OperatorTok{+}\StringTok{ }\DecValTok{45} \OperatorTok{*}\StringTok{ }\KeywordTok{sin}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{359}\NormalTok{,}\DataTypeTok{length.out =} \DecValTok{360}\NormalTok{) }\OperatorTok{*}\StringTok{ }\NormalTok{pi}\OperatorTok{/}\DecValTok{180}\NormalTok{)}
+\NormalTok{zoomvec =}\StringTok{ }\FloatTok{0.45} \OperatorTok{+}\StringTok{ }\FloatTok{0.2} \OperatorTok{*}\StringTok{ }\DecValTok{1}\OperatorTok{/}\NormalTok{(}\DecValTok{1} \OperatorTok{+}\StringTok{ }\KeywordTok{exp}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\OperatorTok{-}\DecValTok{5}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DataTypeTok{length.out =} \DecValTok{180}\NormalTok{)))}
+\NormalTok{zoomvecfull =}\StringTok{ }\KeywordTok{c}\NormalTok{(zoomvec, }\KeywordTok{rev}\NormalTok{(zoomvec))}
+\NormalTok{filename_movie =}\StringTok{ 'rayshader.mp4'}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot_gg}\NormalTok{(}\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ cryptoData, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{DateTimeUTC, }\DataTypeTok{y=}\NormalTok{PercChange24hVsUSD)) }\OperatorTok{+}
+\StringTok{          }\KeywordTok{geom_hex}\NormalTok{() }\OperatorTok{+}
+\StringTok{          }\KeywordTok{ylim}\NormalTok{(}\OperatorTok{-}\DecValTok{20}\NormalTok{,}\DecValTok{20}\NormalTok{))}
+
+\KeywordTok{render_movie}\NormalTok{(}\DataTypeTok{filename =}\NormalTok{ filename_movie, }\DataTypeTok{type =} \StringTok{"custom"}\NormalTok{,}
+             \DataTypeTok{frames =} \DecValTok{360}\NormalTok{,  }\DataTypeTok{phi =}\NormalTok{ phivecfull, }\DataTypeTok{zoom =}\NormalTok{ zoomvecfull, }\DataTypeTok{theta =}\NormalTok{ thetavec)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "C:\\Users\\Ricky\\Desktop\\RStudio-Internship-Application\\rayshader.mp4"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rgl}\OperatorTok{::}\KeywordTok{rgl.close}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{git-commits-last-90-days---eth}{%
+\section{Git Commits Last 90 Days - ETH}\label{git-commits-last-90-days---eth}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{filter}\NormalTok{(cryptoData, Name }\OperatorTok{==}\StringTok{ 'Ethereum'}\NormalTok{), }\KeywordTok{aes_string}\NormalTok{(}\DataTypeTok{x =} \StringTok{"DateTimeUTC"}\NormalTok{, }\DataTypeTok{y =} \StringTok{'Git_CommitsLast90Days'}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{size =} \DecValTok{1}\NormalTok{, }\DataTypeTok{alpha=}\FloatTok{0.75}\NormalTok{, }\DataTypeTok{colour=}\StringTok{'darkslateblue'}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\KeywordTok{paste}\NormalTok{(}\StringTok{'Ethereum'}\NormalTok{, }\StringTok{' - '}\NormalTok{, }\StringTok{'Git_CommitsLast90Days'}\NormalTok{),}
+       \DataTypeTok{x=}\StringTok{'DateTime MST (Colorado Time)'}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{()}
+
+\KeywordTok{ggplotly}\NormalTok{(plot)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RStudio-Internship-Application_files/figure-latex/plotPickVariable-1.pdf}
+
+\hypertarget{percent-change-over-next-6-hours---last-7-days---top-5-ranked}{%
+\section{Percent Change Over Next 6 Hours - Last 7 Days - Top 5 Ranked}\label{percent-change-over-next-6-hours---last-7-days---top-5-ranked}}
+
+This chart plots the \% change for the 6 hour period after it was collected.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{filter}\NormalTok{(targetData, Rank }\OperatorTok{>=}\StringTok{ }\DecValTok{1}\NormalTok{, Rank }\OperatorTok{<=}\StringTok{ }\DecValTok{5}\NormalTok{ ), }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ DateTimeUTC, }\DataTypeTok{y =}\NormalTok{ TargetPercChange, }\DataTypeTok{colour=}\NormalTok{Name)) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{alpha=}\FloatTok{0.75}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{'DateTime MST (Colorado Time)'}\NormalTok{, }\DataTypeTok{y=}\StringTok{'6h % Change Vs. USD ($)'}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group=}\NormalTok{Name), }\DataTypeTok{se=}\NormalTok{F)  }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_solarized}\NormalTok{(}\DataTypeTok{light=}\NormalTok{F)}
+
+\KeywordTok{ggplotly}\NormalTok{(plot)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RStudio-Internship-Application_files/figure-latex/6h_change_7d_top5-1.pdf}
+
+\hypertarget{plotting-the-relationship-between-previous-24h-change-and-next-24h-change---bitcoin}{%
+\section{Plotting the relationship between previous 24h \% change and next 24h \% change - Bitcoin}\label{plotting-the-relationship-between-previous-24h-change-and-next-24h-change---bitcoin}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{subset}\NormalTok{(targetData24, Name }\OperatorTok{==}\StringTok{ 'Bitcoin'}\NormalTok{), }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ PercChange24hVsUSD, }\DataTypeTok{y =}\NormalTok{ TargetPercChange)) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{alpha=}\FloatTok{0.75}\NormalTok{, }\DataTypeTok{colour=}\StringTok{'deepskyblue4'}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\StringTok{'Bitcoin'}\NormalTok{,}
+       \DataTypeTok{x=}\StringTok{'% Change Previous 24h vs. $'}\NormalTok{, }\DataTypeTok{y=}\StringTok{'% Change Next 24h vs. $'}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{colour=}\StringTok{'coral3'}\NormalTok{,}\DataTypeTok{se=}\NormalTok{F)  }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_wsj}\NormalTok{()}
+
+\KeywordTok{ggplotly}\NormalTok{(plot)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RStudio-Internship-Application_files/figure-latex/prev_to_target_24h-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# output$pricePlotStats <- renderPlot(\{}
+\CommentTok{#   ggscatterstats(data = filter(targetData24, Name == input$cryptocurrencyNameRel), x = PercChange24hVsUSD, y = TargetPercChange, messages=F)}
+\CommentTok{# \})}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{percent-change-over-next-12-hours---last-7-days---top-100-ranked}{%
+\section{Percent Change Over Next 12 Hours - Last 7 Days - Top 100 Ranked}\label{percent-change-over-next-12-hours---last-7-days---top-100-ranked}}
+
+\includegraphics{RStudio-Internship-Application_files/figure-latex/12h_change_7d_top100-1.pdf}
+
+\hypertarget{percent-change-over-next-24-hours---by-date}{%
+\section{Percent Change Over Next 24 Hours - By Date}\label{percent-change-over-next-24-hours---by-date}}
+
+\includegraphics{RStudio-Internship-Application_files/figure-latex/24h_change_by_date-1.pdf}
+
+\hypertarget{rows-collected-by-mining-algorithm---top-15-ranked}{%
+\section{Rows collected by Mining Algorithm - Top 15 Ranked}\label{rows-collected-by-mining-algorithm---top-15-ranked}}
+
+\includegraphics{RStudio-Internship-Application_files/figure-latex/rows_collected_by_algo-1.pdf}
 
 \begin{verbatim}
 ## [1] TRUE
@@ -1330,19 +1463,13 @@ For rayshader separate camera settings and just write a line explaining it's jus
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# import libraries not captured imported earlier that are referenced}
-\KeywordTok{library}\NormalTok{(bookdown)}
-\KeywordTok{library}\NormalTok{(blogdown)}
-\KeywordTok{library}\NormalTok{(pagedown)}
-\KeywordTok{library}\NormalTok{(flexdashboard)}
+\KeywordTok{toc}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{write_bib}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\KeywordTok{.packages}\NormalTok{()), }\StringTok{"packages.bib"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+## Cool charts section: 95 sec elapsed
+\end{verbatim}
 
   \bibliography{book.bib,packages.bib}
 
