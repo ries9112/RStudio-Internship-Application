@@ -148,6 +148,7 @@ You could read this line by line as:
 
 
 
+
 ## Final notes
 
 I would also have a version of [each planned tutorial](#tutorials-planned) recorded in Italian, because I am bilingual and most of this content does not currently exist in Italian as far as I can tell.

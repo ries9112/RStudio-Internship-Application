@@ -261,21 +261,21 @@ List of models to refer to: https://tidymodels.github.io/parsnip/articles/articl
 
 Random Forest:
 ```{r random_forest_parsnip}
-random_forest_model <- rand_forest(trees = 1000, mode = "regression") %>%
-  set_engine("randomForest")
+random_forest_model <- rand_forest(trees = 1000) %>%
+  set_engine("randomForest") %>%
+  set_mode("regression")
 ```
 
 XGBoost:
 ```{r xgboost_parsnip}
-xgboost_model <- xgboost_parsnip <- boost_tree(trees=1000, tree_depth = 8) %>%
+xgboost_model <- xgboost_parsnip <- boost_tree(trees=1000) %>%
   set_engine("xgboost") %>%
   set_mode("regression")
 ```
 
-Remove fields not used for models (NOTE: REMOVE price_usd_x_daysLater AND date_time_x_days_Later FROM BEING GENERATED INSIDE THE FUNCTION)
-
+Remove the fields we will not be be using for the predictive modeling:
 ```{r remove_fields}
-exercise_data <- select(exercise_data, -date_time_utc, -date_time, -pkDummy, -pkey, -price_usd_x_daysLater, -date_time_x_daysLater, -cap_real_usd, -cap_mvrv_cur)
+exercise_data <- exercise_data %>% select(-date_time_utc, -date_time, -pkDummy, -pkey, -cap_real_usd, -cap_mvrv_cur)
 ```
 
 
@@ -412,7 +412,6 @@ crypto_data_grouped
 
 
 Let's unnest the residuals to take a closer look:
-
 ```{r}
 resids <- unnest(crypto_data_grouped, resids)
 ```
@@ -454,6 +453,11 @@ toc()
 
 Now I can use the `vip` [@R-vip] package to plot the variable importance:
 
+```{r import_vip, warning=F, message=F}
+library(vip)
+```
+
+
 ```{r vip_plots_loop}
 library(vip)
 for (i in 1:length(crypto_models_metrics$symbol)){
@@ -493,28 +497,11 @@ I think I could be a great fit for the third project listed related to creating 
 
 I am very familiar with the `reticulate` package and I have used it in the past in an RMarkdown file to make automated cryptocurrency trades through a Python package `shrimpy-python`, which worked really well: https://github.com/shrimpy-dev/shrimpy-python
 
-Since I have already demonstrated my familiarity with learnr tutorials **[in the previous section](#learnr)**, I did not make a very extensive example here, but instead created a learnr tutorial with a Python code chunk instead
+Since I have already demonstrated my familiarity with learnr tutorials **[in the previous section](#learnr)**, I did not make a very extensive example here, but instead created a learnr tutorial with a Python code chunk instead:
 
-
-```{r}
+```{r, echo=F}
 knitr::include_app("https://predictcrypto.shinyapps.io/python_project3_example/")
 ```
-
-Could make a very simple xgboost model maybe?
-
-Could also show using Shrimpy API to pull latest data, manipulate in pandas and visualize
-
-Mention experience/courses taken in Python and how it's never clicked with me very much but how I am taking a basic Python course in my Master's in Data Science and I am looking to take it as an opportunity to create a lot of content using reticulate.
-
-```{r import_reticulate}
-library(reticulate)
-```
-
-```{python}
-
-```
-
-
 
 
 Return the total runtime of all of the examples above:

@@ -222,13 +222,11 @@ I have also done a lot of automation work for \href{https://www.google.com/searc
 \hypertarget{rstudio}{%
 \section{Fit Within the Company}\label{rstudio}}
 
-I really wanted to go to RStudio::conf 2019 but was not able to make it out and after all the videos got posted I watched most of them and immediately knew I had to come to RStudio::conf 2020 and it was a truly incredible experience.
+After following along with the RStudio::conf 2019 as it was happening, I knew I had to make it out to RStudio::conf 2020, and it was a truly incredible experience. I learned everything I was hoping to learn about and then some, and JJ's talk and BCorp announcement really resonated with me. Generally speaking my philosophy is that the most straightforward way to success is to help other people succeed, and I believe I share the values that RStudio holds dear as a company. The content of JJ's talk around the model that companies currently operate under, the pursuit of profit being a legal obligation, how we got to this point, and the need for this model to evolve, was inspirational. I am \textbf{very} impressed by RStudio taking a strong stance in this area and I agree with JJ's message wholeheartedly.
 
-JJ's talk and BCorp announcement really resonated with me and there is no other company who's mission I agree with more and I would always do my very best in carrying forward those values. I fundamentally believe the most straightforward way to success is to help other people succeed, and I share the values that RStudio holds dear as a company. I worked in marketing analytics for a large company and I absolutely loved my coworkers, but everything was done with the sole goal of making more money and I find that to be a fundamentally inefficient in the sense that working too much on an overly saturated but important problem like maximizing the conversion rate on e-mails really inhibits people within the company from having the largest impact possible. Creating the largest positive impact as a company should then naturally translate to being profitable and make that job (which is an \textbf{important} job!) much easier. Companies today also have a veil over them where people tend to be like-minded good people who's main priority is the welfare of others and the environment, but everyone understands that those things are always secondary to the shareholder profits, which as JJ pointed out is a legal obligation of the company. These types of measures were not wrong for the time, they just came at a time when the US needed massive amount of infrastructure built and they did an amazing job at that, but times have changed and if capitalism is not to fail on its own success there needs to be an evolution in terms of how that principle operates in this country and globally, and I am \textbf{so} impressed by RStudio taking a strong stance on that.
+Another thing I was really impressed with was the focus and clarity around why everything should be reproducible and how not making your work publicly available can often be very costly in many different ways. RStudio has done an incredible job at making powerful and complex frameworks easy for anyone to use. I am driven to making easy to follow and informative content to help other \emph{``fellow self-taught programmers who were told they weren't good enough but are too driven and excited to care''} \citep{gans2020} in the same spirit of former superstar interns like Maya. I also want to give Maya a shoutout for her amazing \href{https://github.com/tidyblocks/tidyblocks}{tidyblocks project}; in college I learned to use an incredible tool called \href{https://www.alteryx.com/}{Alteryx} and I have become somewhat of an expert in it, but it's a publicly traded company and since I have learned to use it the price has gone up from an already ridiculous \textasciitilde\$3.5k a year to now being \$5,195 a year, and as JJ pointed out in his talk this type of model is not a long-term sustainable model for programming software, and forget about reproducibility and outside access. The tidyblocks project works in a fundamentally different way because of the scratch-like design, but it's actually got the main pieces to replicate what Alteryx does (which I believe is actually mostly built using R when processing data), and that's been one of my main goals since tuning in for RStudio::conf 2019, so I have just started making my way through her \href{http://js4ds.org/}{Javascript for Data Science} book and in mid-late 2021 I hope to be able to start making some contributions to that project.
 
-There is really no other company that I want to work for more than RStudio and at the conference one of the other things I was really impressed with for example was the focus and clarity around why everything should always be reproducible and how not making your work publicly available can often be very costly in many different ways. RStudio has done an \textbf{incredible} job at making incredible powerful and complex frameworks easy for anyone to use, and there's nothing I would rather do more than contribute to making easy to follow and informative content to help other \emph{``fellow self-taught programmers who were told they weren't good enough but are too driven and excited to care''} \citep{gans2020} in the same spirit of former superstar interns like Maya. I also want to give Maya a shoutout for her amazing \href{https://github.com/tidyblocks/tidyblocks}{tidyblocks project}, in college I learned to use an \textbf{incredible} tool called \href{https://www.alteryx.com/}{Alteryx} and I have become somewhat of an expert in it, but it's a publicly traded company and since I have learned to use it the price has gone up from an already ridiculous \textasciitilde\$3.5k a year to now being \$5,195 a year, and as JJ pointed out in his talk this type of model is not a long-term sustainable model for software, and forget about reproducibility and outside access. The tidyblocks project works in a fundamentally different way because of the scratch-like design, but it's actually got the main pieces to replicate what Alteryx does (which I believe is actually mostly built using R when processing data), and that's been one of my main goals since tuning in for RStudio::conf 2019, so I have just started making my way through her \href{http://js4ds.org/}{Javascript for Data Science} and in mid-late 2021 I hope to be capable enough to start making some contributions to that project.
-
-I also work my best remotely, I have a dedicated office to do my work in with a powerful desktop PC and two monitors. I also have experience working remotely and keeping myself accountable without someone looking over my shoulder.
+I work well both in-person and remotely. I have a dedicated home office to do my independent work in, with a powerful desktop PC and two monitors. I have experience working remotely and keeping myself accountable without someone looking over my shoulder.
 
 \hypertarget{ideal-projects}{%
 \chapter{Projects Well Suited For}\label{ideal-projects}}
@@ -284,7 +282,7 @@ Now let's import the \texttt{googlesheets4} and read a spreadsheet I made for th
 \end{Shaded}
 
 \begin{verbatim}
-## Read googlesheets data: 38.62 sec elapsed
+## Read googlesheets data: 38.81 sec elapsed
 \end{verbatim}
 
 Let's take a peek at the first 1,000 rows using \texttt{DT::datatable()} \citep{R-DT}
@@ -546,7 +544,7 @@ Now that we have made a data pre-processing \emph{recipe}, let's map it to the \
 ## 
 ##       role #variables
 ##    outcome          1
-##  predictor         48
+##  predictor         46
 ## 
 ## Training data contained 10828 data points and 3120 incomplete rows. 
 ## 
@@ -624,8 +622,9 @@ Random Forest:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{random_forest_model <-}\StringTok{ }\KeywordTok{rand_forest}\NormalTok{(}\DataTypeTok{trees =} \DecValTok{1000}\NormalTok{, }\DataTypeTok{mode =} \StringTok{"regression"}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"randomForest"}\NormalTok{)}
+\NormalTok{random_forest_model <-}\StringTok{ }\KeywordTok{rand_forest}\NormalTok{(}\DataTypeTok{trees =} \DecValTok{1000}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"randomForest"}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{set_mode}\NormalTok{(}\StringTok{"regression"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -633,17 +632,17 @@ XGBoost:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{xgboost_model <-}\StringTok{ }\NormalTok{xgboost_parsnip <-}\StringTok{ }\KeywordTok{boost_tree}\NormalTok{(}\DataTypeTok{trees=}\DecValTok{1000}\NormalTok{, }\DataTypeTok{tree_depth =} \DecValTok{8}\NormalTok{) }\OperatorTok{%>%}
+\NormalTok{xgboost_model <-}\StringTok{ }\NormalTok{xgboost_parsnip <-}\StringTok{ }\KeywordTok{boost_tree}\NormalTok{(}\DataTypeTok{trees=}\DecValTok{1000}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{set_engine}\NormalTok{(}\StringTok{"xgboost"}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{set_mode}\NormalTok{(}\StringTok{"regression"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-Remove fields not used for models (NOTE: REMOVE price\_usd\_x\_daysLater AND date\_time\_x\_days\_Later FROM BEING GENERATED INSIDE THE FUNCTION)
+Remove the fields we will not be be using for the predictive modeling:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{exercise_data <-}\StringTok{ }\KeywordTok{select}\NormalTok{(exercise_data, }\OperatorTok{-}\NormalTok{date_time_utc, }\OperatorTok{-}\NormalTok{date_time, }\OperatorTok{-}\NormalTok{pkDummy, }\OperatorTok{-}\NormalTok{pkey, }\OperatorTok{-}\NormalTok{price_usd_x_daysLater, }\OperatorTok{-}\NormalTok{date_time_x_daysLater, }\OperatorTok{-}\NormalTok{cap_real_usd, }\OperatorTok{-}\NormalTok{cap_mvrv_cur)}
+\NormalTok{exercise_data <-}\StringTok{ }\NormalTok{exercise_data }\OperatorTok{%>%}\StringTok{ }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{date_time_utc, }\OperatorTok{-}\NormalTok{date_time, }\OperatorTok{-}\NormalTok{pkDummy, }\OperatorTok{-}\NormalTok{pkey, }\OperatorTok{-}\NormalTok{cap_real_usd, }\OperatorTok{-}\NormalTok{cap_mvrv_cur)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -716,7 +715,7 @@ Random Forest:
 \end{Shaded}
 
 \begin{verbatim}
-## Random Forest: 142.03 sec elapsed
+## Random Forest: 143.33 sec elapsed
 \end{verbatim}
 
 XGBoost:
@@ -740,7 +739,7 @@ XGBoost:
 \end{Shaded}
 
 \begin{verbatim}
-## XGBoost: 25.34 sec elapsed
+## XGBoost: 19.45 sec elapsed
 \end{verbatim}
 
 Use the trained model to make predictions on test data:
@@ -798,8 +797,8 @@ Get metrics:
 ##   .metric .estimator  .estimate
 ##   <chr>   <chr>           <dbl>
 ## 1 rmse    standard   2463.     
-## 2 rsq     standard      0.00300
-## 3 mae     standard    874.
+## 2 rsq     standard      0.00299
+## 3 mae     standard    875.
 \end{verbatim}
 
 \hypertarget{now-make-one-model-for-each-cryptocurrency.}{%
@@ -945,13 +944,19 @@ Sort the new tibble by the best r squared values:
 \end{Shaded}
 
 \begin{verbatim}
-## Predictive Modeling: 168.71 sec elapsed
+## Predictive Modeling: 164.08 sec elapsed
 \end{verbatim}
 
 \hypertarget{plot-variable-importance}{%
 \subsection{Plot Variable Importance}\label{plot-variable-importance}}
 
 Now I can use the \texttt{vip} \citep{R-vip} package to plot the variable importance:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(vip)}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1019,27 +1024,9 @@ I think I could be a great fit for the third project listed related to creating 
 
 I am very familiar with the \texttt{reticulate} package and I have used it in the past in an RMarkdown file to make automated cryptocurrency trades through a Python package \texttt{shrimpy-python}, which worked really well: \url{https://github.com/shrimpy-dev/shrimpy-python}
 
-Since I have already demonstrated my familiarity with learnr tutorials \textbf{\protect\hyperlink{learnr}{in the previous section}}, I did not make a very extensive example here, but instead created a learnr tutorial with a Python code chunk instead
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_app}\NormalTok{(}\StringTok{"https://predictcrypto.shinyapps.io/python_project3_example/"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+Since I have already demonstrated my familiarity with learnr tutorials \textbf{\protect\hyperlink{learnr}{in the previous section}}, I did not make a very extensive example here, but instead created a learnr tutorial with a Python code chunk instead:
 
 \href{https://predictcrypto.shinyapps.io/python_project3_example/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-20-1.pdf}}
-
-Could make a very simple xgboost model maybe?
-
-Could also show using Shrimpy API to pull latest data, manipulate in pandas and visualize
-
-Mention experience/courses taken in Python and how it's never clicked with me very much but how I am taking a basic Python course in my Master's in Data Science and I am looking to take it as an opportunity to create a lot of content using reticulate.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(reticulate)}
-\end{Highlighting}
-\end{Shaded}
 
 Return the total runtime of all of the examples above:
 
@@ -1050,7 +1037,7 @@ Return the total runtime of all of the examples above:
 \end{Shaded}
 
 \begin{verbatim}
-## Total section 3 runtime: 221.07 sec elapsed
+## Total section 3 runtime: 216.59 sec elapsed
 \end{verbatim}
 
 \hypertarget{about-me}{%
@@ -1083,7 +1070,7 @@ Here are some of the online courses I worked my way through:
 
 Here is my resume with the same online learning certificates added to it:
 
-\href{https://ricky-cv.netlify.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-22-1.pdf}}
+\href{https://ricky-cv.netlify.com/}{\includegraphics{RStudio-Internship-Application_files/figure-latex/unnamed-chunk-21-1.pdf}}
 
 \emph{\href{https://github.com/nstrayer/cv}{Thanks again to Nick Strayer for the awesome template}}
 

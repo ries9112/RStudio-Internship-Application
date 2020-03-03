@@ -202,15 +202,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="disable-while-working-on-bookdown-takes-too-long-to-render" class="section level2">
 <h2><span class="header-section-number">6.1</span> Disable while working on bookdown, takes too long to render!</h2>
 <p>Since we already imported the cryptocurrency data in the <a href="">earlier section</a> of this bookdown document, might as well make some cool charts!</p>
+<p>Remember to add tictoc code here as well</p>
 <!-- ## Previous 24h % Change - Global Market - Hex Bins -->
 <!-- The y-axis in the chart below is limited to a range of -25% to 25% -->
+<p>For rayshader separate camera settings and just write a line explaining it’s just camera settings. So first make normal chart, then import rayshader, set filename_movie name and all camera settings
 <!-- ```{r rayshader, echo=FALSE, message=FALSE, warning=FALSE} -->
 <!-- filename_movie = 'rayshader.mp4' -->
 <!-- phivechalf = 30 + 60 * 1/(1 + exp(seq(-7, 20, length.out = 180)/2)) -->
 <!-- phivecfull = c(phivechalf, rev(phivechalf)) -->
 <!-- thetavec = -90 + 45 * sin(seq(0,359,length.out = 360) * pi/180) -->
 <!-- zoomvec = 0.45 + 0.2 * 1/(1 + exp(seq(-5, 20, length.out = 180))) -->
-<!-- zoomvecfull = c(zoomvec, rev(zoomvec)) -->
+<!-- zoomvecfull = c(zoomvec, rev(zoomvec)) --></p>
 <!-- plot_gg(ggplot(data = cryptoData, aes(x=DateTimeUTC, y=PercChange24hVsUSD)) + -->
 <!--           geom_hex() + -->
 <!--           ylim(-25,25) + -->
@@ -225,12 +227,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- <br /> -->
 <pre><code>## [1] TRUE</code></pre>
 
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="cool-charts.html#cb113-1"></a><span class="co"># import libraries not captured imported earlier that are referenced</span></span>
-<span id="cb113-2"><a href="cool-charts.html#cb113-2"></a><span class="kw">library</span>(bookdown)</span>
-<span id="cb113-3"><a href="cool-charts.html#cb113-3"></a><span class="kw">library</span>(blogdown)</span>
-<span id="cb113-4"><a href="cool-charts.html#cb113-4"></a><span class="kw">library</span>(pagedown)</span>
-<span id="cb113-5"><a href="cool-charts.html#cb113-5"></a><span class="kw">library</span>(flexdashboard)</span></code></pre></div>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="cool-charts.html#cb114-1"></a>knitr<span class="op">::</span><span class="kw">write_bib</span>(<span class="kw">c</span>(<span class="kw">.packages</span>()), <span class="st">&quot;packages.bib&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="cool-charts.html#cb109-1"></a><span class="co"># import libraries not captured imported earlier that are referenced</span></span>
+<span id="cb109-2"><a href="cool-charts.html#cb109-2"></a><span class="kw">library</span>(bookdown)</span>
+<span id="cb109-3"><a href="cool-charts.html#cb109-3"></a><span class="kw">library</span>(blogdown)</span>
+<span id="cb109-4"><a href="cool-charts.html#cb109-4"></a><span class="kw">library</span>(pagedown)</span>
+<span id="cb109-5"><a href="cool-charts.html#cb109-5"></a><span class="kw">library</span>(flexdashboard)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="cool-charts.html#cb110-1"></a>knitr<span class="op">::</span><span class="kw">write_bib</span>(<span class="kw">c</span>(<span class="kw">.packages</span>()), <span class="st">&quot;packages.bib&quot;</span>)</span></code></pre></div>
 </div>
 </div>
             </section>
