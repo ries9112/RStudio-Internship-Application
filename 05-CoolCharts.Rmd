@@ -22,6 +22,8 @@ library(stringr)
 library(DT)
 library(ggmap)
 library(rayshader)
+library(webshot)
+library(webdriver)
 # library(ggstatsplot)
 library(bibtex)
 source('login_info.R')
@@ -149,9 +151,13 @@ render_movie(filename = filename_movie, type = "custom",
 rgl::rgl.close()
 ```
 
-```{r show_rayshader}
-knitr::include_url("file:///C:/Users/Ricky/Desktop/RStudio-Internship-Application/rayshader.mp4")
-```
+<!-- ```{r show_rayshader} -->
+<!-- knitr::include_url("file:///C:/Users/Ricky/Desktop/RStudio-Internship-Application/rayshader.mp4") -->
+<!-- ``` -->
+
+<video width="600" height="500" controls>
+  <source src="rayshader.mp4" type="video/mp4">
+</video>
 
 
 
