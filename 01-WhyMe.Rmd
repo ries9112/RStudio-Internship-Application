@@ -15,7 +15,7 @@ I have been using learnr [for about a year and a half](https://github.com/ries91
 
 (this takes about 30 seconds to load, give it more time if it's showing up blank)
 
-```{r, echo=F}
+```{r show_r_basics_tutorial, echo=F}
 knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/",
   height = "612E00px")
 ```
@@ -23,7 +23,7 @@ knitr::include_app("https://predictcrypto.shinyapps.io/R_Basics/",
 I would recommend looking at the **Visualization** section to visually see that the data is never outdated by more than 1 hour.
 
 I post these on my website:
-```{r, echo=F}
+```{r show_website, echo=F}
 knitr::include_url("https://predictcrypto.com/tutorials",
   height = "600px")
 ```
@@ -37,7 +37,7 @@ I was very close to paying for a monthly subscription on gitbook.com because I t
 
 This document is obviously an example of a bookdown document in itself, but here's another guide I put together using bookdown:
 
-```{r, echo=F}
+```{r show_bookdown, echo=F}
 knitr::include_url("https://predictcryptodb-quickstart.com/")
 ```
 
@@ -81,7 +81,7 @@ Flexdashboards [@R-flexdashboard] were my first introduction to shiny apps and I
 
 To get some practice, I converted some of the content found in [Tidy Text Mining by Julia Silge and David Robinson](https://www.tidytextmining.com/) and made it into a flexdashboard. **I made no changes to the code found within the book**, this was simply an experiment to learn more about flexdashboards and semantic analysis:
 
-```{r, echo=F}
+```{r show_flexdashboard, echo=F}
 knitr::include_url("https://predictcrypto.shinyapps.io/SemanticAnalysisExample/")
 ```
 

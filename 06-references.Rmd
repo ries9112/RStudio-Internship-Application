@@ -1,4 +1,4 @@
-```{r import_final_libraries, message=FALSE, warning=FALSE}
+```{r import_final_libraries, echo=F, message=FALSE, warning=FALSE}
 # import libraries not captured imported earlier that are referenced
 library(bookdown)
 library(blogdown)
@@ -6,7 +6,7 @@ library(pagedown)
 library(flexdashboard)
 ```
 
-```{r write_bib_packages, message=FALSE, warning=FALSE}
+```{r write_bib_packages, echo=F, message=FALSE, warning=FALSE}
 knitr::write_bib(c(.packages()), "packages.bib")
 ```
 

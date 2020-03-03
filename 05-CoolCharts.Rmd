@@ -5,7 +5,7 @@
 Since we already imported the cryptocurrency data in the [earlier section]() of this bookdown document, might as well make some cool charts!
 
 
-```{r setup, message=F, echo=F, include=FALSE}
+```{r setup, include=FALSE}
 # global.R to import libraries or error on shinyapps for some reason
 library(shiny)
 library(DBI)
@@ -22,15 +22,16 @@ library(ggmap)
 library(rayshader)
 # library(ggstatsplot)
 library(bibtex)
+source('login_info.R')
+Sys.setenv(user='tutorials', pswd='WebsiteTutorials',ipAddress='35.188.12.15')
 # To resolve issue with BioConductor package needed for ggstatsplot:
 # if (!requireNamespace("BiocManager", quietly = TRUE))
 #     install.packages("BiocManager")
 # BiocManager::install()
-#library(BiocManager)
+library(BiocManager)
 # options(repos = BiocManager::repositories())
 # options(repos = BiocInstaller::biocinstallRepos())
 ############# SQL CONNECTION ###############
-source("login_info.R")
 getSqlConnection <- function(){
   con <-
     dbConnect(
@@ -103,6 +104,175 @@ shrimpyData$DateTimeUTC <- anytime(shrimpyData$DateTimeUTC)
 shrimpyData <- calculateChange(shrimpyData,12)
 #Filter down to Ethereum data
 ethereumData <- filter(cryptoData, Name == 'Ethereum')
+```
+
+
+## Price USD - Last 7 Days - BTC
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+plot <- ggplot(subset(cryptoData, Name == 'Bitcoin'), aes(x = DateTimeUTC, y = PriceUSD)) +
+  
+  geom_jitter(alpha=0.75, colour='deepskyblue4') +
+  
+  labs(title=paste('Bitcoin', ' - Price USD'),
+       x='DateTime MST (Colorado Time)', y='% Change Vs. USD ($)') +
+  
+  geom_smooth(colour='coral3')  + theme_economist()
+
+ggplotly(plot)
+```
+
+
+
+## Previous 24h % Change - Whole Market - Hex Bins
+
+
+```{r rayshader, echo=FALSE, message=FALSE, warning=FALSE}
+filename_movie = 'rayshader.mp4'
+phivechalf = 30 + 60 * 1/(1 + exp(seq(-7, 20, length.out = 180)/2))
+phivecfull = c(phivechalf, rev(phivechalf))
+thetavec = -90 + 45 * sin(seq(0,359,length.out = 360) * pi/180)
+zoomvec = 0.45 + 0.2 * 1/(1 + exp(seq(-5, 20, length.out = 180)))
+zoomvecfull = c(zoomvec, rev(zoomvec))
+
+plot_gg(ggplot(data = cryptoData, aes(x=DateTimeUTC, y=PercChange24hVsUSD)) +
+          geom_hex() +
+          ylim(-20,20))
+
+render_movie(filename = filename_movie, type = "custom",
+             frames = 360,  phi = phivecfull, zoom = zoomvecfull, theta = thetavec)
+rgl::rgl.close()
+```
+
+<video width="600" height="500" controls>
+  <source src="rayshader.mp4" type="video/mp4">
+</video>
+
+<br />
+
+## Preview of Current Data Being Visualized
+  
+```{r,echo=FALSE}
+DT::datatable(head(select(cryptoData,-DateExtracted),1000), options = list(
+  pageLength=5, scrollX='400px',searching=F))
+```
+
+<br />
+  
+## Git Commits Last 90 Days - ETH
+  
+  
+```{r plotPickVariable, echo=FALSE, message=FALSE, warning=FALSE}
+plot <- ggplot(filter(cryptoData, Name == 'Ethereum'), aes_string(x = "DateTimeUTC", y = 'Git_CommitsLast90Days')) +
+  
+  geom_line(size = 1, alpha=0.75, colour='darkslateblue') +
+  
+  labs(title=paste('Ethereum', ' - ', 'Git_CommitsLast90Days'),
+       x='DateTime MST (Colorado Time)') +
+  
+  geom_smooth()
+
+ggplotly(plot)
+```
+
+<br />
+  
+  
+## Percent Change Over Next 6 Hours - Last 7 Days - Top 5 Ranked
+  
+This chart plots the % change for the 6 hour period after it was collected.
+
+```{r second, echo=FALSE, message=FALSE, warning=FALSE}
+plot <- ggplot(filter(targetData, Rank >= 1, Rank <= 5 ), aes(x = DateTimeUTC, y = TargetPercChange, colour=Name)) +
+  
+  geom_jitter(alpha=0.75) +
+  
+  labs(x='DateTime MST (Colorado Time)', y='6h % Change Vs. USD ($)') +
+  
+  geom_smooth(aes(group=Name), se=F)  + theme_solarized(light=F)
+
+ggplotly(plot)
+```
+
+<br />  <br />
+  
+## Plotting the relationship between previous 24h % change and next 24h % change - Bitcoin
+  
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+plot <- ggplot(subset(targetData24, Name == 'Bitcoin'), aes(x = PercChange24hVsUSD, y = TargetPercChange)) +
+  
+  geom_jitter(alpha=0.75, colour='deepskyblue4') +
+  
+  labs(title='Bitcoin',
+       x='% Change Previous 24h vs. $', y='% Change Next 24h vs. $') +
+  
+  geom_smooth(colour='coral3',se=F)  + theme_wsj()
+
+ggplotly(plot)
+# output$pricePlotStats <- renderPlot({
+#   ggscatterstats(data = filter(targetData24, Name == input$cryptocurrencyNameRel), x = PercChange24hVsUSD, y = TargetPercChange, messages=F)
+# })
+```
+
+
+<br />
+  
+## Percent Change Over Next 12 Hours - Last 7 Days - Top 100 Ranked
+  
+```{r third, echo=FALSE}
+distributionPlot <- ggplot(filter(targetData12, Rank >= 1, Rank <= 100 ), aes(x = TargetPercChange)) +
+  geom_histogram(binwidth = 0.5, aes(y=..density..)) +
+  geom_density(alpha = .25, fill="coral3") +
+  geom_vline(aes(xintercept = mean(TargetPercChange, na.rm = T)),
+             colour = "red", linetype ="longdash", size = .6, alpha=0.35) +
+  xlim(-7,7) +
+  labs(x='Percent Change Over Next 12 hours')
+ggplotly(distributionPlot)
+```
+
+
+## Percent Change Over Next 12 Hours - Last 7 Days - Top 100 Ranked
+
+```{r third_rayshader, echo=FALSE}
+distributionPlot <- ggplot(filter(targetData12, Rank >= 1, Rank <= 100 ), aes(x = TargetPercChange)) +
+  geom_histogram(binwidth = 0.5, aes(y=..density.., colour=TargetPercChange)) +
+  geom_density(alpha = .25, fill="coral3") +
+  geom_vline(aes(xintercept = mean(TargetPercChange, na.rm = T)),
+             colour = "red", linetype ="longdash", size = .6, alpha=0.35) +
+  xlim(-7,7) +
+  labs(x='Percent Change Over Next 12 hours')
+ggplotly(distributionPlot)
+```
+
+
+<br />
+  
+## Percent Change Over Next 24 Hours - By Date
+  
+  
+```{r fourth, echo=FALSE}
+distributionPlot <- ggplot(filter(targetData24, Rank >= 1, Rank <= 100 ), aes(x = TargetPercChange)) +
+  geom_histogram(binwidth = 0.5, aes(y=..density..)) +
+  geom_density(alpha = .25, fill="coral3") +
+  geom_vline(aes(xintercept = mean(TargetPercChange, na.rm = T)),
+             colour = "red", linetype ="longdash", size = .6, alpha=0.35) +
+  xlim(-7,7) +
+  labs(x='Percent Change Over Next 24 hours')
+distributionPlot + facet_wrap( ~ DateExtracted)
+```
+
+<br />
+  
+## Rows collected by Mining Algorithm - Top 15 Ranked
+  
+  
+```{r fifth, echo=FALSE}
+plot <- ggplot(filter(cryptoData, Rank >= 1, Rank <= 15,
+                    MiningAlgorithm != 'n/a', MiningAlgorithm != '' ), aes(MiningAlgorithm)) +
+geom_bar(aes(fill=Name)) +
+labs(title='Rows collected by Mining Algorithm and cryptocurrency - Last 7 Days',
+     x='Mining Algorithm', y='Number of Rows Collected')
+ggplotly(plot)
 ```
 
 

@@ -12,19 +12,9 @@ description: "This is Ricky's application to the 2020 RStudio Internship."
 
 # Overview
 
-Video intro here
-
-
-https://education.rstudio.com/blog/2020/02/applications-for-2020-intern-program-are-now-open/
-
-APPLICATIONS END ON MARCH 5TH BE SURE TO APPLY BEFORE THEN!!
-
-For video:
-
-Start off by going over the "Why Me" section and talk about ways I have applied the broad RMarkdown ecosystem and automation to my work. Then go to the projects suited for section to give an overview of what makes me a good fit for the first three projects specifically and examples I started to work on for each. Then give intro to about me and ideal tutorial sections. End things with a cool charts/visualizations section (or include in projects suited for section)
-
-Start off with overview of projects I am suited for showing work I did for this application specifically. Then go on to talk about ways I have applied the broad RMarkdown ecosystem and automation in my work. Then talk a bit more about myself. Talk about ideal tutorial overview and close things by mentioning cool charts/visualizations section (outline this at a high level under 2 minutes in the video at the start here)
-
+<video width="600" height="500" controls>
+  <source src="application_overview.mp4" type="video/mp4">
+</video>
 
 ```{r include=FALSE}
 library(bibtex)

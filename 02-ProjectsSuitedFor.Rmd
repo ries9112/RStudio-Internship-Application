@@ -337,8 +337,12 @@ toc()
 
 Use the trained model to make predictions on test data:
 
-```{r}
+```{r import_tidymodels}
 library(tidymodels)
+```
+
+
+```{r make_lm_predictions}
 lm_predictions <- predict(lm_fitted, crypto_test)
 ```
 
@@ -352,7 +356,7 @@ xgboost_predictions <- xgboost_fitted %>% predict(crypto_test)
 
 Join the full dataset back to the predictions:
 
-```{r}
+```{r join_lm_predictions_to_full}
 lm_predictions <- lm_predictions %>% bind_cols(crypto_test)
 
 xgboost_predictions <- xgboost_predictions %>% bind_cols(crypto_test)
@@ -360,7 +364,7 @@ xgboost_predictions <- xgboost_predictions %>% bind_cols(crypto_test)
 
 
 Get metrics:
-```{r}
+```{r get_joined_metrics}
 lm_predictions %>%
   metrics(truth = target_percent_change, estimate = .pred)
 
