@@ -1,5 +1,4 @@
-on: [push]
-    
+
 name: update-website
 
 jobs:
