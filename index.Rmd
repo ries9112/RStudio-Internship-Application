@@ -13,7 +13,7 @@ description: "This is Ricky's application to the 2020 RStudio Internship."
 # Overview
 
 <video width="600" height="500" controls>
-  <source src="application_overview.mp4" type="video/mp4">
+  <source src="video_overview.mp4" type="video/mp4">
 </video>
 
 ```{r include=FALSE}
