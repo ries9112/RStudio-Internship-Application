@@ -137,16 +137,6 @@ ggplotly(plot)
 ```
 
 
-<!-- ```{r show_rayshader} -->
-<!-- knitr::include_url("file:///C:/Users/Ricky/Desktop/RStudio-Internship-Application/rayshader.mp4") -->
-<!-- ``` -->
-
-<video width="600" height="500" controls>
-  <source src="rayshader.mp4" type="video/mp4">
-</video>
-
-
-
 ## Git Commits Last 90 Days - ETH
   
   
