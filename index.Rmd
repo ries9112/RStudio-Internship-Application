@@ -16,6 +16,8 @@ description: "This is Ricky's application to the 2020 RStudio Internship."
   <source src="video_overview.mp4" type="video/mp4">
 </video>
 
+The video is best viewed in fullscreen, hover over the window for the option
+
 ```{r include=FALSE}
 library(bibtex)
 # automatically create a bib database for R packages
@@ -23,3 +25,4 @@ knitr::write_bib(c(
   .packages(), "bookdown", "knitr", "rmarkdown", "tidyverse", "plotly", "rayshader"
 ), "packages.bib")
 ```
+
