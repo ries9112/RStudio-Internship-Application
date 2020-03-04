@@ -111,13 +111,6 @@ ethereumData <- filter(cryptoData, Name == 'Ethereum')
 ```
 
 
-## Rayshader Example 
-
-Plotting the % change in price ($) over the previous 24 hour period for the market as a whole:
-
-```{r show_rayshader}
-knitr::include_url("file:///C:/Users/Ricky/Desktop/RStudio-Internship-Application/rayshader.mp4")
-```
 
 
 
