@@ -54,7 +54,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -101,7 +101,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -148,7 +148,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -242,7 +242,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -289,7 +289,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -336,7 +336,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -383,7 +383,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -430,7 +430,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -524,7 +524,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -571,7 +571,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -618,7 +618,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -665,7 +665,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -759,7 +759,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -806,7 +806,7 @@
           "sampleRate" : 44100,
           "bitDepth" : 16,
           "numChannels" : 2,
-          "integratedLUFS" : -1.79769313486232e+308,
+          "integratedLUFS" : 0.0,
           "peakLevel" : 0.0,
           "metaData" : ""
         }
@@ -1248,23 +1248,6 @@
                             "ident" : "Rec 03-03-20_019"
                           },
                           "parameters" : {
-                            "quiz" : {
-                              "type" : "string",
-                              "keyframes" : [
-                                {
-                                  "endTime" : 227,
-                                  "time" : 227,
-                                  "value" : "<Quiz id=\"1538\" name=\"Quiz 10\"><Options feedback=\"1\" graded=\"1\"/><Questions><MultipleChoice id=\"110\" text=\"Default Question Text\" collapsed=\"0\" feedback=\"0\" fb_correct=\"\" fb_correct_action=\"\" fb_correct_jumptime_ms=\"0\" fb_correct_url=\"\" fb_correct_marker=\"\" fb_correct_marker_time=\"0\" fb_wrong=\"\" fb_wrong_action=\"\" fb_wrong_jumptime_ms=\"0\" fb_wrong_url=\"\" fb_wrong_marker=\"\" fb_wrong_marker_time=\"0\"><Answers><Answer id=\"10\" text=\"Default Answer Text\" iscorrect=\"1\"/></Answers></MultipleChoice></Questions></Quiz>",
-                                  "duration" : 0
-                                },
-                                {
-                                  "endTime" : 848,
-                                  "time" : 848,
-                                  "value" : "<Quiz id=\"1590\" name=\"Quiz 11\"><Options feedback=\"1\" graded=\"1\"/><Questions><MultipleChoice id=\"111\" text=\"Default Question Text\" collapsed=\"0\" feedback=\"0\" fb_correct=\"\" fb_correct_action=\"\" fb_correct_jumptime_ms=\"0\" fb_correct_url=\"\" fb_correct_marker=\"\" fb_correct_marker_time=\"0\" fb_wrong=\"\" fb_wrong_action=\"\" fb_wrong_jumptime_ms=\"0\" fb_wrong_url=\"\" fb_wrong_marker=\"\" fb_wrong_marker_time=\"0\"><Answers><Answer id=\"11\" text=\"Default Answer Text\" iscorrect=\"1\"/></Answers></MultipleChoice></Questions></Quiz>",
-                                  "duration" : 0
-                                }
-                              ]
-                            },
                             "cursorScale" : {
                               "type" : "double",
                               "defaultValue" : 1.0,
@@ -2048,7 +2031,7 @@
   },
   "metadata" : {
     "AutoSaveFile" : "C:\\Users\\Ricky\\AppData\\Local\\TechSmith\\Camtasia Studio\\19.0\\Auto-Saves\\video_overviewfae2d65.autosave.tscproj",
-    "CanvasZoom" : 76,
+    "CanvasZoom" : 68,
     "Date" : "2020-03-03 11:00:29 AM",
     "IsAutoSave" : "0",
     "Language" : "ENU",

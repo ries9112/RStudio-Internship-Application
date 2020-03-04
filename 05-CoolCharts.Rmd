@@ -127,30 +127,6 @@ ggplotly(plot)
 ```
 
 
-
-## Rayshader Hex Bins - Previous 24h % Change - Whole Market
-
-First some camera settings for the rayshader video:
-```{r rayshader settings}
-phivechalf = 30 + 60 * 1/(1 + exp(seq(-7, 20, length.out = 180)/2))
-phivecfull = c(phivechalf, rev(phivechalf))
-thetavec = -90 + 45 * sin(seq(0,359,length.out = 360) * pi/180)
-zoomvec = 0.45 + 0.2 * 1/(1 + exp(seq(-5, 20, length.out = 180)))
-zoomvecfull = c(zoomvec, rev(zoomvec))
-filename_movie = 'rayshader.mp4'
-```
-
-
-```{r rayshader, message=FALSE, warning=FALSE}
-plot_gg(ggplot(data = cryptoData, aes(x=DateTimeUTC, y=PercChange24hVsUSD)) +
-          geom_hex() +
-          ylim(-20,20))
-
-render_movie(filename = filename_movie, type = "custom",
-             frames = 360,  phi = phivecfull, zoom = zoomvecfull, theta = thetavec)
-rgl::rgl.close()
-```
-
 <!-- ```{r show_rayshader} -->
 <!-- knitr::include_url("file:///C:/Users/Ricky/Desktop/RStudio-Internship-Application/rayshader.mp4") -->
 <!-- ``` -->
@@ -257,6 +233,37 @@ labs(title='Rows collected by Mining Algorithm and cryptocurrency - Last 7 Days'
      x='Mining Algorithm', y='Number of Rows Collected')
 ggplotly(plot)
 ```
+
+
+
+## Rayshader Hex Bins - Previous 24h % Change - Whole Market
+
+First some camera settings for the rayshader video:
+```{r rayshader settings}
+phivechalf = 30 + 60 * 1/(1 + exp(seq(-7, 20, length.out = 180)/2))
+phivecfull = c(phivechalf, rev(phivechalf))
+thetavec = -90 + 45 * sin(seq(0,359,length.out = 360) * pi/180)
+zoomvec = 0.45 + 0.2 * 1/(1 + exp(seq(-5, 20, length.out = 180)))
+zoomvecfull = c(zoomvec, rev(zoomvec))
+filename_movie = 'rayshader.mp4'
+```
+
+
+```{r rayshader, message=FALSE, warning=FALSE}
+plot_gg(ggplot(data = cryptoData, aes(x=DateTimeUTC, y=PercChange24hVsUSD)) +
+          geom_hex() +
+          ylim(-20,20))
+
+render_movie(filename = filename_movie, type = "custom",
+             frames = 360,  phi = phivecfull, zoom = zoomvecfull, theta = thetavec)
+rgl::rgl.close()
+```
+
+
+
+
+
+
 
 
 ```{r disconnect_db, echo=F, message=F, warning=F}
