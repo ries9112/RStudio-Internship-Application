@@ -1,6 +1,6 @@
 # Cool Charts 
 
-Some examples of using packages like `plotly` [@R-plotly] and `rayshader` [@R-rayshader] to 
+Some examples of using ggplot2 extensions like `plotly` [@R-plotly] and `rayshader` [@R-rayshader] to make cool visualizations.
 
 ```{r tic_cool_charts}
 tic('Cool charts section')
